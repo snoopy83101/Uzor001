@@ -17,7 +17,7 @@
             set;
         }
 
-        /// <summary>
+        /// <summary> 
         /// 属于谁的关注
         /// </summary>
         public string UserId
