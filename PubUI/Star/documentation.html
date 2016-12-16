@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>jQuery Star Rating Plugin v4.11 (2013-03-14)</title>
+    <!--// plugin-specific resources //-->
+    <script src="http://localhost:89/js/jquery-1.8.2.js"></script>
+    <script src='jquery.rating.js' type="text/javascript" language="javascript"></script>
+    <link href='jquery.rating.css' type="text/css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <script>
+        $(function () {
+            $('.auto-submit-star').rating({
+                callback: function (value, link) {
+                    // 'this' is the hidden form element holding the current value
+                    // 'value' is the value selected
+                    // 'element' points to the link element that received the click.
+                    alert("The value selected was '" + value + "'\n\nWith this callback function I can automatically submit the form with this code:\nthis.form.submit();");
+
+                    // To submit the form automatically:
+                    //this.form.submit();
+
+                    // To submit the form via ajax:
+                    //$(this.form).ajaxSubmit();
+                }
+            });
+        });
+    </script>
+
+    <div class="Clear">
+        Rating 1:
+    (1 - 3, default 2)
+    <input class="auto-submit-star" type="radio" name="test-3A-rating-1" value="1" />
+        <input class="auto-submit-star" type="radio" name="test-3A-rating-1" value="2" checked="checked" />
+        <input class="auto-submit-star" type="radio" name="test-3A-rating-1" value="3" />
+    </div>
+
+</body>
+</html>

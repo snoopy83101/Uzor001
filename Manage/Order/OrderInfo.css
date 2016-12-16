@@ -1,0 +1,480 @@
+﻿body {
+}
+
+
+.div_OrderInfo {
+}
+
+
+    .div_OrderInfo table tr {
+        height: 50px;
+    }
+
+
+        .div_OrderInfo table tr td {
+            padding-left: 10px;
+        }
+
+            .div_OrderInfo table tr td input {
+                height: 30px !important;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .div_OrderInfo table tr td select {
+                height: 35px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+input.i400 {
+    width: 400px;
+}
+
+input.i300 {
+    width: 300px;
+}
+
+input.i200 {
+    width: 200px;
+}
+
+input.i100 {
+    width: 100px;
+}
+
+input.i50 {
+    width: 50px;
+}
+
+
+
+
+.div_imgs {
+}
+
+    .div_imgs img {
+        width: auto;
+        height: 50px;
+        border: 2px solid #808080;
+        margin: 3px;
+        cursor: pointer;
+    }
+
+
+        .div_imgs img:hover {
+            border: 2px solid #2ca7ef;
+        }
+
+
+
+        .div_imgs img.select {
+            border: 2px solid #ff6a00;
+        }
+
+.div_Detail {
+}
+
+    .div_Detail ul {
+    }
+
+        .div_Detail ul li {
+            height: 40px;
+            line-height: 40px;
+        }
+
+    .div_Detail input {
+        height: 30px;
+    }
+
+.txt_Color, .txt_Num {
+    margin-left: 10px;
+}
+
+.txt_Num {
+    width: 50px;
+    text-align: center;
+}
+
+.txt_Memo {
+    width: 320px;
+    margin-left: 10px;
+}
+
+.sp_l {
+    display: inline-block;
+    width: 50px;
+    text-align: right;
+}
+
+.txt_DetailVsClothesSize {
+    height: 30px;
+}
+
+.t3 tbody tr {
+    height: 50px;
+}
+
+.a_Member, .div_workList {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #808080;
+}
+
+.a_Member {
+    height: 200px;
+    float: left;
+    margin: 10px auto auto 10px;
+    position: relative;
+}
+
+    .a_Member:hover {
+        background-color: #eee;
+    }
+
+    .a_Member span {
+        display: block;
+        font-size: 13px;
+        line-height: 25px;
+    }
+
+    .a_Member.add {
+        background-image: url('../Images/add.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        width: 200px;
+        min-height: 200px;
+    }
+
+
+.div_workList {
+    display: block;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: #fff;
+    position: absolute;
+    top: 190px;
+    left: -1px;
+    z-index: 2;
+    display: none;
+}
+
+    .div_workList li {
+        line-height: 20px;
+        background-repeat: no-repeat;
+        padding-left: 30px;
+        background-size: 15px 15px;
+        background-position: 5px 7px;
+        background-image: url('../Images/gong.png');
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+        .div_workList li:hover {
+            background-color: #eee;
+        }
+
+.a_Member:hover .div_workList {
+    display: block;
+}
+
+.div_MyOrderToWorkNum {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    line-height: 30px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    background-size: 15px 15px;
+    background-position: 5px 7px;
+    background-image: url('../Images/gong.png');
+    font-size: 13px;
+}
+
+
+
+
+.div_SaveOrderToWork {
+}
+
+    .div_SaveOrderToWork li {
+        float: left;
+        width: 350px;
+        line-height: 50px;
+        font-size: 13px;
+    }
+
+        .div_SaveOrderToWork li span {
+            width: 100px;
+            text-align: right;
+            display: inline-block;
+        }
+
+        .div_SaveOrderToWork li input {
+            display: inline-block;
+            height: 30px;
+            border-radius: 3px;
+            width: 190px;
+            margin-left: 10px;
+        }
+
+
+.tb_OrderToWorkDetail {
+}
+
+table.tb_OrderToWorkDetail tbody tr td {
+}
+
+
+    table.tb_OrderToWorkDetail tbody tr td.td_1 {
+        font-size: 13px !important;
+        text-align: left;
+        padding-bottom: 5px;
+    }
+
+        table.tb_OrderToWorkDetail tbody tr td.td_1 input[type=text] {
+            width: 50px;
+            height: 20px;
+            text-align: center;
+        }
+
+        table.tb_OrderToWorkDetail tbody tr td.td_1 input[type=button] {
+            width: 50px;
+            height: 23px;
+            padding: 0;
+            cursor: pointer;
+        }
+
+.sp_w {
+    width: 100%;
+    text-align: center;
+    display: block;
+}
+
+.div_b {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .div_b input {
+        height: 50px !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+    }
+
+.img_MemberPic {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    border-radius: 50%;
+}
+
+.div_OrderCount {
+}
+
+    .div_OrderCount a {
+        background-repeat: no-repeat;
+        background-position: center 10px;
+        display: block;
+        float: left;
+        width: 100px;
+        text-align: center;
+        margin: 10px;
+        font-size: 12px;
+        border: 1px solid #eee;
+        background-size: 60%;
+        padding-top: 80px;
+        padding-bottom: 10px;
+    }
+
+        .div_OrderCount a.a_zongshu {
+            background-image: url('../Images/yifu.png');
+        }
+
+        .div_OrderCount a.a_shengchan {
+            background-image: url('../Images/fengren.png');
+        }
+
+        .div_OrderCount a.a_Done {
+            background-image: url('../Images/done.png');
+        }
+
+        .div_OrderCount a.a_zhijian {
+            background-image: url('../Images/zhijian.png');
+        }
+
+        .div_OrderCount a.a_MemberNum {
+            background-image: url('../Images/lianxiren.png');
+        }
+
+        .div_OrderCount a.a_OrderToWorkNum {
+            background-image: url('../Images/gong.png');
+        }
+
+        .div_OrderCount a span {
+            color: #ff6a00;
+        }
+
+.div_DetailTable {
+    margin-top: 10px;
+}
+
+    .div_DetailTable table.t3 {
+        width: auto !important;
+    }
+
+        .div_DetailTable table.t3 thead th {
+            max-width: 100px !important;
+            text-align: center;
+        }
+
+        .div_DetailTable table.t3 tbody td {
+            width: 100px !important;
+        }
+
+            .div_DetailTable table.t3 tbody td input {
+                max-width: 40% !important;
+            }
+
+
+.txt_OrderExpect {
+    width: 30px;
+    text-align: center;
+}
+
+.sp_OrderToWorkCount {
+    display: inline-block;
+    padding-left: 35px;
+    line-height: 25px;
+    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 25px 25px;
+    margin-right: 20px;
+}
+
+    .sp_OrderToWorkCount.CheckQuantity {
+        background-image: url('../Images/zhijian.png');
+    }
+
+    .sp_OrderToWorkCount.Quantity {
+        background-image: url('../Images/yifu.png');
+    }
+
+    .sp_OrderToWorkCount.OrderToWorkStatus {
+        background-image: url('../Images/zhuangtai.png');
+    }
+
+.b_1 {
+    color: #ff6a00;
+}
+
+
+.sp_VsStatus-1 {
+    color: #ff6a00;
+}
+
+.sp_VsStatus-10 {
+    color: #f00;
+}
+
+
+.sp_VsStatus10 {
+    color: #2ca7ef;
+}
+
+.sp_VsStatus20 {
+    color: #41a04d;
+}
+
+
+.txt_taotai {
+    width: 240px;
+    height: 100px;
+}
+
+.sp_taotaiyy {
+    width: 245px;
+    display: block;
+    border: 1px solid #b4b4b4;
+    margin: 5px auto 5px 0;
+    font-size: 12px;
+    color: #808080;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+    .sp_taotaiyy:hover {
+        background-color: #eee;
+    }
+
+h5 {
+    color: #2ca7ef;
+}
+
+.div_MemberList table.t3 th, .div_MemberList table.t3 td {
+    font-size: 12px;
+}
+
+.div_MemberList table.t3 tr {
+    height: 20px;
+}
+
+    .div_MemberList table.t3 tr td {
+        line-height: 20px;
+    }
+
+.sp_MemberTip {
+    color: #808080;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.b_PlanningTime {
+    color: #41a04d;
+}
+
+
+
+.div_afterSave {
+            text-align: center;
+}
+
+    .div_afterSave h3 {
+        text-align: center;
+        font-size: 30px;
+        line-height: 50px;
+        font-weight: normal;
+    }
+
+    .div_afterSave h4 {
+        text-align: center;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: normal;
+    }
+
+
+    .div_afterSave input {
+        margin: 10px;
+        line-height: 50px;
+        font-size:20px;
+        padding:10px;
+    }
+
+.sp_VsPlaces {
+
+    position:absolute;
+    right:13px;
+    top:45px;
+
+}
+
+.sp_VsPlaces b{
+    color:#f8390e;
+    font-weight:normal;
+    font-size:18px;
+}

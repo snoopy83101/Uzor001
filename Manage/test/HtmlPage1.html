@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>APP</title>
+    <link href="../../css/header.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <script src="../../script/api.js"></script>
+    <script src="../../script/jquery-1.8.2.js"></script>
+    <script src="../../script/common.js"></script>
+    <script>
+
+        var j = {
+            "result":
+                {
+                    "left": 0, "message":
+                      { "content": { "extra": "{\"MsgNum\":1}", "text": "恭喜您,您之前提交的技能认证已通过" }, "conversationType": "PRIVATE", "extra": "", "messageDirection": "RECEIVE", "messageId": 3, "objectName": "RC:TxtMsg", "receivedTime": 1481319713650, "senderUserId": "messager", "sentStatus": "SENT", "sentTime": 1481319713350, "targetId": "messager" }
+                }
+        }
+
+    </script>
+
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="btn_box pull-left" onclick="api.closeWin();" tapmode="tapmodeList1">
+                <img src="../../image/jiantouleft.png" />
+            </div>
+            <h5>商品详情</h5>
+        </div>
+        <div class="div_tcheader" style="height: 48px"></div>
+        <fieldset><legend>成功项目</legend></fieldset>
+    </div>
+    <script>
+   
+        apiready = function () {
+    
+
+            var header = $api.byId('header');
+            $api.fixIos7Bar(header);
+            window.headerPos = $api.offset(header);
+            api.openFrame(
+                {
+                    name: 'GrabDemainWorkInfoFrm',
+                    url: 'GrabDemainWorkInfoFrm.html',
+                    bounces: true,
+                    reload: true,
+                    bgColor: '#EBE8E8',
+                    rect: {
+                        x: 0,
+                        y: headerPos.h,
+                        w: 'auto',
+                        h: api.winHeight - headerPos.h
+                    },
+                }
+            , function (ret, err) {
+                var name = ret.name;
+                var index = ret.index;
+                //    setBar(index);
+            });
+     
+        }
+    </script>
+</body>
+</html>
+
+
+
+    

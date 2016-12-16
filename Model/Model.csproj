@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{577B9B4B-BB31-46EA-AE73-E7E34AAAF16A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs" />
+    <Compile Include="AddressInfoModel.cs" />
+    <Compile Include="ApplyForBindMerModel.cs" />
+    <Compile Include="ArticleClassModel.cs" />
+    <Compile Include="ArticleModel.cs" />
+    <Compile Include="ArticleVsImageModel.cs" />
+    <Compile Include="AttentionModel.cs" />
+    <Compile Include="AuthorInfoModel.cs" />
+    <Compile Include="BBS\DingModel.cs" />
+    <Compile Include="BBS\FormsModel.cs" />
+    <Compile Include="BBS\FormsVsUserModel.cs" />
+    <Compile Include="BBS\TieZiModel.cs" />
+    <Compile Include="BBS\TieZiVsImgModel.cs" />
+    <Compile Include="BmTelModel.cs" />
+    <Compile Include="BranchModel.cs" />
+    <Compile Include="BranchVsSiteModel.cs" />
+    <Compile Include="BranchVsZoneModel.cs" />
+    <Compile Include="ChouJiangClassModel.cs" />
+    <Compile Include="ChouJiangLogModel.cs" />
+    <Compile Include="ChouJiangModel.cs" />
+    <Compile Include="ChouJiangTypeModel.cs" />
+    <Compile Include="CommentModel.cs" />
+    <Compile Include="CommentVsImgModel.cs" />
+    <Compile Include="CurrentMember.cs" />
+    <Compile Include="CurrentMerModel.cs" />
+    <Compile Include="CuXiaoModel.cs" />
+    <Compile Include="CuXiaoVsProModel.cs" />
+    <Compile Include="DBLOG\Class1.cs" />
+    <Compile Include="DBLOG\OrderLogModel.cs" />
+    <Compile Include="DBMSG\MsgTypeVsMerRoleModel.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="DeliveryDetail.cs" />
+    <Compile Include="DeliveryType.cs" />
+    <Compile Include="DeviceModel.cs" />
+    <Compile Include="DingDanDetailModel.cs" />
+    <Compile Include="DingDanInfoModel.cs" />
+    <Compile Include="DingDanLogModel.cs" />
+    <Compile Include="DynamicModel.cs" />
+    <Compile Include="EducationModel.cs" />
+    <Compile Include="ErroLogInfoModel.cs" />
+    <Compile Include="GroupBuy.cs" />
+    <Compile Include="GwcModel.cs" />
+    <Compile Include="HouseDemandModel.cs" />
+    <Compile Include="HouseModel.cs" />
+    <Compile Include="HouseVsCommentModel.cs" />
+    <Compile Include="HouseVsImgModel.cs" />
+    <Compile Include="ImageInfo.cs" />
+    <Compile Include="IndexDataModel.cs" />
+    <Compile Include="InformationModel.cs" />
+    <Compile Include="InformationVsCommentModel.cs" />
+    <Compile Include="InformationVsImgModel.cs" />
+    <Compile Include="InformationVsKeyWordModel.cs" />
+    <Compile Include="JiangPinModel.cs" />
+    <Compile Include="JianYiModel.cs" />
+    <Compile Include="JiFenChangeModel.cs" />
+    <Compile Include="JobModel.cs" />
+    <Compile Include="JobTypeModel.cs" />
+    <Compile Include="JobVsCommentModel.cs" />
+    <Compile Include="KeyWordModel.cs" />
+    <Compile Include="MemberAmountDetailModel.cs" />
+    <Compile Include="MemberBankCardModel.cs" />
+    <Compile Include="MemberModel.cs" />
+    <Compile Include="MemberVsFabricModel.cs" />
+    <Compile Include="MemberVsPlateModel.cs" />
+    <Compile Include="MemberVsSkillModel.cs" />
+    <Compile Include="MerchantModel.cs" />
+    <Compile Include="MerchantType.cs" />
+    <Compile Include="MerchantVsImgModel.cs" />
+    <Compile Include="MerchantVsMerchantTypeModel.cs" />
+    <Compile Include="MerchantVsUserModel.cs" />
+    <Compile Include="MerRoleModel.cs" />
+    <Compile Include="MerRoleVsDingDanModel.cs" />
+    <Compile Include="MerRoleVsUserModel.cs" />
+    <Compile Include="MerVsCommentModel.cs" />
+    <Compile Include="MovEventModel.cs" />
+    <Compile Include="MovInfoModel.cs" />
+    <Compile Include="MovVsMerModel.cs" />
+    <Compile Include="NewClass.cs" />
+    <Compile Include="NewInfo.cs" />
+    <Compile Include="NewVsImg.cs" />
+    <Compile Include="OrderDetailModel.cs" />
+    <Compile Include="OrderDetailVsClothesSizeModel.cs" />
+    <Compile Include="OrderExpectModel.cs" />
+    <Compile Include="OrderInfoModel.cs" />
+    <Compile Include="OrderToWorkDetailModel.cs" />
+    <Compile Include="OrderToWorkDetailVsClothesSizeModel.cs" />
+    <Compile Include="OrderToWorkModel.cs" />
+    <Compile Include="OrderVsImgModel.cs" />
+    <Compile Include="OrderVsMemberModel.cs" />
+    <Compile Include="PaymentModel.cs" />
+    <Compile Include="SiteDetailModel.cs" />
+    <Compile Include="SiteModel.cs" />
+    <Compile Include="SkillModel.cs" />
+    <Compile Include="SubjectCashModel.cs" />
+    <Compile Include="SubjectInfoModel.cs" />
+    <Compile Include="TeamModel.cs" />
+    <Compile Include="WorkSys\DevicePushModel.cs" />
+    <Compile Include="DBLOG\MsgModel.cs" />
+    <Compile Include="DBLOG\MsgReadLogModel.cs" />
+    <Compile Include="DBLOG\MsgTextModel.cs" />
+    <Compile Include="YYHD\NoticeModel.cs" />
+    <Compile Include="PageTitle.cs" />
+    <Compile Include="PeiSongTimeSoltModel.cs" />
+    <Compile Include="PeiSongTypeModel.cs" />
+    <Compile Include="PeiSongTypeVsProductClassModel.cs" />
+    <Compile Include="PeiSongTypeVsProductModel.cs" />
+    <Compile Include="PingJiaInfoModel.cs" />
+    <Compile Include="PinPaiInfoModel.cs" />
+    <Compile Include="PinPaiVsImgModel.cs" />
+    <Compile Include="ProAttrItemModel.cs" />
+    <Compile Include="ProAttrModel.cs" />
+    <Compile Include="ProClassVsPinPaiModel.cs" />
+    <Compile Include="ProductClassModel.cs" />
+    <Compile Include="ProductModel.cs" />
+    <Compile Include="ProductType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProVsBranchModel.cs" />
+    <Compile Include="ProVsCommentModel.cs" />
+    <Compile Include="ProVsImg.cs" />
+    <Compile Include="QianDaoLogModel.cs" />
+    <Compile Include="QyWxPtAppModel.cs" />
+    <Compile Include="QyWxPtGroupModel.cs" />
+    <Compile Include="QyWxPtModel.cs" />
+    <Compile Include="QyWxPtVsUserModel.cs" />
+    <Compile Include="Receipt.cs" />
+    <Compile Include="ReceiptDetail.cs" />
+    <Compile Include="RecommendModel.cs" />
+    <Compile Include="ReListModel.cs" />
+    <Compile Include="RemindModel.cs" />
+    <Compile Include="RequestXML.cs" />
+    <Compile Include="ResumeModel.cs" />
+    <Compile Include="ResumeVsJobModel.cs" />
+    <Compile Include="ResumeVsJobTypeModel.cs" />
+    <Compile Include="ShouCangProModel.cs" />
+    <Compile Include="SlideShowModel.cs" />
+    <Compile Include="Stock.cs" />
+    <Compile Include="Street.cs" />
+    <Compile Include="test.cs" />
+    <Compile Include="ThDetailModel.cs" />
+    <Compile Include="ThInfoModel.cs" />
+    <Compile Include="TokenConfigModel.cs" />
+    <Compile Include="Town.cs" />
+    <Compile Include="UserInfoModel.cs" />
+    <Compile Include="UserLv.cs" />
+    <Compile Include="UserVsMerModel.cs" />
+    <Compile Include="UserVsRoleModel.cs" />
+    <Compile Include="WorkSys\AdInfoModel.cs" />
+    <Compile Include="WorkSys\AppMenuInfoModel.cs" />
+    <Compile Include="WorkSys\AppMenuVsMerRoleModel.cs" />
+    <Compile Include="WorkSys\BusInfoModel.cs" />
+    <Compile Include="WorkSys\LocationModel.cs" />
+    <Compile Include="WorkSys\MenuInfoModel.cs" />
+    <Compile Include="WorkSys\MenuVsMerRoleModel.cs" />
+    <Compile Include="WorkSys\MerConfigModel.cs" />
+    <Compile Include="WorkSys\PageInfoModel.cs" />
+    <Compile Include="WorkSys\StMsgModel.cs" />
+    <Compile Include="WxKeyModel.cs" />
+    <Compile Include="WxModel.cs" />
+    <Compile Include="WxPtInfoModel.cs" />
+    <Compile Include="WxSendClassModel.cs" />
+    <Compile Include="WxSendInfoModel.cs" />
+    <Compile Include="WxSuCaiDetailModel.cs" />
+    <Compile Include="WxSuCaiInfoModel.cs" />
+    <Compile Include="YYHD\KfJieDaiModel.cs" />
+    <Compile Include="YYHD\NoticeTargetModel.cs" />
+    <Compile Include="YYHD\PushTypeModel.cs" />
+    <Compile Include="YYHD\RongMsgLogClassModel.cs" />
+    <Compile Include="YYHD\RongMsgLogInfoModel.cs" />
+    <Compile Include="YYHD\RongMsgLogTypeModel.cs" />
+    <Compile Include="YYHD\TargetIdsModel.cs" />
+    <Compile Include="YYHD\UserOnLineModel.cs" />
+    <Compile Include="YYHD\UserOnlineStatusModel.cs" />
+    <Compile Include="YYHD\ZiXunLogInfoModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Pub/Site1.Master" AutoEventWireup="true" CodeBehind="MerPub.master.cs" Inherits="Manage.Merchant.MerPub" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script src="MerPub.js"></script>
+    <link href="MerPub.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>

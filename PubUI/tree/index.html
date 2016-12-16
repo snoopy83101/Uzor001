@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBliC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>树形菜单js特效演示 www.divcss5.com</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="images/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="pnav-cnt">
+        <div class="pnav-box" id="letter-a">
+            <div class="box-title">
+                <a class="btn-fold " href="#"></a><a class="btn-unfold hidden"
+                    href="#"></a><span class="pnav-letter">一级分类</span>
+            </div>
+            <ul class="box-list hidden">
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="http://www.divcss5.com/">DIVCSS5</a> </b><span class="cDGray">(414)</span>
+                    <h2 class="hidden"><a href="http://www.divcss5.com/html/">HTML教程</a></h2>
+                    <h2 class="hidden"><a href="http://www.divcss5.com/css-texiao/">CSS特效</a></h2>
+                </li>
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">奥迪</a> </b><span class="cDGray">(3986)</span>
+                    <h2 class="hidden"><a href="#">奥迪A6</a></h2>
+                    <h2 class="hidden"><a href="#">奥迪A6L</a></h2>
+                    <h2 class="hidden"><a href="#">奥迪Q5</a></h2>
+                </li>
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">阿尔法·罗米欧</a> </b><span class="cDGray">(332)</span>
+                    <h2 class="hidden"><a href="#">ALFA 147</a></h2>
+                    <h2 class="hidden"><a href="#">阿尔法·罗米欧Pandion</a></h2>
+                    <h2 class="hidden"><a href="#">2uettottanta</a></h2>
+                    <h2 class="hidden"><a href="#">TZ3 Corsa</a></h2>
+                </li>
+            </ul>
+        </div>
+        <div class="pnav-box" id="letter-b">
+            <div class="box-title">
+                <a class="btn-fold "
+                    href="#"></a><a class="btn-unfold hidden"
+                        href="#"></a><span
+                            class="pnav-letter">一级分类</span>
+            </div>
+            <ul class="box-list hidden">
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">二级分类</a> </b><span class="cDGray">(764)</span>
+                    <h2 class="hidden"><a href="#">奔腾B50</a></h2>
+                    <h2 class="hidden"><a href="#">奔腾B70</a></h2>
+                </li>
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">宝马</a> </b><span class="cDGray">(35)</span>
+                    <h2 class="hidden"><a href="#">宝马3系</a></h2>
+                    <h2 class="hidden"><a href="#">进口宝马5系</a></h2>
+                    <h2 class="hidden"><a href="#">宝马X1</a></h2>
+                    <h2 class="hidden"><a href="#">宝马Gran Coupe</a></h2>
+                    <h2 class="hidden"><a href="#">ACS5</a></h2>
+                </li>
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">宝骏</a> </b><span class="cDGray">(0)</span></li>
+                <li><a class="btn-fold" href="#"></a><a class="btn-unfold hidden" href="#"></a><b><a href="#">北京</a> </b><span class="cDGray">(19)</span> </li>
+            </ul>
+        </div>
+        <script src="/PubUI/tree/js/js.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+            (function () {
+                NTES("span.photo-search input[type=text]").addEvent("focus", function () { this.value == this.defaultValue && (this.value = ""); }).addEvent("blur", function () { this.value == "" && (this.value = this.defaultValue); });
+                NTES("div.pnav-box div.box-title a.btn-fold").addEvent("click", function (e) {
+                    e.preventDefault();
+                    var eleTitle = NTES(this.parentNode);
+                    NTES(this).addCss("hidden");
+                    eleTitle.$("a.btn-unfold").removeCss("hidden");
+                    NTES(eleTitle.parentNode).$("ul.box-list").removeCss("hidden");
+                });
+                NTES("div.pnav-box div.box-title a.btn-unfold").addEvent("click", function (e) {
+                    e.preventDefault();
+                    var eleTitle = NTES(this.parentNode);
+                    NTES(this).addCss("hidden");
+                    eleTitle.$("a.btn-fold").removeCss("hidden");
+                    NTES(eleTitle.parentNode).$("ul.box-list").addCss("hidden");
+                });
+                NTES("div.pnav-box ul.box-list a.btn-fold").addEvent("click", function (e) {
+                    e.preventDefault();
+                    var eleTitle = NTES(this.parentNode);
+                    NTES(this).addCss("hidden");
+                    eleTitle.$("a.btn-unfold").removeCss("hidden");
+                    eleTitle.$("h2").removeCss("hidden");
+                });
+                NTES("div.pnav-box ul.box-list a.btn-unfold").addEvent("click", function (e) {
+                    e.preventDefault();
+                    var eleTitle = NTES(this.parentNode);
+                    NTES(this).addCss("hidden");
+                    eleTitle.$("a.btn-fold").removeCss("hidden");
+                    eleTitle.$("h2").addCss("hidden");
+                });
+                new NTES.ui.Slide(NTES("ul.photo-snav li"), NTES("div.photo-scnt"), "active", "mouseover", 6000);
+            })();
+
+        </script>
+    </div>
+
+</body>
+</html>

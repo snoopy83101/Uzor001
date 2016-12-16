@@ -1,0 +1,81 @@
+﻿.tb_content {
+}
+
+table.tb_content td, table.tb_content th {
+    vertical-align: top;
+    border: 1px solid #808080;
+}
+
+table.tb_content {
+}
+
+li.select {
+    color: #ffffff;
+    background-color: #0094ff;
+}
+
+.ul_merRoleList {
+}
+
+    .ul_merRoleList li {
+        border: 1px solid #808080;
+        display: inline-block;
+        width: auto;
+        margin: 10px 0 10px 10px;
+        float: left;
+    }
+
+        .ul_merRoleList li.select {
+            color: #ffffff;
+            background-color: #ff6a00;
+        }
+
+.div_UserRolePop {
+}
+
+    .div_UserRolePop > div {
+        border: 1px solid #808080;
+        margin: 5px;
+    }
+
+.div_MerRole > a {
+    margin: 5px;
+    border: 1px solid #808080;
+    display: inline-block;
+    padding: 3px;
+    width: auto;
+}
+
+    .div_MerRole > a:hover {
+        color: #ffffff;
+        background-color: #ff6a00;
+    }
+
+    .div_MerRole > a.select {
+        color: #ffffff;
+        background-color: #ff6a00;
+    }
+
+.div_Branch > ul > li {
+    margin: 5px;
+    line-height: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+
+
+
+    .div_Branch > ul > li:hover {
+        color: #ffffff;
+        background-color: #ff6a00;
+    }
+
+    .div_Branch > ul > li.select {
+        color: #ffffff !important;
+        background-color: #ff6a00 !important;
+    }
+
+.btn_addUserRole {
+    margin-left: 5px !important;
+}

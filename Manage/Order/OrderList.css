@@ -1,0 +1,26 @@
+﻿body {
+}
+.img_OrderImg {
+    width:30px;
+    height:30px;
+
+}
+
+.div_Status a {
+
+
+    border:1px solid #999;
+
+    display:inline-block;
+
+    margin:5px;
+    padding:3px;
+    padding-left:5px;
+    padding-right:5px;
+}
+
+    .div_Status a.select {
+
+         background-color:#1F98C7;
+         color:#fff;
+    }

@@ -1,0 +1,66 @@
+﻿.ul_MerRole {
+}
+
+    .ul_MerRole li {
+
+
+    }
+
+    .ul_MerRole li:hover {
+
+       background-color:#e4e3e3;
+
+
+
+    }
+
+
+.ul_MerRole li.select {
+
+    background-color:#0094ff;
+    color:#ffffff;
+
+}
+
+.div_RoleMenu dl dt {
+    font-weight:bold;
+    font-size:15px;
+}
+
+.div_RoleMenu dl dd {
+
+   font-weight:normal;
+   font-size:13px;
+   margin-left:20px;
+}
+
+
+#tb_power tbody tr td {
+    vertical-align:top;
+}
+
+.div_MerRoleVsMsgType {
+    padding-top:10px;
+
+    padding-bottom:10px;
+    width:450px;
+
+}
+
+    .div_MerRoleVsMsgType a {
+
+        border:1px solid #e4e3e3;
+        padding:10px;
+        margin:10px;
+        text-align:center;
+        color:#808080;
+        display:inline-block;
+        width:100px;
+        font-size:13px;
+    }
+
+        .div_MerRoleVsMsgType a.select, .div_MerRoleVsMsgType a:hover {
+
+           background-color:#ff6a00;
+           color:#fff;
+        }

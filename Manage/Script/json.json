@@ -1,0 +1,29 @@
+﻿{
+  "eventType": "ok",
+  "level1": "浙江省",
+  "level2": "杭州市",
+  "level3": "余杭区",
+  "selectedInfo": [
+    {
+      "ProvinceId": "330000",
+      "ProvinceName": "浙江省",
+      "name": "浙江省",
+      "line": 10
+    },
+    {
+      "CityId": "330100",
+      "CityName": "杭州市",
+      "line": 0,
+      "name": "杭州市",
+      "ProvinceId": "330000"
+    },
+    {
+      "AreaId": "330110",
+      "AreaName": "余杭区",
+      "name": "余杭区",
+      "ProvinceId": "330000",
+      "CityId": "330100",
+      "line": 8
+    }
+  ]
+} 

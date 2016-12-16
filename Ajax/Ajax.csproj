@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF735421-C80C-4623-BA36-4EC1BCC5ACF8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ajax</RootNamespace>
+    <AssemblyName>Ajax</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AjaxInformation.aspx" />
+    <Content Include="ajaxTest.aspx" />
+    <Content Include="AjaxWx.aspx" />
+    <Content Include="HouseAjax.aspx" />
+    <Content Include="ImgUp.aspx" />
+    <Content Include="JobAjax.aspx" />
+    <Content Include="ReQyWx.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="AjaxArticle.ashx" />
+    <Content Include="AjaxMember.ashx" />
+    <Content Include="AjaxMerchant.ashx" />
+    <Content Include="UploadAjax.ashx" />
+    <Content Include="AjaxUser.ashx" />
+    <Content Include="AjaxComm.ashx" />
+    <Content Include="AjaxSearch.ashx" />
+    <Content Include="AjaxMap.ashx" />
+    <Content Include="AjaxWork.ashx" />
+    <Content Include="AjaxMov.ashx" />
+    <Content Include="AjaxAbout.ashx" />
+    <Content Include="AjaxBBs.ashx" />
+    <Content Include="AjaxBus.ashx" />
+    <Content Include="AjaxOrder.ashx" />
+    <Content Include="ImgUp.ashx" />
+    <Content Include="AjaxMsg.ashx" />
+    <None Include="Properties\PublishProfiles\fabu.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjaxAbout.ashx.cs">
+      <DependentUpon>AjaxAbout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxBBs.ashx.cs">
+      <DependentUpon>AjaxBBs.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxBus.ashx.cs">
+      <DependentUpon>AjaxBus.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxComm.ashx.cs">
+      <DependentUpon>AjaxComm.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxInformation.aspx.cs">
+      <DependentUpon>AjaxInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxMap.ashx.cs">
+      <DependentUpon>AjaxMap.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxMov.ashx.cs">
+      <DependentUpon>AjaxMov.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxMsg.ashx.cs">
+      <DependentUpon>AjaxMsg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxOrder.ashx.cs">
+      <DependentUpon>AjaxOrder.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxSearch.ashx.cs">
+      <DependentUpon>AjaxSearch.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ajaxTest.aspx.cs">
+      <DependentUpon>ajaxTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AjaxUser.ashx.cs">
+      <DependentUpon>AjaxUser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxWork.ashx.cs">
+      <DependentUpon>AjaxWork.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxWx.aspx.cs">
+      <DependentUpon>AjaxWx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HouseAjax.aspx.cs">
+      <DependentUpon>HouseAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImgUp.ashx.cs">
+      <DependentUpon>ImgUp.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="ImgUp.aspx.cs">
+      <DependentUpon>ImgUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="JobAjax.aspx.cs">
+      <DependentUpon>JobAjax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReQyWx.aspx.cs">
+      <DependentUpon>ReQyWx.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{509e8254-50e2-4b79-b148-809b51c87489}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BPage\BPage.csproj">
+      <Project>{0f469d80-3bfe-4745-9434-9fbb04dd8d8b}</Project>
+      <Name>BPage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ec06ae7d-9d14-410e-8a15-0ed8ec4112ce}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{f08ced5e-00b5-4508-ba65-39137eceaf19}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>12130</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:84/AjaxServer</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

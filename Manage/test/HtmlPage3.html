@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <style>
+        .div_2 ul li span {
+            display: inline-block;
+            text-align: right;
+            width: 200px;
+        }
+
+        .div_2 ul {
+            margin: 0;
+        }
+
+            .div_2 ul li {
+                list-style: none;
+                line-height:30px;
+            }
+    </style>
+</head>
+<body>
+    <fieldset>
+
+        <legend>密码参数</legend>
+        <div>
+            <input id="Checkbox1" type="checkbox" />强制混合大小写<br />
+            <input id="Checkbox1" type="checkbox" />强制数字<br />
+            <input id="Checkbox1" type="checkbox" />强制特殊字符<br />
+        </div>
+        <div class="div_2">
+            <ul>
+
+                <li>
+                    <span>重试次数：</span><input id="Text1" type="text" />
+                </li>
+                <li><span>锁定持续时间（分钟）：</span><input id="Text1" type="text" /></li>
+                <li><span>密码最小长度：</span><input id="Text1" type="text" /></li>
+                <li><span>密码最大长度：</span><input id="Text1" type="text" /></li>
+                <li><span>密码过期天数：</span><input id="Text1" type="text" /></li>
+                <li><span>密码警告天数：</span><input id="Text1" type="text" /></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+        </div>
+    </fieldset>
+</body>
+</html>

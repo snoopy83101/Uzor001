@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F08CED5E-00B5-4508-BA65-39137ECEAF19}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs" />
+    <Compile Include="AddressInfoDAL.cs" />
+    <Compile Include="ApplyForBindMerDAL.cs" />
+    <Compile Include="ArticleClassDAL.cs" />
+    <Compile Include="ArticleDAL.cs" />
+    <Compile Include="ArticleVsImageDAL.cs" />
+    <Compile Include="AttentionDAL.cs" />
+    <Compile Include="AuthorInfoDAL.cs" />
+    <Compile Include="BBS\DingDAL.cs" />
+    <Compile Include="BBS\FormsDAL.cs" />
+    <Compile Include="BBS\FormsVsUserDAL.cs" />
+    <Compile Include="BBS\TieZiDAL.cs" />
+    <Compile Include="BBS\TieZiVsImgDAL.cs" />
+    <Compile Include="BmTelDAL.cs" />
+    <Compile Include="BranchDAL.cs" />
+    <Compile Include="BranchVsSiteDAL.cs" />
+    <Compile Include="BranchVsZoneDAL.cs" />
+    <Compile Include="ChouJiangClassDAL.cs" />
+    <Compile Include="ChouJiangDAL.cs" />
+    <Compile Include="ChouJiangLogDAL.cs" />
+    <Compile Include="ChouJiangTypeModel.cs" />
+    <Compile Include="CommentDAL.cs" />
+    <Compile Include="CommentVsImgDAL.cs" />
+    <Compile Include="CuXiaoDAL.cs" />
+    <Compile Include="CuXiaoVsProDAL.cs" />
+    <Compile Include="DalComm.cs" />
+    <Compile Include="DBLOG\OrderLogDAL.cs" />
+    <Compile Include="DBLOG\OrderToWorkDoneLogDAL.cs" />
+    <Compile Include="DBMSG\MsgTypeVsMerRoleDAL.cs" />
+    <Compile Include="Delivery.cs" />
+    <Compile Include="DeliveryDetail.cs" />
+    <Compile Include="DeliveryType.cs" />
+    <Compile Include="DeviceDAL.cs" />
+    <Compile Include="DingDanDetailDAL.cs" />
+    <Compile Include="DingDanInfoDAL.cs" />
+    <Compile Include="DingDanLogDAL.cs" />
+    <Compile Include="DynamicDAL.cs" />
+    <Compile Include="EducationDAL.cs" />
+    <Compile Include="ErroLogInfoDAL.cs" />
+    <Compile Include="GroupBuy.cs" />
+    <Compile Include="GwcDAL.cs" />
+    <Compile Include="HouseDAL.cs" />
+    <Compile Include="HouseDemandDAL.cs" />
+    <Compile Include="HouseVsCommentDAL.cs" />
+    <Compile Include="HouseVsImgDAL.cs" />
+    <Compile Include="ImageInfo.cs" />
+    <Compile Include="IndexDataDAL.cs" />
+    <Compile Include="InformationDAL.cs" />
+    <Compile Include="InformationVsCommentDAL.cs" />
+    <Compile Include="InformationVsImgDAL.cs" />
+    <Compile Include="InformationVsKeyWordDAL.cs" />
+    <Compile Include="JiangPinDAL.cs" />
+    <Compile Include="JianYiDAL.cs" />
+    <Compile Include="JiFenChangeDAL.cs" />
+    <Compile Include="JobDAL.cs" />
+    <Compile Include="JobTypeDAL.cs" />
+    <Compile Include="JobVsCommentDAL.cs" />
+    <Compile Include="KeyWordDAL.cs" />
+    <Compile Include="MemberAmountDetailDAL.cs" />
+    <Compile Include="MemberBankCardDAL.cs" />
+    <Compile Include="MemberDAL.cs" />
+    <Compile Include="MemberVsFabricDAL.cs" />
+    <Compile Include="MemberVsPlateDAL.cs" />
+    <Compile Include="MemberVsSkillDAL.cs" />
+    <Compile Include="MerchantDAL.cs" />
+    <Compile Include="MerchantType.cs" />
+    <Compile Include="MerchantVsImgDAL.cs" />
+    <Compile Include="MerchantVsMerchantTypeDAL.cs" />
+    <Compile Include="MerchantVsUserDAL.cs" />
+    <Compile Include="MerRoleDAL.cs" />
+    <Compile Include="MerRoleVsDingDanDAL.cs" />
+    <Compile Include="MerVsCommentDAL.cs" />
+    <Compile Include="MovEventDAL.cs" />
+    <Compile Include="MovInfoDAL.cs" />
+    <Compile Include="MovVsMerDAL.cs" />
+    <Compile Include="NewClass.cs" />
+    <Compile Include="NewInfo.cs" />
+    <Compile Include="NewVsImg.cs" />
+    <Compile Include="OrderDetailDAL.cs" />
+    <Compile Include="OrderDetailVsClothesSizeDAL.cs" />
+    <Compile Include="OrderExpectDAL.cs" />
+    <Compile Include="OrderInfoDAL.cs" />
+    <Compile Include="OrderToWorkDAL.cs" />
+    <Compile Include="OrderToWorkDetailDAL.cs" />
+    <Compile Include="OrderToWorkDetailVsClothesSizeDAL.cs" />
+    <Compile Include="OrderVsImgDAL.cs" />
+    <Compile Include="OrderVsMemberDAL.cs" />
+    <Compile Include="PaymentDAL.cs" />
+    <Compile Include="PeiSongTimeSoltDAL.cs" />
+    <Compile Include="PeiSongTypeDAL.cs" />
+    <Compile Include="PeiSongTypeVsProductClassDAL.cs" />
+    <Compile Include="PeiSongTypeVsProductDAL.cs" />
+    <Compile Include="PingJiaInfoDAL.cs" />
+    <Compile Include="PinPaiInfoDAL.cs" />
+    <Compile Include="PinPaiVsImgDAL.cs" />
+    <Compile Include="ProAttrDAL.cs" />
+    <Compile Include="ProAttrItemDAL.cs" />
+    <Compile Include="ProClassVsPinPaiDAL.cs" />
+    <Compile Include="ProductDAL.cs" />
+    <Compile Include="ProductClassDAL.cs" />
+    <Compile Include="ProductType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProVsBranchDAL.cs" />
+    <Compile Include="ProVsCommentDAL.cs" />
+    <Compile Include="ProVsImg.cs" />
+    <Compile Include="QianDaoLogDAL.cs" />
+    <Compile Include="QyWxPtAppDAL.cs" />
+    <Compile Include="QyWxPtDAL.cs" />
+    <Compile Include="QyWxPtGroupDAL.cs" />
+    <Compile Include="QyWxPtVsUserDAL.cs" />
+    <Compile Include="Receipt.cs" />
+    <Compile Include="ReceiptDetail.cs" />
+    <Compile Include="RecommendDAL.cs" />
+    <Compile Include="RemindDAL.cs" />
+    <Compile Include="ResumeDAL.cs" />
+    <Compile Include="ResumeVsJobDAL.cs" />
+    <Compile Include="ResumeVsJobTypeDAL.cs" />
+    <Compile Include="ShouCangProDAL.cs" />
+    <Compile Include="SiteDAL.cs" />
+    <Compile Include="SiteDetailDAL.cs" />
+    <Compile Include="SkillDAL.cs" />
+    <Compile Include="SlideShowDAL.cs" />
+    <Compile Include="Stock.cs" />
+    <Compile Include="Street.cs" />
+    <Compile Include="SubjectCashDAL.cs" />
+    <Compile Include="SubjectInfoDAL.cs" />
+    <Compile Include="TeamDAL.cs" />
+    <Compile Include="ThDetailDAL.cs" />
+    <Compile Include="ThInfoDAL.cs" />
+    <Compile Include="TokenConfigDAL.cs" />
+    <Compile Include="Town.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="UserLv.cs" />
+    <Compile Include="UserVsMerDAL.cs" />
+    <Compile Include="UserVsRoleDAL.cs" />
+    <Compile Include="WorkSys\AdInfoDAL.cs" />
+    <Compile Include="WorkSys\AppMenuInfoDAL.cs" />
+    <Compile Include="WorkSys\AppMenuVsMerRoleDAL.cs" />
+    <Compile Include="WorkSys\BusInfoDAL.cs" />
+    <Compile Include="WorkSys\DevicePushDAL.cs" />
+    <Compile Include="WorkSys\LocationDAL.cs" />
+    <Compile Include="WorkSys\MenuInfoDAL.cs" />
+    <Compile Include="WorkSys\MenuVsMerRoleDAL.cs" />
+    <Compile Include="WorkSys\MerConfigDAL.cs" />
+    <Compile Include="WorkSys\MerRoleVsUserDAL.cs" />
+    <Compile Include="WorkSys\PageInfoDAL.cs" />
+    <Compile Include="WorkSys\StMsgDAL.cs" />
+    <Compile Include="WxKeyDAL.cs" />
+    <Compile Include="WxPtInfoDAL.cs" />
+    <Compile Include="WxSendInfoDAL.cs" />
+    <Compile Include="WxSuCaiDetailDAL.cs" />
+    <Compile Include="WxSuCaiInfoDAL.cs" />
+    <Compile Include="YYHD\KfJieDaiDAL.cs" />
+    <Compile Include="YYHD\MsgDAL.cs" />
+    <Compile Include="YYHD\MsgReadLogDAL.cs" />
+    <Compile Include="YYHD\MsgTextDAL.cs" />
+    <Compile Include="YYHD\NoticeDAL.cs" />
+    <Compile Include="YYHD\NoticeTargetDAL.cs" />
+    <Compile Include="YYHD\PushTypeDAL.cs" />
+    <Compile Include="YYHD\RongMsgLogClassDAL.cs" />
+    <Compile Include="YYHD\RongMsgLogInfoDAL.cs" />
+    <Compile Include="YYHD\RongMsgLogTypeDAL.cs" />
+    <Compile Include="YYHD\TargetIdsDAL.cs" />
+    <Compile Include="YYHD\UserOnLineDAL.cs" />
+    <Compile Include="YYHD\UserOnlineStatusDAL.cs" />
+    <Compile Include="YYHD\ZiXunLogInfoDAL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ec06ae7d-9d14-410e-8a15-0ed8ec4112ce}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBTools\DBTools.csproj">
+      <Project>{f2ab7f8c-cea9-4196-b283-19bcd5e81b57}</Project>
+      <Name>DBTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

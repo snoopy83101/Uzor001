@@ -1,0 +1,89 @@
+﻿.img_PicImg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+
+
+.img_sfz {
+}
+
+
+.a_sfzImg {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #808080;
+    display: inline-block;
+    position: relative;
+}
+
+
+    .a_sfzImg img {
+        width: 100%;
+        max-height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .a_sfzImg:hover img {
+        /*position: absolute;
+        width: auto;
+        min-width: 100%;
+        max-height: 500px;
+        top: 0;
+        left: 0;*/
+    }
+
+
+.div_1 {
+}
+
+    .div_1 span {
+        border: 1px solid #808080;
+        margin: 10px;
+        display: inline-block;
+        padding: 10px;
+        cursor: pointer;
+    }
+
+        .div_1 span.select, .div_1 span:hover {
+            color: #ffffff;
+            background-color: #ff6a00;
+        }
+
+
+
+.img_pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.img_sfz2 {
+    margin: 2px;
+    width: 50px;
+    height: 30px;
+}
+
+.div_Skill {
+    text-align: left;
+}
+
+    .div_Skill a {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #999;
+    }
+
+        .div_Skill a.select {
+            color: #fff;
+            background-color: #58B3F0;
+        }
+        .div_Skill a:hover {
+
+                  color: #fff;
+            background-color: #58B3F0;
+        }

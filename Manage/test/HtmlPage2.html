@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../Script/jquery-1.8.2.js"></script>
+    <script>
+
+        $(function () {
+
+
+            $("#tb tr").each(function () {
+
+                var trObj = $(this);
+
+
+                var ckSelectSingle = trObj.find(".selectSingle").eq(0);
+
+
+                //第一个点击时,默认选中本行所有
+                ckSelectSingle.click(function () {
+
+
+                    if ($(this).attr("checked") == null) {
+
+                        trObj.find(".cld").attr("checked", null);
+                    }
+                    else {
+                        trObj.find(".cld").attr("checked", "checked");
+
+                    }
+
+
+                });
+
+
+                //本行如果有至少一个点击时,选中第一个
+                trObj.find(".cld").click(function () {
+                    if ($(this).attr("checked") != null) {
+
+
+                        ckSelectSingle.attr("checked", "checked")
+
+                    }
+
+
+                    //如果子选框全部没有选中, 第一个也取消选中
+                    if (trObj.find(".cld:checked").length == 0) {
+
+                        ckSelectSingle.attr("checked", null);
+                    }
+
+
+
+                });
+
+
+
+
+
+
+
+            });
+            //如果总选框选中, 选中所有或者反选所有
+            $("#CheckboxAll").click(function () {
+
+                var cd = $(this).attr("checked");
+
+                if (cd == undefined) {
+                    cd = null;   //这个是jquery的坑
+                }
+
+
+                $("#tb input[type='checkbox']").attr("checked", cd);
+
+
+            });
+
+
+        })
+
+
+
+    </script>
+</head>
+<body>
+    <table id="tb">
+        <tr>
+            <th style="width: 10px;">
+                <input id="CheckboxAll" type="checkbox" /></th>
+            <th>模块</th>
+            <th>描述</th>
+            <th style="width: 50px;">Delete</th>
+            <th style="width: 50px;">Edit</th>
+            <th style="width: 50px;">Excute</th>
+            <th style="width: 50px;">Insert</th>
+            <th style="width: 50px;">Read</th>
+            <th style="width: 50px;">Update</th>
+            <th style="width: 100px;">Bulk Update</th>
+        </tr>
+        <tr>
+            <td>
+                <input id="" class="selectSingle" type="checkbox" /></td>
+            <td>Home</td>
+            <td>首页</td>
+            <td>
+                <input type="checkbox" name="Delete" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Edit" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Excute" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Insert" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Read" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Update" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="BulkUpdate" class="cld" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="" class="selectSingle" type="checkbox" /></td>
+            <td>User</td>
+            <td>用户</td>
+            <td>
+                <input type="checkbox" name="Delete" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Edit" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Excute" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Insert" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Read" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Update" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="BulkUpdate" class="cld" /></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="" class="selectSingle" type="checkbox" /></td>
+            <td>Form</td>
+            <td>页面</td>
+            <td>
+                <input type="checkbox" name="Delete" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Edit" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Excute" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Insert" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Read" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="Update" class="cld" /></td>
+            <td>
+                <input type="checkbox" name="BulkUpdate" class="cld" /></td>
+        </tr>
+    </table>
+
+</body>
+</html>

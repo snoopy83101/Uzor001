@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{509E8254-50E2-4B79-B148-809B51C87489}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BLL</RootNamespace>
+    <AssemblyName>BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == '33|AnyCPU'">
+    <OutputPath>bin\33\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LitJson">
+      <HintPath>..\..\Dll\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MyDll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBLL.cs" />
+    <Compile Include="ArticleBLL.cs" />
+    <Compile Include="BBSBLL.cs" />
+    <Compile Include="BeeCloud\BCCache.cs" />
+    <Compile Include="BeeCloud\BCConstants.cs" />
+    <Compile Include="BeeCloud\BCException.cs" />
+    <Compile Include="BeeCloud\BCPay.cs" />
+    <Compile Include="BeeCloud\BCPrivateUtil.cs" />
+    <Compile Include="BeeCloud\BCUtil.cs" />
+    <Compile Include="BeeCloud\BeeCloud.cs" />
+    <Compile Include="BeeCloud\Model\BCBill\BCBill.cs" />
+    <Compile Include="BeeCloud\Model\BCBill\BCCreditCardInfo.cs" />
+    <Compile Include="BeeCloud\Model\BCBill\BCInternationlBill.cs" />
+    <Compile Include="BeeCloud\Model\BCQuery\BCQueryBillParameter.cs" />
+    <Compile Include="BeeCloud\Model\BCQuery\BCQueryRefundParameter.cs" />
+    <Compile Include="BeeCloud\Model\BCRefund\BCApproveRefundResult.cs" />
+    <Compile Include="BeeCloud\Model\BCRefund\BCRefund.cs" />
+    <Compile Include="BeeCloud\Model\BCTransfer\BCRedPackInfo.cs" />
+    <Compile Include="BeeCloud\Model\BCTransfer\BCTransferData.cs" />
+    <Compile Include="BeeCloud\Model\BCTransfer\BCTransferParameter.cs" />
+    <Compile Include="BeeCloud\Model\BCTransfer\BCTransferResult.cs" />
+    <Compile Include="BeeCloud\Model\BCTransfer\BCTransfersParameter.cs" />
+    <Compile Include="BeeCloud\Model\Other\MchPayPara.cs" />
+    <Compile Include="BeeCloud\Model\Other\MchPayResult.cs" />
+    <Compile Include="BeeCloud\Model\Other\RedPackExtraPara.cs" />
+    <Compile Include="BeeCloud\Model\Other\RedPackPara.cs" />
+    <Compile Include="BeeCloud\Model\Other\RedPackResult.cs" />
+    <Compile Include="BJ\ArticleSetting.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BJ\ClearSetting.cs" />
+    <Compile Include="BJ\HouseSetting.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BJ\ImgSetting.cs" />
+    <Compile Include="BJ\JobSetting.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BJ\MerSetting.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BJ\UserSetting.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BJ\WebTop.cs" />
+    <Compile Include="CommBLL.cs" />
+    <Compile Include="FormulaBLL.cs" />
+    <Compile Include="HouseBLL.cs" />
+    <Compile Include="ImageBLL.cs" />
+    <Compile Include="InformationBLL.cs" />
+    <Compile Include="JobBLL.cs" />
+    <Compile Include="JPushBLL.cs" />
+    <Compile Include="MemberBLL.cs" />
+    <Compile Include="MerchantBLL.cs" />
+    <Compile Include="MovBLL.cs" />
+    <Compile Include="MsgBLL.cs" />
+    <Compile Include="OrderBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecommendBLL.cs" />
+    <Compile Include="RongCloud\InterfaceUrl.cs" />
+    <Compile Include="RongCloud\RongCloudServer.cs" />
+    <Compile Include="RongCloud\RongHttpClient.cs" />
+    <Compile Include="StaticBLL.cs" />
+    <Compile Include="TownBLL.cs" />
+    <Compile Include="Upload.ashx.cs" />
+    <Compile Include="UserBLL.cs" />
+    <Compile Include="WorkSys\BusBLL.cs" />
+    <Compile Include="WorkSys\MenuSys.cs" />
+    <Compile Include="WorkSys\SlideShowBLL.cs" />
+    <Compile Include="WxBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cn.jpush.api\cn.jpush.api.csproj">
+      <Project>{e281d457-f259-4f0b-8608-16c81d8ae97b}</Project>
+      <Name>cn.jpush.api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ec06ae7d-9d14-410e-8a15-0ed8ec4112ce}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{f08ced5e-00b5-4508-ba65-39137eceaf19}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBTools\DBTools.csproj">
+      <Project>{f2ab7f8c-cea9-4196-b283-19bcd5e81b57}</Project>
+      <Name>DBTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

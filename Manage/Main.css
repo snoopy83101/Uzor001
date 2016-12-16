@@ -1,0 +1,83 @@
+﻿body {
+}
+
+.sp_tip {
+    top: 40%;
+    left: 40%;
+    position: absolute;
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+}
+
+
+
+
+.div_Setting {
+   height:40px;
+}
+
+    .div_Setting a {
+     
+        width: 32px;
+        margin: 10px;
+            margin-top:20px;
+        height: 32px;
+        border: 1px solid #a1d3f5;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 80% 80%;
+        list-style: none;
+        float: left;
+        background-color: #fff;
+        text-align: center;
+        display:block;
+        cursor: pointer;
+    }
+        .div_Setting  a:hover {
+
+     border-color:#ff6a00;
+        }
+
+        .div_Setting  a span {
+            font-size: 12px;
+            margin-top: 40px;
+            display: block;
+            text-align: center;
+        }
+
+        .div_Setting  a.li_shuaxin {
+            background-image: url('Images/shuaxin.png');
+
+
+        }
+
+
+.sp_MsgNum {
+    color:#fff;
+    background-color:#ff0000;
+    display:inline-block;
+    width:auto;
+     border-radius:3px;
+     padding:0 10px 0 10px;
+}
+
+.sp_new {
+        background-color:#ff0000;
+    display:inline-block;
+    width:auto;
+     border-radius:3px;
+        padding:0 2px 0 2px;
+            color:#fff;
+    font-size:12px;
+           
+}
+
+.sidebar-message {
+    position:relative;
+}
+

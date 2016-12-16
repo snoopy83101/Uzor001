@@ -1,0 +1,153 @@
+
+
+.clearfloat {
+    height: 0;
+    font-size: 1px;
+    clear: both;
+    line-height: 0;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #ef9b11;
+        text-decoration: underline;
+    }
+
+
+h2 {
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 100%;
+}
+
+.hidden {
+    DISPLaY: none;
+}
+
+.pnav-title {
+    PaDDING-LEFT: 26px;
+    FONT-WEIGHT: bold;
+    BaCKGROUND: url(bg06.jpg) no-repeat;
+    MaRGIN-BOTTOM: 10px;
+    WIDTH: 166px;
+    LINE-HEIGHT: 29px;
+    HEIGHT: 29px;
+}
+
+.pnav-list {
+
+    WIDTH: 183px;
+}
+
+    .pnav-list a {
+        DISPLaY: inline-block;
+        FONT-WEIGHT: bold;
+        BaCKGROUND: url(bg07.jpg) no-repeat;
+        MaRGIN-BOTTOM: 6px;
+        WIDTH: 21px;
+        LINE-HEIGHT: 21px;
+        FONT-FaMILY: arial;
+        HEIGHT: 21px;
+        TEXT-aLIGN: center;
+    }
+
+    .pnav-list a {
+        COLOR: #69696a;
+    }
+
+        .pnav-list a:visited {
+            COLOR: #69696a;
+        }
+
+.pnav-cnt {
+
+
+}
+
+.pnav-box {
+    margin-left:10px;
+}
+
+.box-title {
+
+    LINE-HEIGHT: 22px;
+    HEIGHT: 22px;
+}
+
+    .box-title .btn-unfold {
+        MaRGIN-TOP: 5px;
+    }
+
+    .box-title .btn-fold {
+        MaRGIN-TOP: 5px;
+    }
+
+.pnav-letter {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #c00;
+    FONT-FaMILY: arial;
+}
+
+.btn-unfold {
+    BaCKGROUND: url(bg10.png) no-repeat;
+    FLOaT: left;
+    WIDTH: 13px;
+    MaRGIN-RIGHT: 5px;
+    HEIGHT: 13px;
+}
+
+.btn-fold {
+    BaCKGROUND: url(bg09.png) no-repeat;
+    FLOaT: left;
+    WIDTH: 13px;
+    MaRGIN-RIGHT: 5px;
+    HEIGHT: 13px;
+}
+
+.box-list.span {
+    line-height:22px;
+}
+
+.box-list {
+    PaDDING-RIGHT: 0px;
+    PaDDING-LEFT: 0px;
+
+}
+
+    .box-list LI {
+        PaDDING-LEFT: 23px;
+        LINE-HEIGHT: 25px;
+    }
+
+        .box-list LI .btn-unfold {
+            MaRGIN-TOP: 5px;
+        }
+
+        .box-list LI .btn-fold {
+            MaRGIN-TOP: 5px;
+        }
+
+    .box-list H2 {
+        COLOR: #1e50a2;
+    }
+
+        .box-list H2 a {
+            COLOR: #1e50a2;
+            margin-left:20px;
+        }
+
+            .box-list H2 a:visited {
+                COLOR: #1e50a2;
+            }
+
+    .box-list .off {
+        COLOR: #727171;
+    }
+
+        .box-list .off:visited {
+            COLOR: #727171;
+        }

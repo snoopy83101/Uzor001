@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.zi-han.net/theme/hplus/graph_rickshaw.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Rickshaw图表</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="http://www.zi-han.net/theme/hplus/favicon.ico"> <link href="./bootstrap.min.css" rel="stylesheet">
+    <link href="./font-awesome.min.css" rel="stylesheet">
+
+    <link href="./animate.min.css" rel="stylesheet">
+    <link href="./style.min.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>面积图 <small>自定义颜色</small></h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="chart" class="rickshaw_graph"><svg width="775" height="250"><path class="path" d="M0,47.93897757122653Q167.91666666666669,1.8017107833232728,193.75,2.4752475247525183C232.5,3.4855526368963865,348.75,48.44413012729848,387.5,58.04202869266521S542.5,95.42331784198828,581.25,98.45423317841988Q607.0833333333334,100.47484340270762,775,88.35118205698123L775,250Q607.0833333333334,250,581.25,250C542.5,250,426.25,250,387.5,250S232.5,250,193.75,250Q167.91666666666669,250,0,250Z" fill="#1ab394" stroke="none" stroke-width="2"></path></svg></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>多面积图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_multi" class="rickshaw_graph"><svg width="775" height="250"><g><path d="M0,119.72381448671186Q167.91666666666669,89.97741879451104,193.75,90.411672746222C232.5,91.06305367378843,348.75,116.79260031266287,387.5,126.23762376237626S542.5,177.69671704012507,581.25,184.86190724335592Q607.0833333333334,189.63870071217647,775,197.88952579468474L775,250Q607.0833333333334,250,581.25,250C542.5,250,426.25,250,387.5,250S232.5,250,193.75,250Q167.91666666666669,250,0,250Z" class="area" fill="#1ab394"></path><path d="M0,119.72381448671186Q167.91666666666669,89.97741879451104,193.75,90.411672746222C232.5,91.06305367378843,348.75,116.79260031266287,387.5,126.23762376237626S542.5,177.69671704012507,581.25,184.86190724335592Q607.0833333333334,189.63870071217647,775,197.88952579468474" class="line" fill="none" stroke="#17997f" stroke-width="2"></path></g><g><path d="M0,48.07191245440336Q167.91666666666669,12.028834462393654,193.75,8.989056800416932C232.5,4.4293903074518495,348.75,-0.7816571130796826,387.5,2.4752475247525183S542.5,36.99843668577386,581.25,41.558103178738946Q607.0833333333334,44.59788084071567,775,48.07191245440336L775,197.88952579468474Q607.0833333333334,189.63870071217647,581.25,184.86190724335592C542.5,177.69671704012507,426.25,135.68264721208965,387.5,126.23762376237626S232.5,91.06305367378843,193.75,90.411672746222Q167.91666666666669,89.97741879451104,0,119.72381448671186Z" class="area" fill="#eeeeee"></path><path d="M0,48.07191245440336Q167.91666666666669,12.028834462393654,193.75,8.989056800416932C232.5,4.4293903074518495,348.75,-0.7816571130796826,387.5,2.4752475247525183S542.5,36.99843668577386,581.25,41.558103178738946Q607.0833333333334,44.59788084071567,775,48.07191245440336" class="line" fill="none" stroke="#d7d7d7" stroke-width="2"></path></g></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>线性图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_line" class="rickshaw_graph"><svg width="775" height="250"><path class="path" d="M0,47.93897757122653Q167.91666666666669,1.8017107833232728,193.75,2.4752475247525183C232.5,3.4855526368963865,348.75,48.44413012729848,387.5,58.04202869266521S542.5,95.42331784198828,581.25,98.45423317841988Q607.0833333333334,100.47484340270762,775,88.35118205698123" fill="none" stroke="#1ab394" stroke-width="2"></path><path class="stroke"></path></svg></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>多线性图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_multi_line" class="rickshaw_graph"><svg width="772" height="250"><path class="path" d="M0,47.93897757122653Q167.26666666666668,1.8017107833232728,193,2.4752475247525183C231.6,3.4855526368963865,347.4,48.44413012729848,386,58.04202869266521S540.4,95.42331784198828,579,98.45423317841988Q604.7333333333333,100.47484340270762,772,88.35118205698123" fill="none" stroke="#1ab394" stroke-width="2"></path><path class="path" d="M0,148.96948878561327Q167.26666666666668,128.4266181720213,193,128.76338654273593C231.6,129.26853909880785,347.4,149.4746413416852,386,154.0210143463326S540.4,172.71165892099415,579,174.22711658920994Q604.7333333333333,175.2374217013538,772,169.1755910284906" fill="none" stroke="#d7d7d7" stroke-width="2"></path><path class="stroke"></path><path class="stroke"></path></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>柱状图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_bars" class="rickshaw_graph"><svg width="772" height="250"><rect x="0" y="47.93897757122653" width="146.68" height="202.06102242877347" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="154.4" y="2.4752475247525183" width="146.68" height="247.52475247524748" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="308.8" y="58.04202869266521" width="146.68" height="191.9579713073348" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="463.20000000000005" y="98.45423317841988" width="146.68" height="151.54576682158012" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="617.6" y="88.35118205698123" width="146.68" height="161.64881794301877" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect></svg></div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>堆积柱状图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_bars_stacked" class="rickshaw_graph"><svg width="772" height="250"><rect x="0" y="114.36999864369997" width="146.68" height="135.63000135630003" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="154.4" y="83.8532483385325" width="146.68" height="166.1467516614675" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="308.8" y="121.15149871151499" width="146.68" height="128.848501288485" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="463.20000000000005" y="148.277498982775" width="146.68" height="101.722501017225" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="617.6" y="141.49599891496" width="146.68" height="108.50400108504" transform="matrix(1,0,0,1,0,0)" fill="#1ab394"></rect><rect x="0" y="46.55499796555" width="146.68" height="67.81500067815001" transform="matrix(1,0,0,1,0,0)" fill="#d7d7d7"></rect><rect x="154.4" y="2.47524752475249" width="146.68" height="81.37800081378" transform="matrix(1,0,0,1,0,0)" fill="#d7d7d7"></rect><rect x="308.8" y="56.72724806727251" width="146.68" height="64.4242506442425" transform="matrix(1,0,0,1,0,0)" fill="#d7d7d7"></rect><rect x="463.20000000000005" y="97.4162484741625" width="146.68" height="50.8612505086125" transform="matrix(1,0,0,1,0,0)" fill="#d7d7d7"></rect><rect x="617.6" y="87.24399837243999" width="146.68" height="54.25200054252" transform="matrix(1,0,0,1,0,0)" fill="#d7d7d7"></rect></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>散点图</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_rickshaw.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="rickshaw_scatterplot" class="rickshaw_graph"><svg width="1614" height="250"><circle cx="73.19727891156462" cy="134.79262672811058" r="4" fill="#1ab394"></circle><circle cx="219.59183673469386" cy="111.7511520737327" r="4" fill="#1ab394"></circle><circle cx="365.98639455782313" cy="173.19508448540705" r="4" fill="#1ab394"></circle><circle cx="512.3809523809524" cy="157.83410138248846" r="4" fill="#1ab394"></circle><circle cx="658.7755102040817" cy="134.79262672811058" r="4" fill="#1ab394"></circle><circle cx="805.1700680272108" cy="65.66820276497691" r="4" fill="#1ab394"></circle><circle cx="951.56462585034" cy="34.94623655913975" r="4" fill="#1ab394"></circle><circle cx="1097.9591836734694" cy="11.904761904761898" r="4" fill="#1ab394"></circle><circle cx="1244.3537414965986" cy="81.02918586789554" r="4" fill="#1ab394"></circle><circle cx="1390.748299319728" cy="111.7511520737327" r="4" fill="#1ab394"></circle><circle cx="1537.142857142857" cy="127.1121351766513" r="4" fill="#1ab394"></circle></svg></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./d3.v3.js"></script>
+    <script src="./rickshaw.min.js"></script>
+    <script src="./content.min(1).js"></script>
+    <script src="./rickshaw-demo.min.js"></script>
+    <script type="text/javascript" src="./stats" charset="UTF-8"></script>
+
+
+
+</body></html>

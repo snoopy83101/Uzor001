@@ -1,0 +1,59 @@
+﻿
+.div_merType {
+    width: 600px;
+}
+
+.ul_merType li {
+    border: 1px solid #CCCCCC;
+    margin: 5px;
+    padding: 3px;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    float: left;
+    cursor: pointer;
+}
+
+    .ul_merType li:hover {
+        border: 1px solid #429195;
+    }
+
+    .ul_merType li.select {
+        background-color: #429195;
+        color: #FFFFFF;
+    }
+
+#sp_selMerType {
+    display: inline-block;
+}
+
+a.a_selMerType {
+    border: 1px solid #CCCCCC;
+    margin: 5px;
+    padding: 3px;
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    background-color: #ED6109;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.b_close {
+    margin-left: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Arial Unicode MS';
+}
+
+.div_Map {
+    width: 650px;
+    height: 400px;
+}
+#img_1 {
+
+   border: 1px solid #808080;
+}
+

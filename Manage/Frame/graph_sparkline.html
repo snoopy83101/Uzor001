@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://www.zi-han.net/theme/hplus/graph_sparkline.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Sparkline图表</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="http://www.zi-han.net/theme/hplus/favicon.ico"> <link href="./bootstrap.min.css" rel="stylesheet">
+    <link href="./font-awesome.min.css" rel="stylesheet">
+
+    <link href="./animate.min.css" rel="stylesheet">
+    <link href="./style.min.css" rel="stylesheet">
+<style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInDown">
+
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="jumbotron">
+                    <h1>Sparkline</h1>
+                    <p>这是另一个可视化图表库</p>
+                    <p><a href="http://omnipotent.net/jquery.sparkline" target="_blank" class="btn btn-primary btn-lg" role="button">了解 Sparkline</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Sparkline图表 <small>自定义颜色</small></h5>
+                        <div class="ibox-tools">
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table table-bordered white-bg">
+                            <thead>
+                                <tr>
+                                    <th>图表</th>
+                                    <th>类型</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline1"><canvas width="27" height="16" style="display: inline-block; width: 27px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        内联线性图
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline2"><canvas width="39" height="16" style="display: inline-block; width: 39px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        柱状图
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline3"><canvas width="16" height="16" style="display: inline-block; width: 16px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        饼状图
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline4"><canvas width="87" height="16" style="display: inline-block; width: 87px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        长线性图
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline5"><canvas width="59" height="16" style="display: inline-block; width: 59px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        三态图
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span id="sparkline6"><canvas width="56" height="16" style="display: inline-block; width: 56px; height: 16px; vertical-align: top;"></canvas></span>
+                                    </td>
+                                    <td>
+                                        散点图
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>自定义饼状图尺寸</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content text-center h-200">
+                        <span id="sparkline7"><canvas width="150" height="150" style="display: inline-block; width: 150px; height: 150px; vertical-align: top;"></canvas></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>自定义柱状图尺寸</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content text-center h-200">
+                        <span id="sparkline8"><canvas width="170" height="150" style="display: inline-block; width: 170px; height: 150px; vertical-align: top;"></canvas></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>自定义线性图尺寸</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项1</a>
+                                </li>
+                                <li><a href="http://www.zi-han.net/theme/hplus/graph_sparkline.html#">选项2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content text-center h-200">
+                        <span id="sparkline9"><canvas width="87" height="150" style="display: inline-block; width: 87px; height: 150px; vertical-align: top;"></canvas></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./jquery.sparkline.min.js"></script>
+    <script src="./content.min(1).js"></script>
+    <script src="./sparkline-demo.min.js"></script>
+    <script type="text/javascript" src="./stats" charset="UTF-8"></script>
+
+
+
+</body></html>

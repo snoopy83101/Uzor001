@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>NodejsWebApp1</Name>
+    <RootNamespace>NodejsWebApp1</RootNamespace>
+    <NameOfLastUsedPublishProfile>dd</NameOfLastUsedPublishProfile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>d1b60fc4-ceaa-48b1-9e30-dcbd35dcb09d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>Makefile</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="api\v1\message.js" />
+    <Compile Include="api\v1\middleware.js" />
+    <Compile Include="api\v1\reply.js" />
+    <Compile Include="api\v1\tools.js" />
+    <Compile Include="api\v1\topic.js" />
+    <Compile Include="api\v1\topic_collect.js" />
+    <Compile Include="api\v1\user.js" />
+    <Compile Include="api_router_v1.js" />
+    <Compile Include="app.js" />
+    <Compile Include="bin\fix_at_problem.js" />
+    <Compile Include="bin\fix_topic_collect_count.js" />
+    <Compile Include="bin\generate_accesstoken.js" />
+    <Compile Include="common\at.js" />
+    <Compile Include="common\cache.js" />
+    <Compile Include="common\logger.js" />
+    <Compile Include="common\mail.js" />
+    <Compile Include="common\message.js" />
+    <Compile Include="common\redis.js" />
+    <Compile Include="common\render_helper.js" />
+    <Compile Include="common\store.js" />
+    <Compile Include="common\store_local.js" />
+    <Compile Include="common\store_qn.js" />
+    <Compile Include="common\tools.js" />
+    <Compile Include="config.js" />
+    <Compile Include="config.default.js" />
+    <Compile Include="controllers\github.js" />
+    <Compile Include="controllers\message.js" />
+    <Compile Include="controllers\reply.js" />
+    <Compile Include="controllers\rss.js" />
+    <Compile Include="controllers\search.js" />
+    <Compile Include="controllers\sign.js" />
+    <Compile Include="controllers\site.js" />
+    <Compile Include="controllers\static.js" />
+    <Compile Include="controllers\topic.js" />
+    <Compile Include="controllers\user.js" />
+    <Compile Include="lib\cli.js" />
+    <Compile Include="lib\extractor.js" />
+    <Compile Include="lib\formatter.js" />
+    <Compile Include="lib\stopwords.js" />
+    <Compile Include="lib\unfluff.js" />
+    <Compile Include="middlewares\auth.js" />
+    <Compile Include="middlewares\conf.js" />
+    <Compile Include="middlewares\error_page.js" />
+    <Compile Include="middlewares\github_strategy.js" />
+    <Compile Include="middlewares\limit.js" />
+    <Compile Include="middlewares\mongoose_log.js" />
+    <Compile Include="middlewares\proxy.js" />
+    <Compile Include="middlewares\render.js" />
+    <Compile Include="middlewares\request_log.js" />
+    <Compile Include="models\base_model.js" />
+    <Compile Include="models\index.js" />
+    <Compile Include="models\message.js" />
+    <Compile Include="models\reply.js" />
+    <Compile Include="models\topic.js" />
+    <Compile Include="models\topic_collect.js" />
+    <Compile Include="models\user.js" />
+    <Compile Include="oneapm.js" />
+    <Compile Include="proxy\index.js" />
+    <Compile Include="proxy\message.js" />
+    <Compile Include="proxy\reply.js" />
+    <Compile Include="proxy\topic.js" />
+    <Compile Include="proxy\topic_collect.js" />
+    <Compile Include="proxy\user.js" />
+    <Compile Include="public\javascripts\main.js" />
+    <Compile Include="public\javascripts\responsive.js" />
+    <Compile Include="public\libs\bootstrap\js\bootstrap.js" />
+    <Compile Include="public\libs\bootstrap\js\bootstrap.min.js" />
+    <Compile Include="public\libs\code-prettify\lang-apollo.js" />
+    <Compile Include="public\libs\code-prettify\lang-clj.js" />
+    <Compile Include="public\libs\code-prettify\lang-css.js" />
+    <Compile Include="public\libs\code-prettify\lang-go.js" />
+    <Compile Include="public\libs\code-prettify\lang-hs.js" />
+    <Compile Include="public\libs\code-prettify\lang-lisp.js" />
+    <Compile Include="public\libs\code-prettify\lang-lua.js" />
+    <Compile Include="public\libs\code-prettify\lang-ml.js" />
+    <Compile Include="public\libs\code-prettify\lang-n.js" />
+    <Compile Include="public\libs\code-prettify\lang-proto.js" />
+    <Compile Include="public\libs\code-prettify\lang-scala.js" />
+    <Compile Include="public\libs\code-prettify\lang-sql.js" />
+    <Compile Include="public\libs\code-prettify\lang-tex.js" />
+    <Compile Include="public\libs\code-prettify\lang-vb.js" />
+    <Compile Include="public\libs\code-prettify\lang-vhdl.js" />
+    <Compile Include="public\libs\code-prettify\lang-wiki.js" />
+    <Compile Include="public\libs\code-prettify\lang-xq.js" />
+    <Compile Include="public\libs\code-prettify\lang-yaml.js" />
+    <Compile Include="public\libs\code-prettify\prettify.js" />
+    <Compile Include="public\libs\editor\editor.js" />
+    <Compile Include="public\libs\editor\ext.js" />
+    <Compile Include="public\libs\jquery-2.1.0.js" />
+    <Compile Include="public\libs\jquery-ujs.js" />
+    <Compile Include="public\libs\jquery.atwho.js" />
+    <Compile Include="public\libs\jquery.caret.js" />
+    <Compile Include="public\libs\lodash.compat.js" />
+    <Compile Include="public\libs\markdownit.js" />
+    <Compile Include="public\libs\qrcode.js" />
+    <Compile Include="public\libs\webuploader\webuploader.withoutimage.js" />
+    <Compile Include="test\api\v1\message.test.js" />
+    <Compile Include="test\api\v1\reply.test.js" />
+    <Compile Include="test\api\v1\tools.test.js" />
+    <Compile Include="test\api\v1\topic.test.js" />
+    <Compile Include="test\api\v1\topic_collect.test.js" />
+    <Compile Include="test\api\v1\user.test.js" />
+    <Compile Include="test\app.test.js" />
+    <Compile Include="test\common\at.test.js" />
+    <Compile Include="test\common\cache.test.js" />
+    <Compile Include="test\common\mail.test.js" />
+    <Compile Include="test\common\message.test.js" />
+    <Compile Include="test\common\render_helper.test.js" />
+    <Compile Include="test\common\store_local.test.js" />
+    <Compile Include="test\common\tools.test.js" />
+    <Compile Include="test\controllers\github.test.js" />
+    <Compile Include="test\controllers\message.test.js" />
+    <Compile Include="test\controllers\reply.test.js" />
+    <Compile Include="test\controllers\rss.test.js" />
+    <Compile Include="test\controllers\search.test.js" />
+    <Compile Include="test\controllers\sign.test.js" />
+    <Compile Include="test\controllers\site.test.js" />
+    <Compile Include="test\controllers\static.test.js" />
+    <Compile Include="test\controllers\topic.test.js" />
+    <Compile Include="test\controllers\user.test.js" />
+    <Compile Include="test\env.js" />
+    <Compile Include="test\middlewares\conf.test.js" />
+    <Compile Include="test\middlewares\limit.test.js" />
+    <Compile Include="test\middlewares\proxy.test.js" />
+    <Compile Include="test\models\user.test.js" />
+    <Compile Include="test\proxy\message.test.js" />
+    <Compile Include="test\proxy\reply.test.js" />
+    <Compile Include="test\proxy\topic.test.js" />
+    <Compile Include="test\proxy\user.test.js" />
+    <Compile Include="test\support\support.js" />
+    <Compile Include="web_router.js" />
+    <Content Include=".gitignore" />
+    <Content Include=".jshintrc" />
+    <Content Include=".travis.yml" />
+    <Content Include="data\stopwords\stopwords-bg.txt" />
+    <Content Include="data\stopwords\stopwords-cs.txt" />
+    <Content Include="data\stopwords\stopwords-da.txt" />
+    <Content Include="data\stopwords\stopwords-de.txt" />
+    <Content Include="data\stopwords\stopwords-en.txt" />
+    <Content Include="data\stopwords\stopwords-es.txt" />
+    <Content Include="data\stopwords\stopwords-fi.txt" />
+    <Content Include="data\stopwords\stopwords-fr.txt" />
+    <Content Include="data\stopwords\stopwords-hu.txt" />
+    <Content Include="data\stopwords\stopwords-id.txt" />
+    <Content Include="data\stopwords\stopwords-it.txt" />
+    <Content Include="data\stopwords\stopwords-ko.txt" />
+    <Content Include="data\stopwords\stopwords-nb.txt" />
+    <Content Include="data\stopwords\stopwords-nl.txt" />
+    <Content Include="data\stopwords\stopwords-no.txt" />
+    <Content Include="data\stopwords\stopwords-pl.txt" />
+    <Content Include="data\stopwords\stopwords-pt.txt" />
+    <Content Include="data\stopwords\stopwords-ru.txt" />
+    <Content Include="data\stopwords\stopwords-sv.txt" />
+    <Content Include="data\stopwords\stopwords-th.txt" />
+    <Content Include="data\stopwords\stopwords-tr.txt" />
+    <Content Include="data\stopwords\stopwords-zh.txt" />
+    <None Include="dd.pubxml" />
+    <Content Include="fixtures\test_allnewlyrics1.json" />
+    <Content Include="fixtures\test_aolNews.html" />
+    <Content Include="fixtures\test_aolNews.json" />
+    <Content Include="fixtures\test_bbc_chinese.html" />
+    <Content Include="fixtures\test_bbc_chinese.json" />
+    <Content Include="fixtures\test_businessinsider1.html" />
+    <Content Include="fixtures\test_businessinsider1.json" />
+    <Content Include="fixtures\test_businessinsider2.html" />
+    <Content Include="fixtures\test_businessinsider2.json" />
+    <Content Include="fixtures\test_businessinsider3.html" />
+    <Content Include="fixtures\test_businessinsider3.json" />
+    <Content Include="fixtures\test_businessWeek1.html" />
+    <Content Include="fixtures\test_businessWeek1.json" />
+    <Content Include="fixtures\test_businessWeek2.html" />
+    <Content Include="fixtures\test_businessWeek2.json" />
+    <Content Include="fixtures\test_businessWeek3.html" />
+    <Content Include="fixtures\test_businessWeek3.json" />
+    <Content Include="fixtures\test_cbslocal.html" />
+    <Content Include="fixtures\test_cbslocal.json" />
+    <Content Include="fixtures\test_cnbc1.html" />
+    <Content Include="fixtures\test_cnbc1.json" />
+    <Content Include="fixtures\test_cnet.html" />
+    <Content Include="fixtures\test_cnet.json" />
+    <Content Include="fixtures\test_cnn1.html" />
+    <Content Include="fixtures\test_cnn1.json" />
+    <Content Include="fixtures\test_cnn_arabic.html" />
+    <Content Include="fixtures\test_cnn_arabic.json" />
+    <Content Include="fixtures\test_dcurtis.html" />
+    <Content Include="fixtures\test_dcurtis.json" />
+    <Content Include="fixtures\test_donga_korean.html" />
+    <Content Include="fixtures\test_donga_korean.json" />
+    <Content Include="fixtures\test_elmondo1.html" />
+    <Content Include="fixtures\test_elmondo1.json" />
+    <Content Include="fixtures\test_elpais.html" />
+    <Content Include="fixtures\test_elpais.json" />
+    <Content Include="fixtures\test_embed.html" />
+    <Content Include="fixtures\test_embed.json" />
+    <Content Include="fixtures\test_engadget.html" />
+    <Content Include="fixtures\test_engadget.json" />
+    <Content Include="fixtures\test_espn.html" />
+    <Content Include="fixtures\test_espn.json" />
+    <Content Include="fixtures\test_foxNews.html" />
+    <Content Include="fixtures\test_foxNews.json" />
+    <Content Include="fixtures\test_get_canonical_url.html" />
+    <Content Include="fixtures\test_get_canonical_url.json" />
+    <Content Include="fixtures\test_github1.html" />
+    <Content Include="fixtures\test_gizmodo1.html" />
+    <Content Include="fixtures\test_gizmodo1.json" />
+    <Content Include="fixtures\test_guardian1.html" />
+    <Content Include="fixtures\test_guardian1.json" />
+    <Content Include="fixtures\test_huffingtonPost2.html" />
+    <Content Include="fixtures\test_huffingtonPost2.json" />
+    <Content Include="fixtures\test_iframe.html" />
+    <Content Include="fixtures\test_iframe.json" />
+    <Content Include="fixtures\test_issue24.html" />
+    <Content Include="fixtures\test_issue24.json" />
+    <Content Include="fixtures\test_issue25.html" />
+    <Content Include="fixtures\test_issue25.json" />
+    <Content Include="fixtures\test_issue28.html" />
+    <Content Include="fixtures\test_issue28.json" />
+    <Content Include="fixtures\test_issue32.html" />
+    <Content Include="fixtures\test_issue32.json" />
+    <Content Include="fixtures\test_issue4.html" />
+    <Content Include="fixtures\test_issue4.json" />
+    <Content Include="fixtures\test_lefigaro.html" />
+    <Content Include="fixtures\test_lefigaro.json" />
+    <Content Include="fixtures\test_liberation.html" />
+    <Content Include="fixtures\test_liberation.json" />
+    <Content Include="fixtures\test_marketplace.html" />
+    <Content Include="fixtures\test_marketplace.json" />
+    <Content Include="fixtures\test_mashable_issue_74.html" />
+    <Content Include="fixtures\test_mashable_issue_74.json" />
+    <Content Include="fixtures\test_mcsweeney.html" />
+    <Content Include="fixtures\test_mcsweeney.json" />
+    <Content Include="fixtures\test_msn1.html" />
+    <Content Include="fixtures\test_msn1.json" />
+    <Content Include="fixtures\test_object.html" />
+    <Content Include="fixtures\test_object.json" />
+    <Content Include="fixtures\test_politico.html" />
+    <Content Include="fixtures\test_politico.json" />
+    <Content Include="fixtures\test_polygon.html" />
+    <Content Include="fixtures\test_polygon.json" />
+    <Content Include="fixtures\test_polygon_video.html" />
+    <Content Include="fixtures\test_polygon_video.json" />
+    <Content Include="fixtures\test_sec1.html" />
+    <Content Include="fixtures\test_tags_abcau.html" />
+    <Content Include="fixtures\test_tags_abcau.json" />
+    <Content Include="fixtures\test_tags_cnet.html" />
+    <Content Include="fixtures\test_tags_cnet.json" />
+    <Content Include="fixtures\test_tags_deadline.html" />
+    <Content Include="fixtures\test_tags_deadline.json" />
+    <Content Include="fixtures\test_tags_kexp.html" />
+    <Content Include="fixtures\test_tags_kexp.json" />
+    <Content Include="fixtures\test_tags_wnyc.html" />
+    <Content Include="fixtures\test_tags_wnyc.json" />
+    <Content Include="fixtures\test_techcrunch1.html" />
+    <Content Include="fixtures\test_techcrunch1.json" />
+    <Content Include="fixtures\test_testHuffingtonPost.html" />
+    <Content Include="fixtures\test_testHuffingtonPost.json" />
+    <Content Include="fixtures\test_theverge1.html" />
+    <Content Include="fixtures\test_theverge1.json" />
+    <Content Include="fixtures\test_theverge2.html" />
+    <Content Include="fixtures\test_theverge2.json" />
+    <Content Include="fixtures\test_time.html" />
+    <Content Include="fixtures\test_time.json" />
+    <Content Include="fixtures\test_time2.html" />
+    <Content Include="fixtures\test_time2.json" />
+    <Content Include="fixtures\test_twitter.html" />
+    <Content Include="fixtures\test_twitter.json" />
+    <Content Include="fixtures\test_usatoday1.html" />
+    <Content Include="fixtures\test_usatoday1.json" />
+    <Content Include="fixtures\test_usatoday_issue_74.html" />
+    <Content Include="fixtures\test_usatoday_issue_74.json" />
+    <Content Include="fixtures\test_wikipedia1.html" />
+    <Content Include="fixtures\test_yahoo.html" />
+    <Content Include="fixtures\test_yahoo.json" />
+    <Content Include="History.md" />
+    <Content Include="LICENSE" />
+    <Content Include="logs\.gitkeep" />
+    <Content Include="Makefile" />
+    <Content Include="package.json" />
+    <Content Include="public\favicon.ico" />
+    <Content Include="public\github-card.html" />
+    <Content Include="public\images\cnodejs.svg" />
+    <Content Include="public\images\cnodejs_light.svg" />
+    <Content Include="public\images\cnode_icon_32.png" />
+    <Content Include="public\images\cnode_icon_64.png" />
+    <Content Include="public\images\cnode_logo_128.png" />
+    <Content Include="public\images\cnode_logo_32.png" />
+    <Content Include="public\images\digitalocean.png" />
+    <Content Include="public\images\golangtc-logo.png" />
+    <Content Include="public\images\iojs-logo-w150h50.png" />
+    <Content Include="public\images\iojs-logo.png" />
+    <Content Include="public\images\logo.png" />
+    <Content Include="public\images\logo_bak.png" />
+    <Content Include="public\images\nodejs_black.png" />
+    <Content Include="public\images\phphub-logo.png" />
+    <Content Include="public\images\qiniu.png" />
+    <Content Include="public\images\ruby-china-20150529.png" />
+    <Content Include="public\images\ruby-china-logo2.png" />
+    <Content Include="public\images\search.png" />
+    <Content Include="public\images\ucloud.png" />
+    <Content Include="public\images\upyun_logo.png" />
+    <Content Include="public\img\glyphicons-halflings-white.png" />
+    <Content Include="public\img\glyphicons-halflings.png" />
+    <Content Include="public\libs\bootstrap\css\bootstrap-responsive.css" />
+    <Content Include="public\libs\bootstrap\css\bootstrap-responsive.min.css" />
+    <Content Include="public\libs\bootstrap\css\bootstrap.css" />
+    <Content Include="public\libs\bootstrap\css\bootstrap.min.css" />
+    <Content Include="public\libs\bootstrap\img\glyphicons-halflings-white.png" />
+    <Content Include="public\libs\bootstrap\img\glyphicons-halflings.png" />
+    <Content Include="public\libs\code-prettify\prettify.css" />
+    <Content Include="public\libs\editor\editor.css" />
+    <Content Include="public\libs\editor\fonts\icomoon.dev.svg" />
+    <Content Include="public\libs\editor\fonts\icomoon.eot" />
+    <Content Include="public\libs\editor\fonts\icomoon.svg" />
+    <Content Include="public\libs\editor\fonts\icomoon.ttf" />
+    <Content Include="public\libs\editor\fonts\icomoon.woff" />
+    <Content Include="public\libs\font-awesome\css\font-awesome.css" />
+    <Content Include="public\libs\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="public\libs\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="public\libs\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="public\libs\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="public\libs\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="public\libs\webuploader\Uploader.swf" />
+    <Content Include="public\libs\webuploader\webuploader.css" />
+    <Content Include="public\stylesheets\common.css" />
+    <Content Include="public\stylesheets\jquery.atwho.css" />
+    <Content Include="public\stylesheets\responsive.css" />
+    <Content Include="public\stylesheets\style.less" />
+    <Content Include="README.md" />
+    <Content Include="resources\stylesheets\style.css" />
+    <Content Include="src\cli.coffee" />
+    <Content Include="src\extractor.coffee" />
+    <Content Include="src\formatter.coffee" />
+    <Content Include="src\stopwords.coffee" />
+    <Content Include="src\unfluff.coffee" />
+    <Content Include="test\extractor.coffee" />
+    <Content Include="test\formatter.coffee" />
+    <Content Include="test\stopwords.coffee" />
+    <Content Include="test\unfluff.coffee" />
+    <Content Include="views\editor_sidebar.html" />
+    <Content Include="views\error.jade" />
+    <Content Include="views\includes\editor.html" />
+    <Content Include="views\index.html" />
+    <Content Include="views\index.jade" />
+    <Content Include="views\kategorie.jade" />
+    <Content Include="views\kierowcy.jade" />
+    <Content Include="views\klienci.jade" />
+    <Content Include="views\layout.html" />
+    <Content Include="views\layout.jade" />
+    <Content Include="views\loginError.jade" />
+    <Content Include="views\message\index.html" />
+    <Content Include="views\message\message.html" />
+    <Content Include="views\new_task.jade" />
+    <Content Include="views\notify\notify.html" />
+    <Content Include="views\npm-debug.log" />
+    <Content Include="views\panel.jade" />
+    <Content Include="views\reply\edit.html" />
+    <Content Include="views\reply\reply.html" />
+    <Content Include="views\sidebar.html" />
+    <Content Include="views\sign\new_oauth.html" />
+    <Content Include="views\sign\no_github_email.html" />
+    <Content Include="views\sign\reset.html" />
+    <Content Include="views\sign\search_pass.html" />
+    <Content Include="views\sign\sidebar.html" />
+    <Content Include="views\sign\signin.html" />
+    <Content Include="views\sign\signup.html" />
+    <Content Include="views\static\about.html" />
+    <Content Include="views\static\api.html" />
+    <Content Include="views\static\faq.html" />
+    <Content Include="views\static\getstart.html" />
+    <Content Include="views\topic\abstract.html" />
+    <Content Include="views\topic\edit.html" />
+    <Content Include="views\topic\index.html" />
+    <Content Include="views\topic\list.html" />
+    <Content Include="views\topic\small.html" />
+    <Content Include="views\topic\_top_good.html" />
+    <Content Include="views\user\card.html" />
+    <Content Include="views\user\collect_topics.html" />
+    <Content Include="views\user\followers.html" />
+    <Content Include="views\user\followings.html" />
+    <Content Include="views\user\index.html" />
+    <Content Include="views\user\replies.html" />
+    <Content Include="views\user\setting.html" />
+    <Content Include="views\user\star.html" />
+    <Content Include="views\user\stars.html" />
+    <Content Include="views\user\top.html" />
+    <Content Include="views\user\top100.html" />
+    <Content Include="views\user\top100_user.html" />
+    <Content Include="views\user\topics.html" />
+    <Content Include="views\user\user.html" />
+    <Content Include="views\_ads.html" />
+    <Content Include="views\_sponsors.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="api\" />
+    <Folder Include="api\v1\" />
+    <Folder Include="bin\" />
+    <Folder Include="common\" />
+    <Folder Include="controllers\" />
+    <Folder Include="data\" />
+    <Folder Include="data\stopwords\" />
+    <Folder Include="fixtures\" />
+    <Folder Include="lib\" />
+    <Folder Include="logs\" />
+    <Folder Include="middlewares\" />
+    <Folder Include="models\" />
+    <Folder Include="proxy\" />
+    <Folder Include="public\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\img\" />
+    <Folder Include="public\javascripts\" />
+    <Folder Include="public\libs\" />
+    <Folder Include="public\libs\bootstrap\" />
+    <Folder Include="public\libs\bootstrap\css\" />
+    <Folder Include="public\libs\bootstrap\img\" />
+    <Folder Include="public\libs\bootstrap\js\" />
+    <Folder Include="public\libs\code-prettify\" />
+    <Folder Include="public\libs\editor\" />
+    <Folder Include="public\libs\editor\fonts\" />
+    <Folder Include="public\libs\font-awesome\" />
+    <Folder Include="public\libs\font-awesome\css\" />
+    <Folder Include="public\libs\font-awesome\fonts\" />
+    <Folder Include="public\libs\webuploader\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="resources\" />
+    <Folder Include="resources\stylesheets\" />
+    <Folder Include="src\" />
+    <Folder Include="test\" />
+    <Folder Include="test\api\" />
+    <Folder Include="test\api\v1\" />
+    <Folder Include="test\common\" />
+    <Folder Include="test\controllers\" />
+    <Folder Include="test\middlewares\" />
+    <Folder Include="test\models\" />
+    <Folder Include="test\proxy\" />
+    <Folder Include="test\support\" />
+    <Folder Include="typings\" />
+    <Folder Include="typings\globals\" />
+    <Folder Include="typings\globals\async\" />
+    <Folder Include="typings\globals\colors\" />
+    <Folder Include="typings\globals\connect-redis\" />
+    <Folder Include="typings\globals\csurf\" />
+    <Folder Include="typings\globals\express-session\" />
+    <Folder Include="typings\globals\mocha\" />
+    <Folder Include="typings\globals\moment\" />
+    <Folder Include="typings\globals\mongoose\" />
+    <Folder Include="typings\globals\nodemailer\" />
+    <Folder Include="typings\globals\node\" />
+    <Folder Include="typings\globals\passport\" />
+    <Folder Include="typings\globals\semver\" />
+    <Folder Include="typings\globals\should\" />
+    <Folder Include="typings\globals\validator\" />
+    <Folder Include="views\" />
+    <Folder Include="views\includes\" />
+    <Folder Include="views\message\" />
+    <Folder Include="views\notify\" />
+    <Folder Include="views\reply\" />
+    <Folder Include="views\sign\" />
+    <Folder Include="views\static\" />
+    <Folder Include="views\topic\" />
+    <Folder Include="views\user\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="typings\globals\async\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\colors\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\connect-redis\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\csurf\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\express-session\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mocha\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\moment\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\mongoose\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\nodemailer\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\passport\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\semver\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\should\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\validator\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
