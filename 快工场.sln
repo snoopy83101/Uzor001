@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cn.jpush.api", "cn.jpush.ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPage", "BPage\BPage.csproj", "{0F469D80-3BFE-4745-9434-9FBB04DD8D8B}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "快工场", "..\..\APICloud\workspace\快工场", "{5CA3B7CE-43DB-4D31-AEED-17E316D00F2C}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "快工场", "..\..\APICloud\workspace\快工场\", "{5CA3B7CE-43DB-4D31-AEED-17E316D00F2C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_9451"
@@ -273,54 +273,5 @@ Global
 		{E281D457-F259-4F0B-8608-16C81D8AE97B} = {303FF7C9-8C33-4599-8EE8-1AC2120FAE0B}
 		{BC6F0EF0-6F54-4368-99EE-3275FFF73AD4} = {303FF7C9-8C33-4599-8EE8-1AC2120FAE0B}
 		{443A874B-F9E2-4CB0-8843-88F3DDD03140} = {303FF7C9-8C33-4599-8EE8-1AC2120FAE0B}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 8
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://116.255.167.132:8080/tfs/anli
-		SccProjectUniqueName0 = Ajax\\Ajax.csproj
-		SccProjectTopLevelParentUniqueName0 = 快工场.sln
-		SccProjectName0 = Ajax
-		SccAuxPath0 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath0 = Ajax
-		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName1 = BLL\\BLL.csproj
-		SccProjectName1 = BLL
-		SccAuxPath1 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath1 = BLL
-		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName2 = DBTools\\DBTools.csproj
-		SccProjectTopLevelParentUniqueName2 = 快工场.sln
-		SccProjectName2 = DBTools
-		SccAuxPath2 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath2 = DBTools
-		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName3 = DAL\\DAL.csproj
-		SccProjectName3 = DAL
-		SccAuxPath3 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath3 = DAL
-		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName4 = Common\\Common.csproj
-		SccProjectTopLevelParentUniqueName4 = 快工场.sln
-		SccProjectName4 = Common
-		SccAuxPath4 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath4 = Common
-		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName5 = Model\\Model.csproj
-		SccProjectName5 = Model
-		SccAuxPath5 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath5 = Model
-		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName6 = cn.jpush.api\\cn.jpush.api.csproj
-		SccProjectTopLevelParentUniqueName6 = 快工场.sln
-		SccProjectName6 = cn.jpush.api
-		SccAuxPath6 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath6 = cn.jpush.api
-		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccProjectUniqueName7 = BPage\\BPage.csproj
-		SccProjectName7 = BPage
-		SccAuxPath7 = http://116.255.167.132:8080/tfs/anli
-		SccLocalPath7 = BPage
-		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 	EndGlobalSection
 EndGlobal
