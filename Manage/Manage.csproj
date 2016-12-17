@@ -225,6 +225,7 @@
     <Content Include="Ghost\GhostPub.master" />
     <Content Include="MasterPage1.master" />
     <Content Include="Comm\CommPub.master" />
+    <Content Include="test\MongoDB.aspx" />
     <Content Include="webpack.config.js" />
     <Content Include="package.json" />
     <None Include="Properties\PublishProfiles\fabu.pubxml" />
@@ -581,6 +582,13 @@
     <Compile Include="test\Address.aspx.designer.cs">
       <DependentUpon>Address.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\MongoDB.aspx.cs">
+      <DependentUpon>MongoDB.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\MongoDB.aspx.designer.cs">
+      <DependentUpon>MongoDB.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -645,6 +653,18 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Bson\MongoDB.Bson.csproj">
+      <Project>{0e9a3a2a-49cd-4f6c-847c-dc79b4b65ce6}</Project>
+      <Name>MongoDB.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj">
+      <Project>{da56482a-5d8f-41e0-85e6-1f22b310f91b}</Project>
+      <Name>MongoDB.Driver.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver\MongoDB.Driver.csproj">
+      <Project>{ae5166cd-76b0-4911-bd80-ced9521f37a1}</Project>
+      <Name>MongoDB.Driver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
