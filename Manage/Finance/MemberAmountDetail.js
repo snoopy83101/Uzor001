@@ -63,6 +63,9 @@ function GetMemberDetailPageSetting(CurrentPage) {
                                                  }
 
                                                  $("#tb_1").html(w.join(""));
+                                          
+
+
                                                  ZyPagerSetting("GetMemberDetailPageSetting", CurrentPage, data.t, "1");
                                              }, false);
 }

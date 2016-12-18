@@ -150,6 +150,9 @@
     <Content Include="Finance\SubjectCashList.aspx" />
     <Content Include="Finance\SubjectCashList.css" />
     <Content Include="Finance\SubjectCashList.js" />
+    <Content Include="Finance\WaitForPendingOrderToWorkList.aspx" />
+    <Content Include="Finance\WaitForPendingOrderToWorkList.css" />
+    <Content Include="Finance\WaitForPendingOrderToWorkList.js" />
     <Content Include="Frame\extend\layer.ext.js" />
     <Content Include="Ghost\AddMember.aspx" />
     <Content Include="Ghost\AddMember.css" />
@@ -416,6 +419,13 @@
     </Compile>
     <Compile Include="Finance\SubjectCashList.aspx.designer.cs">
       <DependentUpon>SubjectCashList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Finance\WaitForPendingOrderToWorkList.aspx.cs">
+      <DependentUpon>WaitForPendingOrderToWorkList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Finance\WaitForPendingOrderToWorkList.aspx.designer.cs">
+      <DependentUpon>WaitForPendingOrderToWorkList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ghost\AddMember.aspx.cs">
       <DependentUpon>AddMember.aspx</DependentUpon>

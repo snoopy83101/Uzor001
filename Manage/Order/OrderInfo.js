@@ -356,6 +356,8 @@ function GetOrderInfo(o) {
 
                                                    ed.setContent(data.Info.OrderContent);
                                                });
+
+                                               document.title = data.Info.OrderName;
                                                $("#txt_OrderTitle").val(data.Info.OrderTitle);
                                                $("#txt_OrderCode").val(data.Info.OrderCode);
                                                $("#txt_ClientsCode").val(data.Info.ClientsCode);

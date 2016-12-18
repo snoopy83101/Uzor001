@@ -66,7 +66,7 @@ namespace BLL
                 s.Append(" SELECT * FROM dbo.OrderToWork WHERE OrderToWorkId=" + OrderToWorkId + " ");
 
 
-                s.Append(" UPDATE dbo.OrderToWork SET OrderToWorkStatusId=70 ,DoneTime='" + DateTime.Now + "' WHERE OrderToWorkId=" + OrderToWorkId + " ");
+                s.Append(" UPDATE dbo.OrderToWork SET OrderToWorkStatusId=70 ,PendingTime='" + DateTime.Now + "' WHERE OrderToWorkId=" + OrderToWorkId + " ");
                 DataSet ds = DAL.DalComm.BackData(s.ToString());
 
                 DataTable dt = ds.Tables[0];
@@ -447,7 +447,7 @@ namespace BLL
                 s.Append("  select OrderToWorkStatusId,OrderToWorkStatusName,OrderId,MemberId from dbo.OrderToWorkView WHERE OrderToWorkId=" + OrderToWorkId + " ");
 
 
-                s.Append("        UPDATE dbo.OrderToWork SET OrderToWorkStatusId=60 WHERE OrderToWorkId=" + OrderToWorkId + " ");
+                s.Append("        UPDATE dbo.OrderToWork SET OrderToWorkStatusId=60,CheckTime='" + DateTime.Now + "' WHERE OrderToWorkId=" + OrderToWorkId + " ");
 
 
 
@@ -1185,9 +1185,9 @@ namespace BLL
                 }
 
 
-   
 
-            
+
+
 
                 DataSet dsOvw = CountOrderToWork(detailList[0].OrderToWorkId);
                 DataTable dtOvw = dsOvw.Tables[1];

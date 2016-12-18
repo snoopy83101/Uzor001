@@ -27,8 +27,10 @@ namespace BPage
                 switch (para)
                 {
 
-        
 
+                    case "GetWaitForPendingOrderToWorkList":
+                        GetWaitForPendingOrderToWorkList();
+                        break;
                     case "ClearMemberOrderToWork":
                         ClearMemberOrderToWork();
                         break;
@@ -174,6 +176,37 @@ namespace BPage
             context.Response.End();
 
 
+        }
+
+        private void GetWaitForPendingOrderToWorkList()
+        {
+
+            int CurrentPage = ReInt("CurrentPage", 1);
+            string col = ReStr("col", "*");
+            int PageSize = ReInt("PageSize", 100);
+            string Order = ReStr("Order", "  OrderToWorkStatusId , PendingTime desc ");
+            DAL.OrderToWorkDAL dal = new DAL.OrderToWorkDAL();
+
+            DateTime dtm1 = ReTime("dtm1");
+            DateTime dtm2 = ReTime("dtm2");
+
+            StringBuilder s = new StringBuilder();
+
+
+
+
+            s.Append("  OrderToWorkStatusId >=50  ");
+            s.Append("  or PendingTime BETWEEN '" + dtm1+"' and '"+dtm2+"' ");
+            s.Append("  ");
+            s.Append("  ");
+            s.Append("  ");
+            s.Append("  ");
+            s.Append("  ");
+            s.Append("  ");
+            s.Append("  ");
+
+            DataSet ds = dal.GetPageList(s.ToString(), Order, CurrentPage, PageSize, col);
+            RePage2(ds);
         }
 
         private void ClearMemberOrderToWork()
