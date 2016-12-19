@@ -129,7 +129,7 @@ function GetMemberInfo() {
                                                $("#sel_ProcessLv").after(w.join(""));
 
                                            }
-
+                                           GetMemberBankCardList();
 
                                        }
                                        else {
@@ -1091,3 +1091,162 @@ function ToOrderInfo(obj) {
 // #endregion
 
 
+// #region 银行卡操作
+
+
+function ToSaveMemberBankCard(obj) {
+
+
+    var MemberBankCardId = ConvertToInt($(obj).attr("MemberBankCardId"));
+
+
+
+
+    var w = [];
+    w.push("<div class='div_SaveBankCard'  >");
+    w.push("<span>银行卡号:</span><input id='txt_BankCardCode'  type='text' value=''  style='width:300px;'   />");
+    w.push("<div class=\"clr\"></div>");
+    w.push("<span>银行名称:</span><input id='txt_BankName'  type='text' value=''   />");
+    w.push("<div class=\"clr\"></div>");
+    w.push("<span>持卡人:</span><input id='txt_BankCardName'  type='text' value=''   />");
+    w.push("<div class=\"clr\"></div>");
+    w.push("<span>开户网点:</span><input id='txt_BankCardAccount'  type='text' value='' style='width:300px;'    />");
+    w.push("<div class=\"clr\"></div>");
+    w.push("<div class='c'>");
+    w.push("<input type='button'  value=' 保 存 ' MemberBankCardId='" + MemberBankCardId + "' onclick='SaveMemberBankCard(" + MemberBankCardId + ")'   />");
+    w.push("</div>");
+    w.push("</div>");
+    PopWindow({
+        title: "编辑用户银行卡信息",
+        html: w.join("")
+
+    }, 500, 300)
+
+
+
+    if (MemberBankCardId > 0)
+    {
+
+
+
+
+        AjaxPost("/amb/", "GetMemberBankCardInfo",
+                                             {
+                                                 MemberBankCardId: MemberBankCardId
+
+                                             }, function (data) {
+                                                 var w = [];
+                                                 if (data.re == "ok") {
+                                                   
+                                                     $("#txt_BankCardCode").val(data.info.BankCardCode);  //银行卡号
+                                                     $("#txt_BankName").val(data.info.BankName);  //银行名称
+                                                     $("#txt_BankCardName").val(data.info.BankCardName);   //持卡人
+                                                     $("#txt_BankCardAccount").val(data.info.BankCardAccount);  //开户行名称
+                                          
+
+                                                 }
+                                                 else {
+                                                     alert(data.re)
+                                                 }
+
+                                             }, false);
+
+
+
+    }
+   
+
+
+
+
+
+}
+
+
+
+function SaveMemberBankCard(MemberBankCardId)
+{
+
+    AjaxPost("/amb/", "SaveMemberBankCard",
+                                     {
+                                         MemberBankCardId: MemberBankCardId,
+                     
+                                         BankCardCode: $("#txt_BankCardCode").val(),
+                                         BankName: $("#txt_BankName").val(),
+                                         BankCardName: $("#txt_BankCardName").val(),
+                                         OrderNo: 1,
+                                         MemberId:MemberId,
+                                         BankCardAccount: $("#txt_BankCardAccount").val(),
+                                         NeedYzm:false
+                                        
+
+                                     }, function (data) {
+                                         var w = [];
+                                         if (data.re == "ok") {
+                                            
+                                             GetMemberBankCardList();
+                                             ClearPopWindow();
+                                         }
+                                         else {
+                                             alert(data.re)
+                                         }
+
+                  
+                                     }, false);
+}
+
+
+function GetMemberBankCardList()
+{
+
+
+
+
+    AjaxPost("/amb/", "GetMemberBankCardList",
+                                         {
+                                             MemberId: MemberId
+
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+                                                 if (data.list.length > 0) {
+                                                     for (var i = 0; i < data.list.length; i++) {
+                                                         var j = data.list[i];
+                                                         w.push("<a  MemberBankCardId='" + j.MemberBankCardId + "'  >");
+                                                         w.push("<h3>" + j.BankCardCode + "</h3>");
+
+                                                         w.push("");
+                                                         w.push("<span>" + j.BankName + "</span>");
+                                                         w.push("<span>" + j.BankCardName + "</span>");
+                                                         w.push("<div class=\"clr\"></div>");
+                                                         w.push("<span>" + j.BankCardAccount + "</span>");
+                                                         w.push("</a>");
+
+                                                     }
+                                                 }
+
+
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+                                             w.push("<a class=\"a_addBankCard\">");
+                                             w.push("</a>");
+                                             w.push("<div class=\"clr\"></div>");
+                                             $("#div_BankCard").html(w.join(""));
+                                             $("#div_BankCard>a").dblclick(function () {
+
+
+                                                 ToSaveMemberBankCard(this);
+
+                                             });
+                                         }, false);
+
+
+}
+
+
+
+
+
+// #endregion

@@ -1158,6 +1158,7 @@ namespace BLL
 
             if (model.MemberBankCardId == 0)
             {
+                model.CreateTime = DateTime.Now;
                 dal.Add(model);
 
             }

@@ -37,6 +37,7 @@ namespace DAL
         }
 
 
+
         /// <summary>
         /// 增加一条数据
         /// </summary>
@@ -44,17 +45,19 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into CORE.dbo.MemberBankCard (");
-            strSql.Append("BankCardCode,BankName,BankCardName,OrderNo,MemberId");
+            strSql.Append("BankCardCode,BankName,BankCardName,OrderNo,MemberId,BankCardAccount,CreateTime");
             strSql.Append(") values (");
-            strSql.Append("@BankCardCode,@BankName,@BankCardName,@OrderNo,@MemberId");
+            strSql.Append("@BankCardCode,@BankName,@BankCardName,@OrderNo,@MemberId,@BankCardAccount,@CreateTime");
             strSql.Append(") ");
             strSql.Append(";");
             SqlParameter[] parameters = {
                         new SqlParameter("@BankCardCode", SqlDbType.VarChar,50) ,
-                        new SqlParameter("@BankName", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@BankName", SqlDbType.VarChar,500) ,
                         new SqlParameter("@BankCardName", SqlDbType.VarChar,50) ,
                         new SqlParameter("@OrderNo", SqlDbType.Int,4) ,
-                        new SqlParameter("@MemberId", SqlDbType.Decimal,9)
+                        new SqlParameter("@MemberId", SqlDbType.Decimal,9) ,
+                        new SqlParameter("@BankCardAccount", SqlDbType.VarChar,150) ,
+                        new SqlParameter("@CreateTime", SqlDbType.DateTime)
 
             };
 
@@ -63,6 +66,8 @@ namespace DAL
             parameters[2].Value = model.BankCardName;
             parameters[3].Value = model.OrderNo;
             parameters[4].Value = model.MemberId;
+            parameters[5].Value = model.BankCardAccount;
+            parameters[6].Value = model.CreateTime;
 
             bool result = false;
             try
@@ -102,16 +107,20 @@ namespace DAL
             strSql.Append(" BankName = @BankName , ");
             strSql.Append(" BankCardName = @BankCardName , ");
             strSql.Append(" OrderNo = @OrderNo , ");
-            strSql.Append(" MemberId = @MemberId  ");
+            strSql.Append(" MemberId = @MemberId , ");
+            strSql.Append(" BankCardAccount = @BankCardAccount , ");
+            strSql.Append(" CreateTime = @CreateTime  ");
             strSql.Append(" where MemberBankCardId=@MemberBankCardId ");
 
             SqlParameter[] parameters = {
                         new SqlParameter("@MemberBankCardId", SqlDbType.Decimal,9) ,
                         new SqlParameter("@BankCardCode", SqlDbType.VarChar,50) ,
-                        new SqlParameter("@BankName", SqlDbType.VarChar,50) ,
+                        new SqlParameter("@BankName", SqlDbType.VarChar,500) ,
                         new SqlParameter("@BankCardName", SqlDbType.VarChar,50) ,
                         new SqlParameter("@OrderNo", SqlDbType.Int,4) ,
-                        new SqlParameter("@MemberId", SqlDbType.Decimal,9)
+                        new SqlParameter("@MemberId", SqlDbType.Decimal,9) ,
+                        new SqlParameter("@BankCardAccount", SqlDbType.VarChar,150) ,
+                        new SqlParameter("@CreateTime", SqlDbType.DateTime)
 
             };
 
@@ -120,7 +129,9 @@ namespace DAL
             parameters[2].Value = model.BankName;
             parameters[3].Value = model.BankCardName;
             parameters[4].Value = model.OrderNo;
-            parameters[5].Value = model.MemberId; try
+            parameters[5].Value = model.MemberId;
+            parameters[6].Value = model.BankCardAccount;
+            parameters[7].Value = model.CreateTime; try
             {//异常处理
                 reCount = this.helper.ExecSqlReInt(strSql.ToString(), parameters);
             }
@@ -143,7 +154,7 @@ namespace DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select MemberBankCardId, BankCardCode, BankName, BankCardName, OrderNo, MemberId  ");
+            strSql.Append("select MemberBankCardId, BankCardCode, BankName, BankCardName, OrderNo, MemberId, BankCardAccount, CreateTime  ");
             strSql.Append("  from CORE.dbo.MemberBankCard ");
             strSql.Append(" where MemberBankCardId=@MemberBankCardId");
             SqlParameter[] parameters = {
@@ -172,6 +183,11 @@ namespace DAL
                 {
                     model.MemberId = decimal.Parse(ds.Tables[0].Rows[0]["MemberId"].ToString());
                 }
+                model.BankCardAccount = ds.Tables[0].Rows[0]["BankCardAccount"].ToString();
+                if (ds.Tables[0].Rows[0]["CreateTime"].ToString() != "")
+                {
+                    model.CreateTime = DateTime.Parse(ds.Tables[0].Rows[0]["CreateTime"].ToString());
+                }
 
                 return model;
             }
@@ -180,6 +196,7 @@ namespace DAL
                 return model;
             }
         }
+
 
 
         /// <summary>

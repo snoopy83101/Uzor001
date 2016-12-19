@@ -1958,7 +1958,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
 
 
-                                                                   w.push("分派:<input type='text' value='" + myp + "' class='txt_AllotOrderToWork c' Color='" + j.Color + "' ClothesSizeName='" + y.ClothesSizeName + "'   OrderDetailId='" + j.OrderDetailId + "'  ClothesSizeId='" + n.ClothesSizeId + "'  MemberId='" + data.OrderToWork.MemberId + "' ");
+                                                                   w.push("分派:<input type='text' value='" + myp + "' class='txt_AllotOrderToWork c' Color='" + j.Color + "'  ClothesSizeName='" + y.ClothesSizeName + "'   OrderDetailId='" + j.OrderDetailId + "'  ClothesSizeId='" + n.ClothesSizeId + "'  MemberId='" + data.OrderToWork.MemberId + "' ");
 
                                                                    if (data.OrderToWork.OrderToWorkStatusId >= 40) {
 
@@ -2095,8 +2095,8 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
                                                if (data.OrderToWork.OrderToWorkStatusId == 10) {
                                                    //派单状态
-
-                                                   w.push("<input type='button'  value='分派工单' onclick='AllotOrderToWork()' id='btn_closeOrderToWork'  />");
+                                                   w.push("<input type='button'  value='剩余全部' onclick='AllNumAllotOrderToWork()' id='btn_closeOrderToWork'  /> ");
+                                                   w.push(" <input type='button'  value='分派工单' onclick='AllotOrderToWork()' id='btn_closeOrderToWork'  /> ");
                                                    w.push("  <input type='button'  value='取消分派' onclick='ClearMemberOrderToWork(this)' id='btn_closeOrderToWork'  />");
 
                                                }
@@ -2115,7 +2115,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
                                                }
                                                else if (data.OrderToWork.OrderToWorkStatusId == 60) {
-                                                   w.push("<input type='button'  value='结算工单' onclick='EndOrderToWork()' id='btn_closeOrderToWork'  />");
+                                                 //  w.push("<input type='button'  value='结算工单' onclick='EndOrderToWork()' id='btn_closeOrderToWork'  />");
 
                                                }
 
@@ -2137,6 +2137,21 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
 }
 
+
+function AllNumAllotOrderToWork()
+{
+
+    $(".txt_AllotOrderToWork").each(function () {
+
+        var max = $(this).attr("max");
+
+        $(this).val(max);
+        $(this).change();
+
+    })
+}
+
+//将工单全部完成(只填写数量不改变状态)
 function ALLDoneOrder()
 {
 

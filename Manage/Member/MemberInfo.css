@@ -87,3 +87,50 @@
                   color: #fff;
             background-color: #58B3F0;
         }
+
+
+.div_BankCard a {
+
+
+    border:1px solid #999999;
+
+    width:250px;
+    height:70px;
+    margin:10px;
+    padding:10px;
+            cursor:pointer;
+
+  display:block;
+  float:left;
+}
+
+    .div_BankCard a:hover {
+
+        background-color:#eee
+
+    }
+
+.a_addBankCard {
+    background-image: url('../Images/add.png'); 
+    background-repeat:no-repeat;
+    background-size:30px 30px;
+    background-position:center center;
+}
+
+.div_SaveBankCard {
+    line-height:50px;
+}
+    .div_SaveBankCard input {
+        height:27px;
+    }
+
+        .div_SaveBankCard input[type=text] {
+            margin-left:10px;
+        }
+
+    .div_SaveBankCard span {
+
+        width:80px;
+       display:inline-block;
+       text-align:right;
+    }

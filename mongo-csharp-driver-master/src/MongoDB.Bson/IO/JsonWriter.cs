@@ -116,6 +116,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{{ \"$binary\" : \"{0}\", \"$type\" : \"{1}\" }}", Convert.ToBase64String(bytes), ((int)subType).ToString("x2"));
                     break;
@@ -181,6 +182,11 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:   //转换新纪元时间
+                    var utcDateTime2 = BsonUtils.ToDateTimeFromMillisecondsSinceEpoch(value);
+                    _textWriter.Write("\"{0}\"", utcDateTime2.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                    break;
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{{ \"$date\" : {0} }}", value);
                     break;
@@ -350,6 +356,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write(value);
                     break;
@@ -422,6 +429,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{ \"$maxKey\" : 1 }");
                     break;
@@ -449,6 +457,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{ \"$minKey\" : 1 }");
                     break;
@@ -496,6 +505,9 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
+                    _textWriter.Write("\"{0}\"", BsonUtils.ToHexString(bytes));
+                    break;
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{{ \"$oid\" : \"{0}\" }}", BsonUtils.ToHexString(bytes));
                     break;
@@ -527,6 +539,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{{ \"$regex\" : \"{0}\", \"$options\" : \"{1}\" }}", EscapedString(pattern), EscapedString(options));
                     break;
@@ -637,6 +650,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{{ \"$timestamp\" : {{ \"t\" : {0}, \"i\" : {1} }} }}", secondsSinceEpoch, increment);
                     break;
@@ -664,6 +678,7 @@ namespace MongoDB.Bson.IO
             WriteNameHelper(Name);
             switch (_jsonWriterSettings.OutputMode)
             {
+                case JsonOutputMode.Default:
                 case JsonOutputMode.Strict:
                     _textWriter.Write("{ \"$undefined\" : true }");
                     break;

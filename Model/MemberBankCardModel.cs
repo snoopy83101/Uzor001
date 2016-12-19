@@ -68,6 +68,22 @@ namespace Model
             get;
             set;
         }
+        /// <summary>
+        /// BankCardAccount
+        /// </summary>		
+        public string BankCardAccount
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// CreateTime
+        /// </summary>		
+        public DateTime CreateTime
+        {
+            get;
+            set;
+        }
 
     }
 }

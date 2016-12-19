@@ -187,7 +187,8 @@ namespace MongoDB.Bson
         public static string ToJson<TNominalType>(
             this TNominalType obj, 
             JsonWriterSettings writerSettings = null,
-            IBsonSerializer<TNominalType> serializer = null, 
+            IBsonSerializer<TNominalType> serializer = null,
+        
             Action<BsonSerializationContext.Builder> configurator = null,
             BsonSerializationArgs args = default(BsonSerializationArgs))
         {

@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Member/MemberPub.master" AutoEventWireup="true" CodeBehind="MemberInfo.aspx.cs" Inherits="Manage.Member.MemberInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-<link type="text/css" rel="stylesheet" href="MemberInfo.css?v=2016121359" />
-<script src="MemberInfo.js?v=2016121359"></script>
+    <link type="text/css" rel="stylesheet" href="MemberInfo.css?v=2016121359" />
+    <script src="MemberInfo.js?v=2016121359"></script>
 
 
 
@@ -10,7 +10,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="div_t">
+    <div class="div_t">
         会员信息
     </div>
     <div class="div_t2">
@@ -25,12 +25,43 @@
             <b tb="3">用户擅长</b>
             <b tb="4" id="b_tab_Team">所在团队</b>
             <b tb="5">他的工单</b>
+            <b tb="6">银行卡</b>
+
+
         </dt>
 
 
 
         <dd style="padding: 10px;">
-            <div tb="5" >
+     
+            <div tb="6">
+                       <div class="div_abstract">
+
+                <p>双击可编辑, 双击加号可新增</p>
+            </div>
+                <div id="div_BankCard" class="div_BankCard">
+
+         <%--           <a>
+                        <h3>6222001603100334329</h3>
+
+                        <span>王力</span>
+                        <span>中国工商银行</span>
+<div class="clr"></div>
+                        <span>xx路支行</span>
+                    </a>
+                      <a class="a_addBankCard">
+          
+
+                      </a>
+                    <div class="clr"></div>--%>
+                </div>
+
+
+
+
+
+            </div>
+            <div tb="5">
 
 
 
@@ -40,23 +71,21 @@
 
                         <tr>
                             <th>订单编号</th>
-                             <th>订单名称</th>
+                            <th>订单名称</th>
 
-                             <th>领取裁片</th>
-                             <th>交货日期</th>
-                             <th>工单状态</th>
+                            <th>领取裁片</th>
+                            <th>交货日期</th>
+                            <th>工单状态</th>
 
-                       
+
                         </tr>
 
                     </thead>
-                    <tbody id="tbody_OrderToWork" >
-                       
+                    <tbody id="tbody_OrderToWork">
                     </tbody>
                 </table>
 
                 <%=Common.HtmlHelper.ZyPagerHtml("OrderToWork") %>
-
             </div>
 
             <div tb="4">
@@ -140,10 +169,10 @@
                             </td>
                         </tr>
                         <tr>
-                              <th>生产档期:
+                            <th>生产档期:
                             </th>
                             <td>
-                               <span id="sp_MaxOrderPlanningTime" ></span>
+                                <span id="sp_MaxOrderPlanningTime"></span>
                                 <input type="button" value="刷 新" onclick="ReSetMaxOrderPlanningTime()" />
                             </td>
 
@@ -184,8 +213,9 @@
                         <tr>
                             <th>技能:</th>
                             <td>
-                               
-                                <input type="button"  value="更 改" onclick="SetSkill()"/> <div id="div_Skill" style="width:300px; display:inline-block;"> 
+
+                                <input type="button" value="更 改" onclick="SetSkill()" />
+                                <div id="div_Skill" style="width: 300px; display: inline-block;">
                                 </div>
 
                             </td>

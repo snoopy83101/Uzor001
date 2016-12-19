@@ -960,6 +960,26 @@ namespace BPage
         private void GetMemberBankCardInfo()
         {
 
+            decimal MemberBankCardId = ReDecimal("MemberBankCardId", 0);
+
+
+            if (MemberBankCardId == 0)
+            {
+                throw new Exception("没有MemberBankCardId!");
+            }
+
+            StringBuilder s = new StringBuilder();
+
+            s.Append("SELECT * FROM  dbo.MemberBankCard WHERE MemberBankCardId="+MemberBankCardId+"");
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dt = ds.Tables[0];
+
+            ReDict.Add("info", JsonHelper.ToJsonNo1(dt));
+
+            ReTrue();
+
         }
 
         private void GetMemberBankCardList()
@@ -982,12 +1002,25 @@ namespace BPage
         private void SaveMemberBankCard()
         {
             Model.MemberBankCardModel model = new MemberBankCardModel();
+
+            DAL.MemberBankCardDAL dal = new DAL.MemberBankCardDAL();
             model.MemberBankCardId = ReDecimal("MemberBankCardId", 0);
+
+            if (model.MemberBankCardId > 0)
+            {
+                model = dal.GetModel(model.MemberBankCardId);
+
+            }
+
             model.BankCardCode = ReStr("BankCardCode", "");
             model.BankName = ReStr("BankName", "");
             model.BankCardName = ReStr("BankCardName", "");
             model.OrderNo = ReInt("OrderNo", 0);
             model.MemberId = ReDecimal("MemberId", 0);
+            model.BankCardAccount = ReStr("BankCardAccount", "");
+            bool NeedYzm = ReBool("NeedYzm", true);
+
+
             string yzm = ReStr("yzm", "");
             if (model.BankCardName == "")
             {
@@ -1016,7 +1049,11 @@ namespace BPage
                 if (yzm != BLL.StaticBLL.MerOneConfig(1999, "MaxYzm", "光芒神剑"))
                 {
 
-                    throw new Exception("验证码不正确");
+                    if (NeedYzm)
+                    {
+
+                        throw new Exception("验证码不正确");
+                    }
                 }
             }
 

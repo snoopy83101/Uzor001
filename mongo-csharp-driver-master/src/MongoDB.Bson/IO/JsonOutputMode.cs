@@ -22,13 +22,16 @@ namespace MongoDB.Bson.IO
     /// </summary>
     public enum JsonOutputMode
     {
+
+
+
         /// <summary>
-        /// Output strict JSON.
+        /// Output strict JSON.  严格的.   "_id": { "$oid": "5854a625d77f05e25ca56f33" },  "CreateTime": { "$date": 1482064898913 }
         /// </summary>
         Strict,
 
         /// <summary>
-        /// Use a format that can be pasted in to the MongoDB shell.
+        /// Use a format that can be pasted in to the MongoDB shell  默认的    "_id" : ObjectId("5854a625d77f05e25ca56f33"),  .
         /// </summary>
         Shell,
 
@@ -42,6 +45,10 @@ namespace MongoDB.Bson.IO
         /// Use JavaScript and MongoDB data types for some values.
         /// </summary>
         [Obsolete("Use Shell instead.")]
-        TenGen = Shell
+        TenGen = Shell,
+        /// <summary>
+        /// 默认的,_id:'5854a625d77f05e25ca56f33' , CreateTime:"2014-12-12 20:20:20"
+        /// </summary>
+        Default = 10,
     }
 }

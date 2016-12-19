@@ -43,10 +43,6 @@
     <Reference Include="LitJson">
       <HintPath>..\..\Dll\LitJson.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MyDll\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
@@ -130,6 +126,10 @@
     <Compile Include="WxBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
+      <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
+      <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\cn.jpush.api\cn.jpush.api.csproj">
       <Project>{e281d457-f259-4f0b-8608-16c81d8ae97b}</Project>
       <Name>cn.jpush.api</Name>

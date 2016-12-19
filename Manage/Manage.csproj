@@ -96,10 +96,6 @@
       <HintPath>..\packages\Microsoft.Extensions.Primitives.1.0.0\lib\netstandard1.0\Microsoft.Extensions.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -203,6 +199,7 @@
     <Content Include="Merchant\SetUp.css" />
     <Content Include="Merchant\SetUp.js" />
     <Content Include="Merchant\TalkingData.aspx" />
+    <Content Include="MongoDBTest1.aspx" />
     <Content Include="Order\AddOrderInfo.aspx" />
     <Content Include="Order\AddOrderInfo.js" />
     <Content Include="Order\OrderInfo.aspx" />
@@ -234,6 +231,7 @@
     <None Include="Properties\PublishProfiles\fabu.pubxml" />
     <Content Include="Script\address.json" />
     <Content Include="Script\json.json" />
+    <Content Include="test\json.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -542,6 +540,13 @@
     <Compile Include="Merchant\TalkingData.aspx.designer.cs">
       <DependentUpon>TalkingData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MongoDBTest1.aspx.cs">
+      <DependentUpon>MongoDBTest1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MongoDBTest1.aspx.designer.cs">
+      <DependentUpon>MongoDBTest1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Order\AddOrderInfo.aspx.cs">
       <DependentUpon>AddOrderInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -632,6 +637,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
+      <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
+      <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ajax\Ajax.csproj">
       <Project>{ff735421-c80c-4623-ba36-4ec1bcc5acf8}</Project>
       <Name>Ajax</Name>

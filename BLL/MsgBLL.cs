@@ -12,6 +12,8 @@ using Common;
 using System.IO;
 using io.rong;
 using LitJson;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace BLL
 {
@@ -113,13 +115,13 @@ namespace BLL
                 s.Append(" UPDATE DBMSG.dbo.Device SET MsgNum=@MsgNum where DeviceId='" + DeviceId + "' ");
                 s.Append(" SELECT @MsgNum as MsgNum, @MsgTypeName as MsgTypeName ");
 
-                JsonData Extra = new JsonData();
+                JObject Extra = new JObject();
 
 
 
                 try
                 {
-                    Extra = JsonMapper.ToObject(MsgTextModel.Extra);
+                    Extra =  JObject.Parse(MsgTextModel.Extra);
                 }
                 catch (Exception)
                 {
@@ -144,7 +146,7 @@ namespace BLL
                    SendDeviceId,
                     DeviceId,
                    "RC:TxtMsg", //消息类型
-                   " {\"content\":\"" + MsgTextModel.MsgTitle + "\",\"extra\":" + Extra.ToJson() + "}" //消息内容
+                   " {\"content\":\"" + MsgTextModel.MsgTitle + "\",\"extra\":" + Extra.ToString() + "}" //消息内容
                    , "");
 
             }
