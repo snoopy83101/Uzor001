@@ -51,9 +51,6 @@
     <Content Include="ImgUp.aspx" />
     <Content Include="JobAjax.aspx" />
     <Content Include="ReQyWx.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="AjaxArticle.ashx" />
     <Content Include="AjaxMember.ashx" />
     <Content Include="AjaxMerchant.ashx" />
@@ -70,7 +67,9 @@
     <Content Include="AjaxOrder.ashx" />
     <Content Include="ImgUp.ashx" />
     <Content Include="AjaxMsg.ashx" />
+    <Content Include="AjaxAd.ashx" />
     <None Include="Properties\PublishProfiles\fabu.pubxml" />
+    <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -81,6 +80,9 @@
   <ItemGroup>
     <Compile Include="AjaxAbout.ashx.cs">
       <DependentUpon>AjaxAbout.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="AjaxAd.ashx.cs">
+      <DependentUpon>AjaxAd.ashx</DependentUpon>
     </Compile>
     <Compile Include="AjaxBBs.ashx.cs">
       <DependentUpon>AjaxBBs.ashx</DependentUpon>
@@ -146,6 +148,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
+      <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
+      <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{509e8254-50e2-4b79-b148-809b51c87489}</Project>
       <Name>BLL</Name>
@@ -165,6 +171,18 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Bson\MongoDB.Bson.csproj">
+      <Project>{0e9a3a2a-49cd-4f6c-847c-dc79b4b65ce6}</Project>
+      <Name>MongoDB.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj">
+      <Project>{da56482a-5d8f-41e0-85e6-1f22b310f91b}</Project>
+      <Name>MongoDB.Driver.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver\MongoDB.Driver.csproj">
+      <Project>{ae5166cd-76b0-4911-bd80-ced9521f37a1}</Project>
+      <Name>MongoDB.Driver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

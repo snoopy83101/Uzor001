@@ -45,9 +45,9 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into CORE.dbo.MemberBankCard (");
-            strSql.Append("BankCardCode,BankName,BankCardName,OrderNo,MemberId,BankCardAccount,CreateTime");
+            strSql.Append("BankCardCode,BankName,BankCardName,OrderNo,MemberId,BankCardAccount,CreateTime,BankId");
             strSql.Append(") values (");
-            strSql.Append("@BankCardCode,@BankName,@BankCardName,@OrderNo,@MemberId,@BankCardAccount,@CreateTime");
+            strSql.Append("@BankCardCode,@BankName,@BankCardName,@OrderNo,@MemberId,@BankCardAccount,@CreateTime,@BankId");
             strSql.Append(") ");
             strSql.Append(";");
             SqlParameter[] parameters = {
@@ -57,7 +57,8 @@ namespace DAL
                         new SqlParameter("@OrderNo", SqlDbType.Int,4) ,
                         new SqlParameter("@MemberId", SqlDbType.Decimal,9) ,
                         new SqlParameter("@BankCardAccount", SqlDbType.VarChar,150) ,
-                        new SqlParameter("@CreateTime", SqlDbType.DateTime)
+                        new SqlParameter("@CreateTime", SqlDbType.DateTime) ,
+                        new SqlParameter("@BankId", SqlDbType.VarChar,50)
 
             };
 
@@ -68,6 +69,7 @@ namespace DAL
             parameters[4].Value = model.MemberId;
             parameters[5].Value = model.BankCardAccount;
             parameters[6].Value = model.CreateTime;
+            parameters[7].Value = model.BankId;
 
             bool result = false;
             try
@@ -109,7 +111,8 @@ namespace DAL
             strSql.Append(" OrderNo = @OrderNo , ");
             strSql.Append(" MemberId = @MemberId , ");
             strSql.Append(" BankCardAccount = @BankCardAccount , ");
-            strSql.Append(" CreateTime = @CreateTime  ");
+            strSql.Append(" CreateTime = @CreateTime , ");
+            strSql.Append(" BankId = @BankId  ");
             strSql.Append(" where MemberBankCardId=@MemberBankCardId ");
 
             SqlParameter[] parameters = {
@@ -120,7 +123,8 @@ namespace DAL
                         new SqlParameter("@OrderNo", SqlDbType.Int,4) ,
                         new SqlParameter("@MemberId", SqlDbType.Decimal,9) ,
                         new SqlParameter("@BankCardAccount", SqlDbType.VarChar,150) ,
-                        new SqlParameter("@CreateTime", SqlDbType.DateTime)
+                        new SqlParameter("@CreateTime", SqlDbType.DateTime) ,
+                        new SqlParameter("@BankId", SqlDbType.VarChar,50)
 
             };
 
@@ -131,7 +135,8 @@ namespace DAL
             parameters[4].Value = model.OrderNo;
             parameters[5].Value = model.MemberId;
             parameters[6].Value = model.BankCardAccount;
-            parameters[7].Value = model.CreateTime; try
+            parameters[7].Value = model.CreateTime;
+            parameters[8].Value = model.BankId; try
             {//异常处理
                 reCount = this.helper.ExecSqlReInt(strSql.ToString(), parameters);
             }
@@ -154,7 +159,7 @@ namespace DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select MemberBankCardId, BankCardCode, BankName, BankCardName, OrderNo, MemberId, BankCardAccount, CreateTime  ");
+            strSql.Append("select MemberBankCardId, BankCardCode, BankName, BankCardName, OrderNo, MemberId, BankCardAccount, CreateTime, BankId  ");
             strSql.Append("  from CORE.dbo.MemberBankCard ");
             strSql.Append(" where MemberBankCardId=@MemberBankCardId");
             SqlParameter[] parameters = {
@@ -188,6 +193,7 @@ namespace DAL
                 {
                     model.CreateTime = DateTime.Parse(ds.Tables[0].Rows[0]["CreateTime"].ToString());
                 }
+                model.BankId = ds.Tables[0].Rows[0]["BankId"].ToString();
 
                 return model;
             }

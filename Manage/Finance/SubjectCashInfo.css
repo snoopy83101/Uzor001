@@ -1,0 +1,44 @@
+﻿body {
+}
+
+
+.div_BankCardList {
+}
+
+    .div_BankCardList a {
+
+        display:block;
+
+        width:300px;
+        height:250px;
+        float:left;
+        border:1px solid #bbb;
+        padding:5px;
+        margin:5px;
+
+    }
+
+
+        .div_BankCardList a span {
+
+            display:block;
+            line-height:30px;
+        }
+
+            .div_BankCardList a span b {
+
+                font-weight:normal;
+
+                display:inline-block;
+                width:70px;
+                text-align:right;
+                margin-right:10px;
+            }
+
+    .div_BankCardList input[type=button] {
+
+        line-height:40px;
+        height:40px;
+        width:100px;
+        cursor:pointer;
+    }

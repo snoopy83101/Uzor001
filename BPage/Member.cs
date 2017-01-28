@@ -9,6 +9,9 @@ using Model;
 using System.Transactions;
 using io.rong;
 using BLL;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using MongoDB.Bson;
 
 namespace BPage
 {
@@ -25,6 +28,13 @@ namespace BPage
                 switch (para)
                 {
 
+
+                    #region 用户日志
+
+                    case "GetMemberLogList":
+                        GetMemberLogList();
+                        break;
+                    #endregion
 
                     #region 用户档期
 
@@ -76,6 +86,10 @@ namespace BPage
                     #region 用户余额
                     #region 银行卡操作
 
+                    case "GetSubjectCashInfo":
+                        GetSubjectCashInfo();
+                        break;
+
                     case "RefuseSubjectCash":
                         RefuseSubjectCash();   //拒绝提现申请
                         break;
@@ -89,7 +103,7 @@ namespace BPage
                         GetSubjectCashList();
                         break;
                     case "SaveSubjectCash":
-                        SaveSubjectCash();
+                        SaveSubjectCash();  //保存提现申请
                         break;
                     case "SaveMemberBankCard":
                         SaveMemberBankCard();
@@ -119,7 +133,13 @@ namespace BPage
 
                     #region 用户技能级别相关
 
-                    case "SaveProcessLvSubject":
+
+                    case "SaveProcessLvSubjectOnly":
+                        SaveProcessLvSubjectOnly();
+                        break;
+
+
+                    case "SaveProcessLvSubject":  //已过时
                         SaveProcessLvSubject();
                         break;
 
@@ -146,7 +166,7 @@ namespace BPage
 
 
                     #endregion
-                        
+
                     #region 消费统计
 
                     case "GetQianDaoCountByTimeSolt":
@@ -392,6 +412,30 @@ namespace BPage
                     case "SaveMyMember":
                         SaveMyMember();  //用户保存自己的会员信息时调用
                         break;
+
+
+                    #region 用户认证
+
+
+
+                    #region 实名认证
+
+
+                    case "SaveAuthenticationSubject":
+                        SaveAuthenticationSubject();    //保存用户实名认证的申请
+                        break;
+                    case "AuthenticationStatusChange":
+                        AuthenticationStatusChange();     //改变实名认证的状态
+                        break;
+                    #endregion
+
+
+
+
+
+                    #endregion
+
+
                     case "AcceptProcessLv":
                         AcceptProcessLv();  //通过技能认证
                         break;
@@ -424,6 +468,363 @@ namespace BPage
 
             }
             context.Response.End();
+        }
+
+        private void GetMemberLogList()
+        {
+            int CurrentPage = ReInt("CurrentPage", 1);
+            string col = ReStr("col", "*");
+            int PageSize = ReInt("PageSize", 20);
+            BsonDocument Order = ReBson("Order");
+
+            string MemberId = ReStr("MemberId", "");
+            if (MemberId == "")
+            {
+
+                throw new Exception("MemberId不能为空!");
+            }
+            BsonDocument b = new BsonDocument();
+
+            b["MemberId"] = MemberId;
+
+
+            JObject j = DAL.Mongo.Find(b, CurrentPage, PageSize, "MemberLog", Order, "log");
+            RePage(j);
+
+        }
+
+        private void SaveProcessLvSubjectOnly()
+        {
+            BLL.MemberBLL bll = new MemberBLL();
+
+
+
+
+
+
+
+            decimal MemberId = ReDecimal("MemberId", 0);
+            if (MemberId == 0)
+            {
+                throw new Exception("MemberId不能为空!");
+            }
+            #region 获取必填内容
+            int ProcessLvId = ReInt("ProcessLvId", 0);
+
+            int ProcessLvStatusId = 10;
+
+            int SkillId = ReInt("SkillId", 0);
+
+            #endregion
+
+
+
+            #region 获取选填内容
+
+
+
+            string SfzImg1 = ReStr("SfzImg1", "");
+            string SfzImg2 = ReStr("SfzImg2", "");
+
+
+            string Sex = ReStr("Sex", "");
+            string RealName = ReStr("RealName", "");
+            string SfzNo = ReStr("SfzNo", "");
+
+
+
+
+
+            string AreaId = ReStr("AreaId", "");
+            string Address = ReStr("Address", "");
+
+            #endregion
+
+
+            if (SkillId == 0)
+            {
+                throw new Exception("技能必须填写!");
+            }
+
+            #region 验证
+
+            #endregion
+
+            StringBuilder s = new StringBuilder();
+
+
+
+
+            #region 事务开启
+
+            TransactionOptions transactionOption = new TransactionOptions();
+            transactionOption.IsolationLevel = Common.Tran.isolationLevel(System.Transactions.IsolationLevel.ReadUncommitted);
+            using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
+            {
+                #endregion
+
+
+
+                string Phone = DAL.DalComm.ExStr("SELECT Phone FROM dbo.Member WHERE MemberId=" + MemberId + "");
+
+
+                bll.SaveOneSkill(new MemberVsSkillModel()
+                {
+
+                    SkillId = SkillId,
+                    MemberId = MemberId
+
+                });
+
+                s.Append(" UPDATE dbo.Member SET ");
+
+
+
+                #region 检测选填内容改动
+
+                if (SfzImg1 != "")
+                {
+                    s.Append(" SfzImg1='" + SfzImg1 + "', ");
+                }
+                if (SfzImg2 != "")
+                {
+                    s.Append(" SfzImg2='" + SfzImg2 + "', ");
+                }
+                if (Sex != "")
+                {
+                    s.Append(" Sex='" + Sex + "', ");
+                }
+                if (RealName != "")
+                {
+                    s.Append(" RealName='" + RealName + "', ");
+                }
+                if (SfzNo != "")
+                {
+                    s.Append(" SfzNo='" + SfzNo + "', ");
+                }
+                if (AreaId != "")
+                {
+                    s.Append(" AreaId='" + AreaId + "', ");
+                }
+                if (Address != "")
+                {
+                    s.Append(" Address='" + Address + "', ");
+                }
+
+                #endregion
+
+
+                s.Append(" ProcessLvStatusId=" + ProcessLvStatusId + ", ");
+
+
+
+
+
+                s.Append(" ProcessLvId=" + ProcessLvId + " ");
+                s.Append(" where MemberId=" + MemberId + "  ");
+
+
+                BLL.MsgBLL msgBll = new BLL.MsgBLL();
+
+                msgBll.SendMsgToUser("1999001", new MsgTextModel()
+                {
+                    CreateTime = DateTime.Now,
+                    MsgContent = "用户[" + Phone + "]申请了技能认证",
+                    MsgTitle = "用户[" + Phone + "]申请了技能认证",
+                    MsgType = "SaveProcessLvSubject",
+                    EndTime = DateTime.Now.AddDays(1),
+                    Extra = "{MemberId:" + MemberId + "}"
+
+
+                });
+
+
+
+                DAL.DalComm.ExReInt(s.ToString());
+
+                #region 事务关闭
+
+                transactionScope.Complete();
+
+            }
+            #endregion
+            ReTrue();
+        }
+
+        private void SaveAuthenticationSubject()
+        {
+            BLL.MemberBLL bll = new MemberBLL();
+            string SfzImg1 = ReStr("SfzImg1", "");
+            string SfzImg2 = ReStr("SfzImg2", "");
+
+
+            string Sex = ReStr("Sex", "");
+            string RealName = ReStr("RealName", "");
+            string SfzNo = ReStr("SfzNo", "");
+
+
+
+
+
+            string AreaId = ReStr("AreaId", "");
+            string Address = ReStr("Address", "");
+
+            decimal MemberId = ReDecimal("MemberId", 0);
+            if (MemberId == 0)
+            {
+                throw new Exception("MemberId不能为空!");
+            }
+
+            //int ProcessLvId = ReInt("ProcessLvId", 0);
+
+            //int ProcessLvStatusId = 10;
+
+
+
+            #region 验证
+            if (RealName == "")
+            {
+                throw new Exception("姓名不能为空!");
+            }
+
+
+
+            if (RealName.Length > 4)
+            {
+                throw new Exception("姓名不能大于四个汉字!");
+            }
+            if (!Common.Validator.IsChinese(RealName))
+            {
+                throw new Exception("姓名必须为中文汉字!");
+            }
+            if (!Common.Validator.IsIDCard(SfzNo))
+            {
+                throw new Exception("必须输入正确的身份证号码");
+            }
+            if (SfzImg1 == "" || SfzImg2 == "")
+            {
+                throw new Exception("必须上传身份证原件双面");
+            }
+
+
+            if (AreaId == "")
+            {
+                throw new Exception("区县不能为空!");
+            }
+
+            if (Address == "")
+            {
+                throw new Exception("详细地址必须填写!");
+            }
+
+            #endregion
+
+            StringBuilder s = new StringBuilder();
+
+
+
+
+            #region 事务开启
+
+            TransactionOptions transactionOption = new TransactionOptions();
+            transactionOption.IsolationLevel = Common.Tran.isolationLevel(System.Transactions.IsolationLevel.ReadUncommitted);
+            using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
+            {
+                #endregion
+
+                JObject j = bll.OnlySfzNo(SfzNo, MemberId);
+
+                if ((bool)j["re"] == false)
+                {
+                    throw new Exception("该身份证号[" + SfzNo + "]已经有其他用户登记了");
+
+                }
+
+
+
+
+                //bll.SaveOneSkill(new MemberVsSkillModel()
+                //{
+
+                //    SkillId = SkillId,
+                //    MemberId = MemberId
+
+                //});
+
+                s.Append(" UPDATE dbo.Member SET ");
+                s.Append(" AreaId='" + AreaId + "', ");
+                s.Append(" RealName='" + RealName + "', ");
+                s.Append(" Sex='" + Sex + "', ");
+                s.Append(" SfzNo='" + SfzNo + "', ");
+                s.Append(" SfzImg1='" + SfzImg1 + "', ");
+                s.Append(" SfzImg2='" + SfzImg2 + "',  ");
+                s.Append(" AuthenticationStatusId=10, ");
+                s.Append(" Address='" + Address + "'");
+
+                s.Append(" where MemberId=" + MemberId + "  ");
+
+
+                BLL.MsgBLL msgBll = new BLL.MsgBLL();
+
+                msgBll.SendMsgToUser("1999001", new MsgTextModel()
+                {
+                    CreateTime = DateTime.Now,
+                    MsgContent = "用户:" + RealName + "申请了实名认证",
+                    MsgTitle = "用户:" + RealName + "申请了实名认证",
+                    MsgType = "SaveAuthenticationSubject",
+                    EndTime = DateTime.Now.AddDays(1),
+                    Extra = "{MemberId:" + MemberId + "}"
+
+
+                });
+
+
+
+                DAL.DalComm.ExReInt(s.ToString());
+
+                #region 事务关闭
+
+                transactionScope.Complete();
+
+            }
+            #endregion
+
+
+
+
+
+
+            ReTrue();
+
+        }
+
+        private void GetSubjectCashInfo()
+        {
+            StringBuilder s = new StringBuilder();
+
+            decimal SubjectCashId = ReDecimal("SubjectCashId", 0);
+            if (SubjectCashId == 0)
+            {
+
+                throw new Exception("SubjectCashId不能为0!");
+            }
+
+
+            s.Append(" DECLARE @SubjectCashId AS DECIMAL  =" + SubjectCashId + " ");
+            s.Append(" DECLARE @MemberId AS DECIMAL = (SELECT TOP 1 MemberId FROM dbo.SubjectCash WHERE SubjectCashId=@SubjectCashId) ");
+            s.Append(" DECLARE @MemberBankCardId AS DECIMAL =(SELECT TOP 1 MemberBankCardId FROM dbo.SubjectCash WHERE SubjectCashId=@SubjectCashId) ");
+            s.Append(" SELECT * FROM dbo.SubjectCashView WHERE SubjectCashId=@SubjectCashId ");
+            s.Append(" SELECT RealName,Phone,Address,ProvinceName,CityName,AreaName,Amount FROM dbo.MemberView WHERE  MemberId= @MemberId ");
+            s.Append(" SELECT * FROM dbo.MemberBankCard WHERE MemberId=@MemberId ");
+            s.Append(" AND MemberBankCardId=@MemberBankCardId ");
+            s.Append("  ");
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            ReDict.Add("SubInfo", JsonHelper.ToJsonNo1(ds.Tables[0]));
+            ReDict.Add("MemberInfo", JsonHelper.ToJsonNo1(ds.Tables[1]));
+            ReDict.Add("BankCardInfo", JsonHelper.ToJsonNo1(ds.Tables[2]));
+            ReTrue();
         }
 
         private void ReSetMaxOrderPlanningTime()
@@ -806,6 +1207,32 @@ namespace BPage
 
         }
 
+
+        void AuthenticationStatusChange()
+        {
+            decimal MemberId = ReDecimal("MemberId", 0);
+            int AuthenticationStatusId = ReInt("AuthenticationStatusId");
+            if (MemberId == 0)
+            {
+
+                throw new Exception("MemberId不能为0");
+            }
+
+
+            BLL.MemberBLL bll = new MemberBLL();
+
+            bll.AuthenticationStatusChange(MemberId, AuthenticationStatusId);
+
+
+
+
+
+            ReTrue();
+
+
+
+        }
+
         private void ProcessLvStatusChange()
         {
             decimal MemberId = ReDecimal("MemberId", 0);
@@ -921,8 +1348,12 @@ namespace BPage
 
 
 
+            decimal MerId = ReDecimal("MerId", 0);
 
-
+            if (MerId == 0)
+            {
+                throw new Exception("MerId不能为0!");
+            }
 
             if (model.SubjectCashId == 0)
             {
@@ -942,12 +1373,21 @@ namespace BPage
             model.SubjectCashStatusId = ReInt("SubjectCashStatusId", 0);
             model.Memo = ReStr("Memo", "");
             model.DoneTime = ReTime("DoneTime", DateTime.Now);
+            model.MemberBankCardId = ReDecimal("MemberBankCardId", 0);
+
+            if (model.MemberBankCardId == 0)
+            {
+
+                model.MemberBankCardId = DAL.DalComm.ExDecimal("  SELECT TOP 1 MemberBankCardId FROM dbo.MemberBankCard WHERE MemberId=" + model.MemberId + " Order by OrderNo desc ");
+            }
 
             BLL.MemberBLL bll = new BLL.MemberBLL();
 
-            if (model.Amount < 100)
+            decimal MinAmount = decimal.Parse(BLL.StaticBLL.MerOneConfig(MerId, "SubjectCashMinAmount", "200"));
+
+            if (model.Amount < MinAmount)
             {
-                throw new Exception("提现金额不能小于100元");
+                throw new Exception("提现金额不能小于" + MinAmount + "元");
             }
 
             bll.SaveSubjectCash(model);
@@ -970,7 +1410,7 @@ namespace BPage
 
             StringBuilder s = new StringBuilder();
 
-            s.Append("SELECT * FROM  dbo.MemberBankCard WHERE MemberBankCardId="+MemberBankCardId+"");
+            s.Append("SELECT * FROM  dbo.MemberBankCard WHERE MemberBankCardId=" + MemberBankCardId + "");
 
             DataSet ds = DAL.DalComm.BackData(s.ToString());
 
@@ -1011,14 +1451,42 @@ namespace BPage
                 model = dal.GetModel(model.MemberBankCardId);
 
             }
-
+            BLL.MemberBLL bll = new BLL.MemberBLL();
             model.BankCardCode = ReStr("BankCardCode", "");
             model.BankName = ReStr("BankName", "");
             model.BankCardName = ReStr("BankCardName", "");
             model.OrderNo = ReInt("OrderNo", 0);
             model.MemberId = ReDecimal("MemberId", 0);
             model.BankCardAccount = ReStr("BankCardAccount", "");
+            model.BankId = ReStr("BankId", "");
             bool NeedYzm = ReBool("NeedYzm", true);
+
+            bool NeedRealName = ReBool("NeedRealName", true);
+
+
+            bool NeedRead = ReBool("NeedRead", true);
+
+            if (NeedRead)
+            {
+                BLL.CommBLL cbll = new CommBLL();
+
+                JObject j = cbll.ReadBankCard(model.BankCardCode);
+
+                if ((string)j["re"] == "ok")
+                {
+                    model.BankName = j["BankName"].ToString();
+                    model.BankId = j["BankId"].ToString();
+
+                }
+
+                if (j["BankName"].ToString() == "")
+                {
+
+                    throw new Exception("无法识别银行卡，如果确定卡号无误，请电话联系我们的客服人员!");
+                }
+
+
+            }
 
 
             string yzm = ReStr("yzm", "");
@@ -1038,12 +1506,32 @@ namespace BPage
 
             StringBuilder s = new StringBuilder();
             s.Append(" DECLARE @PhoneNo AS VARCHAR(50) =(SELECT TOP 1 Phone FROM CORE.dbo.Member WHERE MemberId=" + model.MemberId + ") ");
-            s.Append("  SELECT count(0) FROM   DBLOG.dbo.StMsg WHERE PhoneNo=@PhoneNo AND CreateTime >'" + DateTime.Now.AddDays(-2) + "' AND  ReKey='" + yzm + "' ");
+            s.Append("  SELECT count(0) as i FROM   DBLOG.dbo.StMsg WHERE PhoneNo=@PhoneNo AND CreateTime >'" + DateTime.Now.AddDays(-2) + "' AND  ReKey='" + yzm + "' ");
+            s.Append(" select RealName from dbo.Member where MemberId=" + model.MemberId + " ");
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dtYzm = ds.Tables[0];
+            int i = (int)dtYzm.Rows[0]["i"];
+            DataTable dtMember = ds.Tables[1];
+
+            if (NeedRealName)
+            {
+                DataRow drMember = dtMember.Rows[0];
+                if (model.BankCardName == drMember["RealName"].ToString())
+                {
+
+
+                }
+                else
+                {
+                    throw new Exception("持卡人姓名必须是您本人!");
+                }
 
 
 
-            int i = DAL.DalComm.ExInt(s.ToString());
 
+            }
             if (i == 0)
             {
                 if (yzm != BLL.StaticBLL.MerOneConfig(1999, "MaxYzm", "光芒神剑"))
@@ -1057,7 +1545,13 @@ namespace BPage
                 }
             }
 
-            BLL.MemberBLL bll = new BLL.MemberBLL();
+
+
+
+
+
+
+
             bll.SaveMemberBankCard(model);
             ReTrue();
         }
@@ -1148,7 +1642,7 @@ namespace BPage
                 BLL.MemberBLL bll = new MemberBLL();
 
                 bll.AcceptProcessLv(MemberId);
-             #region 事务关闭
+                #region 事务关闭
 
                 transactionScope.Complete();
 
@@ -1243,8 +1737,19 @@ namespace BPage
 
             DataTable dt = ds.Tables[0];
 
+            BsonDocument b = new BsonDocument();
+            b["MemberId"] = MemberId.ToString();
+            JArray ja = DAL.Mongo.Find(b, "Member", "uzor");
+
+            JObject j = new JObject();
+            if (ja.Count > 0)
+            {
+                j = (JObject)ja[0];
+            }
+
             ReDict.Add("info", JsonHelper.ToJsonNo1(dt));
             ReDict.Add("Skill", JsonHelper.ToJson(ds.Tables[1]));
+            ReDict.Add("Count", JsonHelper.ToJsonNo1(j));
             ReTrue();
         }
 
@@ -1333,6 +1838,16 @@ namespace BPage
             using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
             {
                 #endregion
+
+                JObject j = bll.OnlySfzNo(SfzNo, MemberId);
+
+                if ((bool)j["re"] == false)
+                {
+                    throw new Exception("该身份证号[" + SfzNo + "]已经有其他用户登记了");
+
+                }
+
+
 
 
                 bll.SaveOneSkill(new MemberVsSkillModel()

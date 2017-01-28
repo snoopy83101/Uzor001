@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Timepicker Demo</title>
+    <link type="text/css" href="css/jquery-ui-1.11.4.css" rel="stylesheet" />
+    <link type="text/css" href="css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <script src="http://localhost:98/Script/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.11.4.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="js/jquery-ui-timepicker-zh-CN.js"></script>
+    <script type="text/javascript">
+	    $(function () {
+	        $(".ui_timepicker").datetimepicker({
+	        	defaultDate: $('.ui_timepicker').val(),
+	            dateFormat: "yy-mm-dd",
+	            showSecond: true,
+	            timeFormat: 'HH:mm:ss',
+	            stepHour: 1,
+	            stepMinute: 1,
+	            stepSecond: 1
+	        })
+	    })
+    </script>
+</head>
+<body>
+<div style="margin: 200px;">
+	<input type="text"  class="ui_timepicker" value="">
+</div>
+</body>
+</html>

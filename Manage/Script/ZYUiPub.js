@@ -1,4 +1,5 @@
-﻿/// <reference path="ZYUiPub.js" />
+﻿/// <reference path="../PubUI/jquery-ui-1.12.1/js/jquery-ui-timepicker-addon.js" />
+/// <reference path="ZYUiPub.js" />
 /// <reference path="jquery-1.8.2.js" />
 
 
@@ -1341,16 +1342,33 @@ function loadExtentFile(filePath, fileType) {
         oJs.setAttribute("type", "text/javascript");
         oJs.setAttribute("src", filePath);//文件的地址 ,可为绝对及相对路径
 
-        document.getElementsByTagName("head")[0].appendChild(oJs);//绑定
+        var i = $("head script[src='" + filePath + "']").length;
+        if (i > 0) {
+          //  alert("已加载js文件");
+        }
+        else {
+            document.getElementsByTagName("head")[0].appendChild(oJs);//绑定
+
+        }
+
+
+ 
 
     } else if (fileType == "css") {
 
-        var oCss = document.create_rElement("link");
+        var oCss = document.createElement("link");
         oCss.setAttribute("rel", "stylesheet");
         oCss.setAttribute("type", "text/css");
         oCss.setAttribute("href", filePath);
+        var i = $("head link[href='" + filePath + "']").length;
+        if (i > 0) {
+           // alert("已加载css文件");
+        }
+        else {
+            document.getElementsByTagName("head")[0].appendChild(oCss);//绑定
+       
+        }
 
-        document.getElementsByTagName("head")[0].appendChild(oCss);//绑定
 
     }
 
@@ -1382,7 +1400,8 @@ function BindDateInput(inputId, txt, hasTime) {
 
 
 
-    loadExtentFile("/PubUI/My97DatePicker/WdatePicker.js", "js");
+    loadExtentFile("/PubUI/jquery-ui-1.12.1/js/jquery-ui-timepicker-addon.js", "js");
+    loadExtentFile("/PubUI/jquery-ui-1.12.1/css/jquery-ui-timepicker-addon.css", "css");
 
 
 
@@ -1406,15 +1425,83 @@ function BindDateInput(inputId, txt, hasTime) {
 
 
     $("#" + inputId + "").addClass("Wdate");
-    $("#" + inputId + "").click(function () {
+
+    var loadConfig = {//添加日期选择功能  
+        numberOfMonths: 1,//显示几个月  
+        showButtonPanel: true,//是否显示按钮面板  
+        dateFormat: 'yy-mm-dd',//日期格式  
+        clearText: "清除",//清除日期的按钮名称  
+        closeText: "关闭",//关闭选择框的按钮名称  
+        yearSuffix: '年', //年的后缀  
+        showMonthAfterYear: true,//是否把月放在年的后面  
+        defaultDate: '2011-03-10',//默认日期  
+        monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        dayNamesShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
+        dayNamesMin: ['日', '一', '二', '三', '四', '五', '六'],
+        currentText:"当前日期",
+        onSelect: function (selectedDate) {//选择日期后执行的操作  
+            // alert(selectedDate);
+        },
+        beforeShow: function () {
+            setTimeout(function () {
+                $('#ui-datepicker-div').css("z-index", 20);
+            }, 100);
+        },
+        showSecond: true,
+        timeFormat: 'HH:mm:ss',
+        stepHour: 1,
+        stepMinute: 1,
+        stepSecond: 1,
+
+
+
+    }
+    setTimeout(function () {
         if (hasTime) {
-            WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' });
+
+            $.timepicker.regional['zh-CN'] = {
+                timeOnlyTitle: '选择时间',
+                timeText: '时间',
+                hourText: '小时',
+                minuteText: '分钟',
+                secondText: '秒钟',
+                millisecText: '毫秒',
+                microsecText: '微秒',
+                timezoneText: '时区',
+                currentText: '现在时间',
+                closeText: '关闭',
+                timeFormat: 'HH:mm',
+                timeSuffix: '',
+                amNames: ['AM', 'A'],
+                pmNames: ['PM', 'P'],
+                isRTL: false
+            };
+            $.timepicker.setDefaults($.timepicker.regional['zh-CN']);
+            loadConfig.currentText = "现在时间";
+            $("#" + inputId + "").datetimepicker(loadConfig);
         }
         else {
-            WdatePicker();
+
+            $("#" + inputId + "").datepicker(loadConfig);
         }
 
-    });
+
+    }, 1000);
+
+  
+
+
+
+    //$("#" + inputId + "").click(function () {
+    //    if (hasTime) {
+    //        WdatePicker({ dateFmt: 'yyyy-MM-dd HH:mm:ss' });
+    //    }
+    //    else {
+    //        WdatePicker();
+    //    }
+
+    //});
 
 }
 
@@ -3309,8 +3396,7 @@ function LoginCookie() {
     $.cookie("CurrentBranchId", localStorage.BranchId);
 }
 
-function GetAddressByAreaId(obj, AreaId)
-{
+function GetAddressByAreaId(obj, AreaId) {
 
 
 
@@ -3376,7 +3462,7 @@ function GetAddressByAreaId(obj, AreaId)
 
 
 
-                                               
+
 
 
 

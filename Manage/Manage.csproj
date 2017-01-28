@@ -125,6 +125,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdManage\AdList.aspx" />
+    <Content Include="AdManage\AdList.css" />
+    <Content Include="AdManage\AdList.js" />
     <Content Include="Article\ArticleClassList.aspx" />
     <Content Include="Article\ArticleClassList.css" />
     <Content Include="Article\ArticleClassList.js" />
@@ -139,10 +142,13 @@
     <Content Include="Comm\SkillList.aspx" />
     <Content Include="Comm\SkillList.css" />
     <Content Include="Comm\SkillList.js" />
+    <Content Include="Finance\FinancePub.js" />
     <Content Include="Finance\MemberAmountDetail.aspx" />
     <Content Include="Finance\MemberAmountDetail.css" />
     <Content Include="Finance\MemberAmountDetail.js" />
     <Content Include="Finance\SubjectCashInfo.aspx" />
+    <Content Include="Finance\SubjectCashInfo.css" />
+    <Content Include="Finance\SubjectCashInfo.js" />
     <Content Include="Finance\SubjectCashList.aspx" />
     <Content Include="Finance\SubjectCashList.css" />
     <Content Include="Finance\SubjectCashList.js" />
@@ -216,6 +222,7 @@
     <Content Include="Frame\fonts\fontawesome-webfont.eot" />
     <Content Include="Frame\fonts\fontawesome-webfont.ttf" />
     <Content Include="Frame\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Pub\Site.js" />
     <Content Include="Pub\Site1.Master" />
     <Content Include="Order\OrderPub.master" />
     <Content Include="Merchant\MerPub.master" />
@@ -225,9 +232,14 @@
     <Content Include="Ghost\GhostPub.master" />
     <Content Include="MasterPage1.master" />
     <Content Include="Comm\CommPub.master" />
+    <Content Include="Script\jquery-3.1.1.js" />
+    <Content Include="test\demo.htm" />
+    <Content Include="test\HtmlPage4.html" />
     <Content Include="test\MongoDB.aspx" />
+    <Content Include="test\TestCountOrderToWork.aspx" />
     <Content Include="webpack.config.js" />
     <Content Include="package.json" />
+    <Content Include="AdManage\AdPub.master" />
     <None Include="Properties\PublishProfiles\fabu.pubxml" />
     <Content Include="Script\address.json" />
     <Content Include="Script\json.json" />
@@ -341,6 +353,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdManage\AdList.aspx.cs">
+      <DependentUpon>AdList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdManage\AdList.aspx.designer.cs">
+      <DependentUpon>AdList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdManage\AdPub.master.cs">
+      <DependentUpon>AdPub.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdManage\AdPub.master.designer.cs">
+      <DependentUpon>AdPub.master</DependentUpon>
+    </Compile>
     <Compile Include="Article\ArticleClassList.aspx.cs">
       <DependentUpon>ArticleClassList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -604,6 +630,13 @@
     <Compile Include="test\MongoDB.aspx.designer.cs">
       <DependentUpon>MongoDB.aspx</DependentUpon>
     </Compile>
+    <Compile Include="test\TestCountOrderToWork.aspx.cs">
+      <DependentUpon>TestCountOrderToWork.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test\TestCountOrderToWork.aspx.designer.cs">
+      <DependentUpon>TestCountOrderToWork.aspx</DependentUpon>
+    </Compile>
     <Compile Include="test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -630,6 +663,7 @@
     <Folder Include="Frame\css\" />
     <Folder Include="Frame\font-awesome\" />
     <Folder Include="Script\Pub\" />
+    <Folder Include="test\My97DatePicker\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Main.aspx.resx">

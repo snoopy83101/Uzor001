@@ -8,8 +8,6 @@
 
 
 
-
-
 var MemberId = 0;
 var MemberInfo = {};
 $(function () {
@@ -30,6 +28,8 @@ function BindPageSetting() {
     GetMyTeamMemberList();
     GetOrderToWorkPageList(1);
 }
+
+
 
 
 
@@ -62,7 +62,11 @@ function GetProcessLv() {
 }
 
 
+function BankLogo(BankId) {
 
+    return "https://apimg.alipay.com/combo.png?d=cashier&t=" + BankId + "";
+
+}
 
 function GetMemberInfo() {
     AjaxPost("/amb/", "GetMemberInfo",
@@ -80,6 +84,7 @@ function GetMemberInfo() {
                                            $("#txt_RealName").val(data.info.RealName);
                                            $("#txt_Phone").val(data.info.Phone);
                                            $("#sel_ProcessLv").val(data.info.ProcessLvId);
+                                           $("#sel_AuthenticationStatus").val(data.info.AuthenticationStatusId);
                                            $("#txt_SfzNo").val(data.info.SfzNo);
                                            $("#img_SfzImg1").attr("src", data.info.SfzImgUrl1);
                                            $("#img_SfzImg2").attr("src", data.info.SfzImgUrl2);
@@ -131,6 +136,10 @@ function GetMemberInfo() {
                                            }
                                            GetMemberBankCardList();
 
+
+                                           $("#sp_RegistrationTime").html(data.Count.RegistrationTime);
+                                           $("#sp_AcceptAuthenticationTime").html(data.Count.AcceptAuthenticationTime);
+                                           $("#sp_AcceptProcessTime").html(data.Count.AcceptProcessTime);
                                        }
                                        else {
                                            alert(data.re)
@@ -151,7 +160,7 @@ function GetMemberInfo() {
 function BindAddress() {
 
 
- //   alert(MemberInfo.info.AreaId)
+    //   alert(MemberInfo.info.AreaId)
 
     if (MemberInfo.info.AreaId == "") {
         GetProvince($("#div_ssx")[0], true);
@@ -167,7 +176,10 @@ function BindAddress() {
 
 }
 
-//通过认证
+
+
+
+//技能认证
 function AcceptProcessLv() {
     AjaxPost("/amb/", "AcceptProcessLv",
                                    {
@@ -259,6 +271,40 @@ function GetMemberAmountDetail(CurrentPage) {
 }
 
 
+
+
+//改变实名认证状态
+function AuthenticationStatusChange(obj) {
+    var AuthenticationStatusId = ConvertToInt($(obj).val());
+
+
+
+
+    AjaxPost("/amb/", "AuthenticationStatusChange",
+                                         {
+                                             MemberId:MemberId,
+                                             AuthenticationStatusId: AuthenticationStatusId
+
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+                                                 
+
+
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+
+                              
+                                         }, false);
+
+
+
+
+}
+
+//改变技能认证状态
 function ProcessLvStatusChange(obj) {
 
     var ProcessLvStatusId = $(obj).val();
@@ -981,6 +1027,23 @@ function GetOrderToWorkPageList(CurrentPage) {
                                                          w.push("<td>");
                                                          w.push(j.OrderName);
                                                          w.push("</td>");
+                                                         w.push("<td class='c'>");
+                                                         w.push(j.Quantity);
+                                                         w.push("</td>");
+                                                         w.push("<td class='c'>");
+                                                         w.push(j.DoneQuantity);
+                                                         w.push("</td>");
+                                                         w.push("<td class='c'>");
+                                                         w.push(j.CheckQuantity);
+                                                         w.push("</td>");
+                                                         w.push("<td class='r'>");
+                                                         w.push(ConverttoDecimal2f(j.Wages));
+                                                         w.push("</td>");
+
+                                                         w.push("<td class='r'>");
+                                                         w.push(ConverttoDecimal2f(accMul(j.Wages, j.CheckQuantity)));
+                                                         w.push("</td>");
+
                                                          w.push("<td>");
                                                          w.push(j.ReceivedTime);
                                                          w.push("</td>");
@@ -1093,6 +1156,35 @@ function ToOrderInfo(obj) {
 
 // #region 银行卡操作
 
+function ReadBankCard() {
+
+
+
+
+    AjaxPost("/ac/", "ReadBankCard",
+                                         {
+                                             BankCardCode: $("#txt_BankCardCode").val()
+
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+
+                                                 $("#img_BankImgUrl").attr("src", data.BankLogo);
+
+                                                 $("#txt_BankName").val(data.BankName);
+
+                                                 $("#hd_BankId").val(data.BankId);
+
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+
+                                         }, false);
+
+
+}
+
 
 function ToSaveMemberBankCard(obj) {
 
@@ -1102,13 +1194,18 @@ function ToSaveMemberBankCard(obj) {
 
 
 
+
+
     var w = [];
     w.push("<div class='div_SaveBankCard'  >");
-    w.push("<span>银行卡号:</span><input id='txt_BankCardCode'  type='text' value=''  style='width:300px;'   />");
+    w.push("<input type='hidden' id='hd_BankId' />");
+    w.push("<img src='' id='img_BankImgUrl' />");
+    w.push("<div class='clr' ></div>");
+    w.push("<span>银行卡号:</span><input id='txt_BankCardCode'  type='text' value=''  style='width:300px;'   /> <input type='button' id='btn_ReadBankCard' value='识别 Enter' onclick='ReadBankCard()'  />");
     w.push("<div class=\"clr\"></div>");
     w.push("<span>银行名称:</span><input id='txt_BankName'  type='text' value=''   />");
     w.push("<div class=\"clr\"></div>");
-    w.push("<span>持卡人:</span><input id='txt_BankCardName'  type='text' value=''   />");
+    w.push("<span>持卡人:</span><input id='txt_BankCardName'  type='text' value='" + MemberInfo.info.RealName + "'   />");
     w.push("<div class=\"clr\"></div>");
     w.push("<span>开户网点:</span><input id='txt_BankCardAccount'  type='text' value='' style='width:300px;'    />");
     w.push("<div class=\"clr\"></div>");
@@ -1120,12 +1217,11 @@ function ToSaveMemberBankCard(obj) {
         title: "编辑用户银行卡信息",
         html: w.join("")
 
-    }, 500, 300)
+    }, 500, 350)
 
 
 
-    if (MemberBankCardId > 0)
-    {
+    if (MemberBankCardId > 0) {
 
 
 
@@ -1137,13 +1233,13 @@ function ToSaveMemberBankCard(obj) {
                                              }, function (data) {
                                                  var w = [];
                                                  if (data.re == "ok") {
-                                                   
+                                                     $("#hd_BankId").val(data.info.BankId)
                                                      $("#txt_BankCardCode").val(data.info.BankCardCode);  //银行卡号
                                                      $("#txt_BankName").val(data.info.BankName);  //银行名称
                                                      $("#txt_BankCardName").val(data.info.BankCardName);   //持卡人
                                                      $("#txt_BankCardAccount").val(data.info.BankCardAccount);  //开户行名称
-                                          
 
+                                                     ReadBankCard();
                                                  }
                                                  else {
                                                      alert(data.re)
@@ -1154,8 +1250,14 @@ function ToSaveMemberBankCard(obj) {
 
 
     }
-   
 
+    $("#txt_BankCardCode").keyup(function () {
+
+        if (event.keyCode == 13) {
+            $("#btn_ReadBankCard").click();
+        }
+
+    });
 
 
 
@@ -1163,27 +1265,28 @@ function ToSaveMemberBankCard(obj) {
 }
 
 
-
-function SaveMemberBankCard(MemberBankCardId)
-{
+//保存银行卡
+function SaveMemberBankCard(MemberBankCardId) {
 
     AjaxPost("/amb/", "SaveMemberBankCard",
                                      {
                                          MemberBankCardId: MemberBankCardId,
-                     
+                                         BankId: $("#hd_BankId").val(),
                                          BankCardCode: $("#txt_BankCardCode").val(),
                                          BankName: $("#txt_BankName").val(),
                                          BankCardName: $("#txt_BankCardName").val(),
                                          OrderNo: 1,
-                                         MemberId:MemberId,
+                                         MemberId: MemberId,
                                          BankCardAccount: $("#txt_BankCardAccount").val(),
-                                         NeedYzm:false
-                                        
+                                         NeedYzm: false,
+                                         NeedRealName: false   //后台保存, 持卡人可以不是用户本人
+
+
 
                                      }, function (data) {
                                          var w = [];
                                          if (data.re == "ok") {
-                                            
+
                                              GetMemberBankCardList();
                                              ClearPopWindow();
                                          }
@@ -1191,13 +1294,24 @@ function SaveMemberBankCard(MemberBankCardId)
                                              alert(data.re)
                                          }
 
-                  
+
                                      }, false);
 }
 
 
-function GetMemberBankCardList()
-{
+
+//作废银行卡
+function InvalidMemberBankCard(obj) {
+    var MemberBankCardId = $(obj).attr("MemberBankCardId");
+
+
+    //暂无需求
+
+
+}
+
+
+function GetMemberBankCardList() {
 
 
 
@@ -1212,12 +1326,18 @@ function GetMemberBankCardList()
                                                  if (data.list.length > 0) {
                                                      for (var i = 0; i < data.list.length; i++) {
                                                          var j = data.list[i];
+
+
+
+
+
                                                          w.push("<a  MemberBankCardId='" + j.MemberBankCardId + "'  >");
+                                                         w.push("<img src='" + BankLogo(j.BankId) + "'  />");
                                                          w.push("<h3>" + j.BankCardCode + "</h3>");
 
                                                          w.push("");
                                                          w.push("<span>" + j.BankName + "</span>");
-                                                         w.push("<span>" + j.BankCardName + "</span>");
+                                                         w.push(" <span>" + j.BankCardName + "</span>");
                                                          w.push("<div class=\"clr\"></div>");
                                                          w.push("<span>" + j.BankCardAccount + "</span>");
                                                          w.push("</a>");
@@ -1247,6 +1367,65 @@ function GetMemberBankCardList()
 
 
 
+
+
+// #endregion
+
+
+
+// #region 用户日志
+
+
+function GetMemberLogList(CurrentPage) {
+
+
+
+
+
+
+    AjaxPost("/amb/", "GetMemberLogList",
+                                         {
+                                             CurrentPage:CurrentPage,
+                                             MemberId: MemberId,
+                                             Order: "{ CreateTime:-1 }"
+
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+                                                 if (data.list.length > 0) {
+                                                     for (var i = 0; i < data.list.length; i++) {
+                                                         var j = data.list[i];
+                                                         w.push("<tr>");
+                                                         w.push("<td>");
+                                                         w.push(j.MemberLogTypeName);
+                                                         w.push("</td>");
+                                                         w.push("<td>");
+                                                         w.push(j.Title);
+                                                         w.push("</td>");
+                                                         w.push("<td>");
+                                                         w.push(j.UserId);
+                                                         w.push("</td>");
+                                                         w.push("<td>");
+                                                         w.push(j.CreateTime);
+                                                         w.push("</td>");
+                                                         w.push("</tr>");
+
+                                                     }
+                                                 }
+
+
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+
+                                             $("#tb_MemberLogList").html(w.join(""));
+                                             ZyPagerSetting("GetMemberLogList", CurrentPage, data.t, "MemberLog");
+                                         }, false);
+
+
+
+}
 
 
 // #endregion

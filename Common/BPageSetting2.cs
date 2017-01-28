@@ -6,6 +6,9 @@ using System.Web;
 using System.IO;
 using System.Data;
 using LitJson;
+using Newtonsoft.Json.Linq;
+using MongoDB.Bson;
+
 namespace Common
 {
     public class BPageSetting2
@@ -30,7 +33,7 @@ namespace Common
             {
                 return new DataTable();
             }
-     
+
         }
 
         public int ReInt(string paraName, int CatchInd)
@@ -99,6 +102,33 @@ namespace Common
 
             return Common.PageInput.ReStr(paraName, CatchStr);
         }
+
+        public ObjectId ReObjId(string paraName, string CatchStr)
+        {
+            return Common.PageInput.ReObjId(paraName, CatchStr);
+
+
+        }
+
+        public JObject ReJson(string paraName, JObject j = null)
+        {
+            if (j == null)
+            {
+                return Common.PageInput.ReJson(paraName);
+            }
+            else
+            {
+                return Common.PageInput.ReJson(paraName, j);
+            }
+
+        }
+
+        public BsonDocument ReBson(string paraName, BsonDocument cb = null)
+        {
+            return Common.PageInput.ReBson(paraName, cb);
+
+        }
+
         public DateTime ReTime(string paraName)
         {
             return Common.PageInput.ReTime(paraName);
@@ -139,6 +169,28 @@ namespace Common
                 ReDict2.Add("t", totalPage.ToString());
                 ReDict2.Add("r", RowCount.ToString());
                 ReDict.Add("list", json);
+
+                ReTrue();
+            }
+            catch (Exception ex)
+            {
+
+                ReThrow(ex);
+            }
+
+        }
+
+        public void RePage(JObject j)
+        {
+            try
+            {
+                int totalPage = (int)j["TotalPage"];  //最多页数
+                int RowCount = (int)j["RowCount"];
+
+
+                ReDict2.Add("t", totalPage.ToString());
+                ReDict2.Add("r", RowCount.ToString());
+                ReDict.Add("list", j["list"].ToString());
 
                 ReTrue();
             }
@@ -318,9 +370,9 @@ namespace Common
 
             w.Append(" { \"re\":\"" + re + "\",\"reMsg\":\"" + HttpUtility.UrlEncode(ex.ToString()) + "\" } ");
 
-            
 
-          
+
+
 
             HttpContext.Current.Response.Write(w.ToString());
 
@@ -346,7 +398,7 @@ namespace Common
                     w.Append(":");
 
 
-                    w.Append(item.Value);
+                    w.Append(item.Value.ToString());
 
 
                     w.Append(",");
@@ -385,11 +437,11 @@ namespace Common
             w.Append("}");
 
             HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://jk.lituo001.com");
-            HttpContext.Current.Response.ContentType="application/json";
+            HttpContext.Current.Response.ContentType = "application/json";
             HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
             HttpContext.Current.Response.Write(w.ToString());
 
-          //  HttpContext.Current.Response.End();
+            //  HttpContext.Current.Response.End();
 
         }
 
@@ -403,6 +455,18 @@ namespace Common
             HttpContext.Current.Response.ContentType = "application/json";
             HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
             HttpContext.Current.Response.Write(j.ToJson());
+
+        }
+
+        public void ReTrue(JObject j)
+        {
+
+            j["re"] = "ok";
+
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://jk.lituo001.com");
+            HttpContext.Current.Response.ContentType = "application/json";
+            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+            HttpContext.Current.Response.Write(j.ToString());
 
         }
 

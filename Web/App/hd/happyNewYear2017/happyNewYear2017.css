@@ -1,0 +1,21 @@
+﻿
+body {
+
+
+    background-color:#c40000;
+}
+
+.img_ad {
+    width:100%;
+    height:auto;
+
+ }
+
+
+.btn_1 {
+    width:35%;
+     background-color:#ffff00;
+     color:#c40000;
+     font-weight:bold;
+    font-size:20px;
+}

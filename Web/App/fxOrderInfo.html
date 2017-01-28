@@ -1,0 +1,154 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>订单详情</title>
+
+    <link href="../css/common.css" rel="stylesheet" />
+
+    <script src="../script/jquery-1.8.2.js"></script>
+    <script src="../script/ZYUiPub.js"></script>
+    <link type="text/css" rel="stylesheet" href="fxOrderInfo.css?v=2016122651" />
+    <script src="fxOrderInfo.js?v=2016122651"></script>
+
+    <style type="text/css">
+        .auto-style1 {
+            border-radius: 3px;
+            display: inline-block;
+            height: 50px;
+            font-family: lt;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            letter-spacing: 3px;
+            width: 90%;
+            font-size: 15px;
+            background-color: #f6a623;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="wrap">
+        <div id="main" style="background-color: #f5f9ff;">
+            <div class="div_DownApp">
+                <div style="position: relative;">
+                    <img src="../image/200.png" class="img_u" />
+                    <span class="sp_h">找活干 上优做APP</span>
+                    <span class="sp_c">按单结工资 活不断钱不断</span>
+                    <a class="a_down" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.chuanfou.uzjob">下载APP</a>
+                    <div class="clr"></div>
+                </div>
+            </div>
+            <!--         <div class="div_tip1">
+                <p>结算提示: 验收后15日结算工费到账户余额</p>
+            </div>-->
+
+            <div>
+                <div class="div_wai2">
+                    <div class="div_wai">
+                        <div class="div_nei">
+                            <div>
+
+                                <span class="sp_xdsl">下单数量</span>
+                                <span id="sp_h_Num" class="sp_h_Num"></span>
+                                <span id="sp_h_NoNum" class="sp_h_NoNum"></span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="div_m">
+
+                    <div class="d1">
+
+                        <span>品质要求</span>
+                        <b id="b_ProcessLvName"></b>
+                        <span id="sp_NoProcessLv" class="sp_NoProcessLv"></span>
+                    </div>
+                    <div class="d2">
+                        <span>工价(元)</span>
+                        <b id="b_OrderWages"></b>
+
+                    </div>
+                    <div class="d3">
+                        <span>可领取数量</span>
+                        <b id="b_MinQuantity"></b>
+
+                    </div>
+                </div>
+                <div class="div_mm">
+                    <span>提示:验收后20个工作日结算工资到账户余额
+                    </span>
+                </div>
+  
+               <ul class="ul_1">
+
+                    <li class="li_title">
+                        <div class="clr_20px" style="height: 15px"></div>
+                        <span id="sp_OrderTitle" class="sp_title"></span>
+                        <div class="clr_10px"></div>
+                    </li>
+                    <!-- <li class="li_yifu">
+                        <span class="sp_l">总数量(<b class="b_Unit"></b>)</span><span class="sp_r" id="sp_OrderQuantity"></span>
+
+                    </li>-->
+                    <!--           <li class="li_qijie">
+                        <span class="sp_l">起接数量(<b class="b_Unit"></b>)</span><span class="sp_r" id="sp_MinQuantity"></span>
+
+                    </li>-->
+                    <!--          <li class="li_danjia">
+                        <span class="sp_l">单件价格(元)</span><span class="sp_r" id="sp_OrderWages"></span>
+
+                    </li>-->
+                    <li class="li_caipian">
+                        <span class="sp_l">领取裁片:<b id="sp_ReceivedTime" ></b></span>
+
+                    </li>
+                    <li class="li_jiaohuo">
+                        <span class="sp_l">交货日期:<b id="sp_PlanningTime" ></b></span>
+
+                    </li>
+                    <li class="li_changdi">
+                        <span class="sp_l">生产场地:<b id="sp_ProcessLocationType" ></b></span>
+
+                    </li>
+                    <li class="li_lianxiren">
+                        <span class="sp_l">联系人:<b id="sp_OrderContacts" ></b></span>
+
+                    </li>
+                    <li class="li_Phone" id="li_Phone" tapmode='tap1' onclick='ToPhone(this)'>
+                        <span class="sp_l">联系电话:<b id="sp_OrderTel" ></b></span>
+
+                    </li>
+                    <li class="li_dizhi" id="li_OrderAddress" tapmode='tap1' onclick='PopOrderAddress(this)'>
+                        <span class="sp_l">联系地址</span><span class="sp_r" id="sp_OrderAddress"></span>
+                        <div class="clr"></div>
+                        <p id="p_OrderAddress">asdfffffffffffffffffffffffffffffffffffffffffffffff</p>
+                        <div class="clr_10px"></div>
+                    </li>
+
+                </ul>
+     
+                <h2 class="h2_OrderExpect">预估工时/产能(单人)
+                </h2>
+                <ul class="ul_1 ul_OrderExpect" id="ul_OrderExpect" style="margin-top:0;">
+                </ul>
+            </div>
+
+
+
+            <div class="clr_10px"></div>
+
+            <div style="height: 70px;">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -84,6 +84,14 @@ namespace Model
             get;
             set;
         }
+        /// <summary>
+        /// 比如工商银行是IDBC
+        /// </summary>		
+        public string BankId
+        {
+            get;
+            set;
+        }
 
     }
 }

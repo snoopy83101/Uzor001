@@ -38,6 +38,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
@@ -119,6 +120,8 @@
     <Compile Include="MerRoleDAL.cs" />
     <Compile Include="MerRoleVsDingDanDAL.cs" />
     <Compile Include="MerVsCommentDAL.cs" />
+    <Compile Include="Mongo.cs" />
+    <Compile Include="MongoDB.cs" />
     <Compile Include="MovEventDAL.cs" />
     <Compile Include="MovInfoDAL.cs" />
     <Compile Include="MovVsMerDAL.cs" />
@@ -215,6 +218,10 @@
     <Compile Include="YYHD\ZiXunLogInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Newtonsoft.Json\Newtonsoft.Json.Net40.csproj">
+      <Project>{a9ae40ff-1a21-414a-9fe7-3be13644cc6d}</Project>
+      <Name>Newtonsoft.Json.Net40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{ec06ae7d-9d14-410e-8a15-0ed8ec4112ce}</Project>
       <Name>Common</Name>
@@ -226,6 +233,18 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Bson\MongoDB.Bson.csproj">
+      <Project>{0e9a3a2a-49cd-4f6c-847c-dc79b4b65ce6}</Project>
+      <Name>MongoDB.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj">
+      <Project>{da56482a-5d8f-41e0-85e6-1f22b310f91b}</Project>
+      <Name>MongoDB.Driver.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver\MongoDB.Driver.csproj">
+      <Project>{ae5166cd-76b0-4911-bd80-ced9521f37a1}</Project>
+      <Name>MongoDB.Driver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

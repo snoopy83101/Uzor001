@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <link href="MemberList.css" rel="stylesheet" />
-    <script src="MemberList.js"></script>
+<link type="text/css" rel="stylesheet" href="MemberList.css?v=2017011415" />
+<script src="MemberList.js?v=2017011415"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -27,13 +28,14 @@
         <thead>
             <tr>
                 <th style="width: 150px">用户编号</th>
-                <th  style="width: 150px" >手机号</th>
-         
-  <th style="width:100px">真实姓名</th>
-                <th style="width:auto">地址</th>
-     
-            <th style="width: 200px"  >技能等级</th>
-                <th style="width: 100px">认证情况</th>
+                <th style="width: 150px">手机号</th>
+
+                <th style="width: 100px">真实姓名</th>
+                <th style="width: auto">地址</th>
+
+                <th style="width: 200px">技能等级</th>
+                <th style="width: 100px">技能认证</th>
+                <th style="width: 100px">实名认证</th>
                 <th style="width: 100px; cursor: pointer;" onclick="ChangeOrder(this)" ziduan="LastTime" desc="asc">最后活跃时间</th>
             </tr>
 

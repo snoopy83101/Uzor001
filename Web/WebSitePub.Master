@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebSitePub.master.cs" Inherits="Web.WebSitePub" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>优做 让天下没有难做的衣服</title>
+    <script src="/script/jquery-1.8.2.js"></script>
+    <script src="/script/ZYUiPub.js"></script>
+    <link href="/css/ZYUiPub.css" rel="stylesheet" />
+    <script src="/WebSitePub.js"></script>
+    <link href="/WebSitePub.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="div_top d1 ">
+        <div class="div_hd d1200">
+            <img src="image/Logo.png" class="img_logo" />
+            <div class="div_menu">
+                <a href="/index"  id="a_dh_Index">首页</a>
+                <a href="/UzorService" id="a_dh_UzorService" >优做服务</a>
+                <a href="/ContactUs"  id="a_dh_ContactUs">联系我们</a>
+                <a href="/Recruitment"  id="a_dh_Recruitment">优做工人招募</a>
+            </div>
+        </div>
+
+    </div>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    <div class="div_footer d1">
+        <div class="div_beian" >
+
+            <span>© 2015-2017 Uzor001.com , 杭州穿否电子商务有限公司 | 浙ICP备16042901号-1 </span>
+        </div>
+    </div>
+</body>
+</html>

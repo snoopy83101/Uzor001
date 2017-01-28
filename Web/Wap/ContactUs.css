@@ -1,0 +1,44 @@
+﻿
+
+.div_lianxi {
+    height:600px;
+ width:560px;
+  margin:auto;
+}
+
+.div_lianxi span {
+    text-align:left;
+}
+
+    .div_lianxi a {
+        width: 200px;
+        height: 190px;
+        border: 1px dashed #CCCCCC;
+        display: inline-block;
+        margin:100px auto auto 50px;
+        position: relative;
+        float:left;
+    }
+
+        .div_lianxi a * {
+            position: absolute;
+        }
+
+        .div_lianxi a div.div_q {
+            border: 1px dashed #CCCCCC;
+            border-radius: 50%;
+            width: 105px;
+            height: 105px;
+            top: -55px;
+            left: 48px;
+            text-align:center;
+            background-color:#f7f7f7
+
+        }
+
+        .div_lianxi a img {
+           width:85px;
+           height:85px;
+           top:10px;
+           left:10px;
+        }

@@ -37,6 +37,7 @@ namespace DAL
         }
 
 
+
         /// <summary>
         /// 增加一条数据
         /// </summary>
@@ -44,9 +45,9 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into CORE.dbo.SubjectCash (");
-            strSql.Append("MemberId,CreateTime,Amount,SubjectCashStatusId,Memo,DoneTime");
+            strSql.Append("MemberId,CreateTime,Amount,SubjectCashStatusId,Memo,DoneTime,MemberBankCardId");
             strSql.Append(") values (");
-            strSql.Append("@MemberId,@CreateTime,@Amount,@SubjectCashStatusId,@Memo,@DoneTime");
+            strSql.Append("@MemberId,@CreateTime,@Amount,@SubjectCashStatusId,@Memo,@DoneTime,@MemberBankCardId");
             strSql.Append(") ");
             strSql.Append(";");
             SqlParameter[] parameters = {
@@ -55,7 +56,8 @@ namespace DAL
                         new SqlParameter("@Amount", SqlDbType.Decimal,9) ,
                         new SqlParameter("@SubjectCashStatusId", SqlDbType.Int,4) ,
                         new SqlParameter("@Memo", SqlDbType.VarChar,500) ,
-                        new SqlParameter("@DoneTime", SqlDbType.DateTime)
+                        new SqlParameter("@DoneTime", SqlDbType.DateTime) ,
+                        new SqlParameter("@MemberBankCardId", SqlDbType.Decimal,9)
 
             };
 
@@ -65,6 +67,7 @@ namespace DAL
             parameters[3].Value = model.SubjectCashStatusId;
             parameters[4].Value = model.Memo;
             parameters[5].Value = model.DoneTime;
+            parameters[6].Value = model.MemberBankCardId;
 
             bool result = false;
             try
@@ -105,7 +108,8 @@ namespace DAL
             strSql.Append(" Amount = @Amount , ");
             strSql.Append(" SubjectCashStatusId = @SubjectCashStatusId , ");
             strSql.Append(" Memo = @Memo , ");
-            strSql.Append(" DoneTime = @DoneTime  ");
+            strSql.Append(" DoneTime = @DoneTime , ");
+            strSql.Append(" MemberBankCardId = @MemberBankCardId  ");
             strSql.Append(" where SubjectCashId=@SubjectCashId ");
 
             SqlParameter[] parameters = {
@@ -115,7 +119,8 @@ namespace DAL
                         new SqlParameter("@Amount", SqlDbType.Decimal,9) ,
                         new SqlParameter("@SubjectCashStatusId", SqlDbType.Int,4) ,
                         new SqlParameter("@Memo", SqlDbType.VarChar,500) ,
-                        new SqlParameter("@DoneTime", SqlDbType.DateTime)
+                        new SqlParameter("@DoneTime", SqlDbType.DateTime) ,
+                        new SqlParameter("@MemberBankCardId", SqlDbType.Decimal,9)
 
             };
 
@@ -125,7 +130,8 @@ namespace DAL
             parameters[3].Value = model.Amount;
             parameters[4].Value = model.SubjectCashStatusId;
             parameters[5].Value = model.Memo;
-            parameters[6].Value = model.DoneTime; try
+            parameters[6].Value = model.DoneTime;
+            parameters[7].Value = model.MemberBankCardId; try
             {//异常处理
                 reCount = this.helper.ExecSqlReInt(strSql.ToString(), parameters);
             }
@@ -148,7 +154,7 @@ namespace DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select SubjectCashId, MemberId, CreateTime, Amount, SubjectCashStatusId, Memo, DoneTime  ");
+            strSql.Append("select SubjectCashId, MemberId, CreateTime, Amount, SubjectCashStatusId, Memo, DoneTime, MemberBankCardId  ");
             strSql.Append("  from CORE.dbo.SubjectCash ");
             strSql.Append(" where SubjectCashId=@SubjectCashId");
             SqlParameter[] parameters = {
@@ -187,6 +193,10 @@ namespace DAL
                 {
                     model.DoneTime = DateTime.Parse(ds.Tables[0].Rows[0]["DoneTime"].ToString());
                 }
+                if (ds.Tables[0].Rows[0]["MemberBankCardId"].ToString() != "")
+                {
+                    model.MemberBankCardId = decimal.Parse(ds.Tables[0].Rows[0]["MemberBankCardId"].ToString());
+                }
 
                 return model;
             }
@@ -195,7 +205,6 @@ namespace DAL
                 return model;
             }
         }
-
 
         /// <summary>
         /// 删除duo条数据

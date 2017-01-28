@@ -27,7 +27,7 @@ namespace DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select count(0) ");
-            strSql.Append(" FROM  CORE.dbo.OrderToWorkDetailVsClothesSize ");
+            strSql.Append(" FROM  CORE.dbo.OrderToWorkDetailVsClothesSizeView ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);

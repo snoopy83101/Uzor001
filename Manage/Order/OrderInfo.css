@@ -232,6 +232,10 @@ table.tb_OrderToWorkDetail tbody tr td {
         padding-bottom: 5px;
     }
 
+        table.tb_OrderToWorkDetail tbody tr td.td_1:hover {
+            background-color: #C6E2EE;
+        }
+
         table.tb_OrderToWorkDetail tbody tr td.td_1 input[type=text] {
             width: 50px;
             height: 20px;
@@ -262,6 +266,23 @@ table.tb_OrderToWorkDetail tbody tr td {
         padding-right: 20px;
         cursor: pointer;
     }
+
+.li_ClothesSizeType {
+}
+
+    .li_ClothesSizeType a {
+        border: 1px solid #bbb;
+        display: inline-block;
+        margin-left: 10px;
+        line-height: 25px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+        .li_ClothesSizeType a.select {
+            color: #fff;
+            background-color: #58B3F0;
+        }
 
 .img_MemberPic {
     width: 30px;
@@ -440,7 +461,7 @@ h5 {
 
 
 .div_afterSave {
-            text-align: center;
+    text-align: center;
 }
 
     .div_afterSave h3 {
@@ -461,20 +482,31 @@ h5 {
     .div_afterSave input {
         margin: 10px;
         line-height: 50px;
-        font-size:20px;
-        padding:10px;
+        font-size: 20px;
+        padding: 10px;
     }
 
 .sp_VsPlaces {
-
-    position:absolute;
-    right:13px;
-    top:45px;
-
+    position: absolute;
+    right: 13px;
+    top: 45px;
 }
 
-.sp_VsPlaces b{
-    color:#f8390e;
-    font-weight:normal;
-    font-size:18px;
+    .sp_VsPlaces b {
+        color: #f8390e;
+        font-weight: normal;
+        font-size: 18px;
+    }
+
+.sp_10 {
+    display: inline-block;
+    margin-right: 10px;
 }
+
+.div_Change10 {
+    line-height: 30px;
+}
+
+    .div_Change10 input[type=text] {
+        width: 50px;
+    }

@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.Runtime.Serialization.Json;
 
 using Newtonsoft.Json;
-
+using Newtonsoft.Json.Linq;
 
 namespace Common
 {
@@ -375,6 +375,19 @@ namespace Common
 
             DataTable dt = ds.Tables[0];
             return ToJsonNo1(dt);
+
+        }
+
+        public static string ToJsonNo1(JObject j)
+        {
+
+            if (j == null)
+            {
+
+                j = new JObject();
+            }
+
+            return j.ToString();
 
         }
 

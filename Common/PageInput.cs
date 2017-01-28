@@ -9,6 +9,9 @@ using Common;
 using System.Web.UI;
 using System.Text.RegularExpressions;
 using System.Net;
+using Newtonsoft.Json.Linq;
+using MongoDB.Bson;
+
 namespace Common
 {
     public class PageInput
@@ -207,6 +210,52 @@ namespace Common
 
             }
 
+
+
+        }
+
+        public static JObject ReJson(string paraName)
+        {
+
+
+            return JObject.Parse(ReStr(paraName));
+
+
+        }
+
+        public static JObject ReJson(string paraName, JObject cj)
+        {
+            try
+            {
+                return ReJson(paraName);
+            }
+            catch (Exception)
+            {
+
+                return cj;
+            }
+
+        }
+
+        public static BsonDocument ReBson(string paraName, BsonDocument cb = null)
+        {
+
+            try
+            {
+                return BsonDocument.Parse(ReStr(paraName));
+            }
+            catch (Exception)
+            {
+
+                return cb;
+            }
+
+
+        }
+        public static ObjectId ReObjId(string paraName, string cstr = "")
+        {
+            string s = ReStr(paraName, cstr);
+            return ObjectId.Parse(s);
 
 
         }

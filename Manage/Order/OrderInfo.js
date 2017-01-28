@@ -8,7 +8,7 @@ var imgArray = [];
 
 var ClothesSizeArray = [];
 var OrderData = {};
-
+var CurrentOrderToWork = {};
 var OrderToWorkData = {};
 $(function () {
     OrderId = GetQueryString("OrderId", "");
@@ -324,8 +324,9 @@ function GetOrderInfo(o) {
                                        var w = [];
                                        if (data.re == "ok") {
 
-                                           CountOrder();
+
                                            OrderData = data;
+                                           CountOrder();
                                            if (data.Info.OrderStatusId == 5) {
                                                $("#btn_ReleaseOrder").show();
                                            }
@@ -700,7 +701,7 @@ function GetOrderInfo(o) {
                                                    });
                                                }
 
-                                               
+
 
 
 
@@ -708,7 +709,7 @@ function GetOrderInfo(o) {
 
                                                $(this).find(".div_workList ul li").each(function () {
 
-                                      
+
 
                                                });
 
@@ -870,6 +871,7 @@ function TaoTai(MemberId) {
 
 function AddMember() {
 
+    ClearPopWindow();
 
     var w = [];
 
@@ -1388,6 +1390,8 @@ function ToOrderInfo() {
 
 function ToSaveDetail(obj) {
 
+    ClearPopWindow();
+
     var OrderDetailId = 0;
     var ovcList = [];
     var info = {};
@@ -1458,11 +1462,26 @@ function ToSaveDetail(obj) {
 
         w.push("<input type='text' id='txt_Color' class='txt_Color'  placeholder=\"颜色\"  value='" + ColorVal + "'  />");
         w.push("</li>");
+
+
+        // #region 输出尺码类型
+
+        w.push("<li id='li_ClothesSizeType' class='li_ClothesSizeType select'  >");
+        w.push("<span class='sp_l' >类型:</span>");
+        w.push("<a ClothesSizeTypeId='10' >");
+        w.push(" 成人 ");
+        w.push("</a>");
+        w.push("<a  ClothesSizeTypeId='100' >");
+        w.push(" 童装 ");
+        w.push("</a>");
+        w.push("</li>");
+        // #endregion
+
         for (var i = 0; i < ClothesSizeArray.length; i++) {
 
             var j = ClothesSizeArray[i];
 
-            w.push("<li class='li_c' ClothesSizeId='" + j.ClothesSizeId + "' ClothesSizeName='" + j.ClothesSizeName + "'   >");
+            w.push("<li class='li_c' ClothesSizeId='" + j.ClothesSizeId + "' ClothesSizeName='" + j.ClothesSizeName + "' ClothesSizeTypeId='" + j.ClothesSizeTypeId + "'  >");
             w.push("<span class='sp_l' >" + j.ClothesSizeName + ":</span>");
 
             var NumVal = 0;
@@ -1505,12 +1524,29 @@ function ToSaveDetail(obj) {
 
 
         w.push("</div>");
+
+
         PopWindow({
             html: w.join(""),
             title: "保存颜色"
 
 
-        }, 500, 400);
+        }, 500, 600);
+
+        $("#li_ClothesSizeType>a").click(function () {
+
+
+            var ClothesSizeTypeId = ConvertToInt($(this).attr("ClothesSizeTypeId"));
+            $(this).siblings().removeClass("select");
+            $(this).addClass("select");
+            $(".li_c").hide();
+            $(".li_c[ClothesSizeTypeId='" + ClothesSizeTypeId + "']").show();
+
+
+
+        });
+        $("#li_ClothesSizeType>a").eq(0).click();
+
         $("#div_Detail input").eq(0).focus();
         $("#div_Detail input").each(function () {
 
@@ -1810,7 +1846,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
                                    }, function (data) {
                                        var w = [];
                                        if (data.re == "ok") {
-
+                                           CurrentOrderToWork = data;
 
                                            if (OrderData.Detail.length > 0) {
 
@@ -1844,7 +1880,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
                                                w.push("<input id='txt_Wages'  type='text' Key='Wages' onblur='ChangeOrderToWork(this)' value='" + data.OrderToWork.Wages + "'  ");
 
-                                               if (data.OrderToWork.OrderToWorkStatusId >= 40) {
+                                               if (data.OrderToWork.OrderToWorkStatusId >= 70) {
                                                    w.push(" disabled='disabled'  ");
                                                }
 
@@ -1887,7 +1923,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
                                                    var j = OrderData.Detail[i];
 
                                                    w.push("<tr OrderDetailId='" + j.OrderDetailId + "' Color='" + j.Color + "'  >");
-                                                   w.push("<td OrderDetailId='" + j.OrderDetailId + "' class='c'   >");
+                                                   w.push("<td OrderDetailId='" + j.OrderDetailId + "' Color='" + j.Color + "'   class='c'   >");
                                                    w.push(j.Color);
                                                    w.push("</td>");
 
@@ -1897,7 +1933,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
 
 
-                                                       w.push("<td  OrderDetailId='" + j.OrderDetailId + "' class='c td_1' >");
+                                                       w.push("<td  OrderDetailId='" + j.OrderDetailId + "' ClothesSizeId='" + y.ClothesSizeId + "'   Color='" + j.Color + "'  class='c td_1 ' title='双击或右键可更改' >");
                                                        var has = false;
                                                        for (var m = 0; m < OrderData.DetailVsClothesSize.length; m++) {
 
@@ -1976,7 +2012,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
                                                                    w.push("<div class='clr' ></div>");
 
-                                                       
+
                                                                    if (myp > 0) {
                                                                        w.push("<span>");
                                                                        w.push("分派:<b>" + myp + "</b>");
@@ -2001,6 +2037,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 
 
                                                                    if (mydp == 0) {
+
                                                                        w.push("<span class=\"sp_w\">-</span>");
                                                                    }
                                                                    else {
@@ -2014,7 +2051,7 @@ function GetOrderToWorkInfo(OrderToWorkId) {
                                                                        if (NoCheckNum == 0) {
                                                                            w.push("<span>完成:" + mydp + "</span>  ");
 
-                                                                           w.push("<span>合格:" + myCkp + "</span>");
+                                                                           w.push("<span class='sp_CheckNum' >合格:" + myCkp + "</span>");
                                                                        }
                                                                        else {
                                                                            w.push("<span>还剩:" + NoCheckNum + "</span>  ");
@@ -2097,25 +2134,27 @@ function GetOrderToWorkInfo(OrderToWorkId) {
                                                    //派单状态
                                                    w.push("<input type='button'  value='剩余全部' onclick='AllNumAllotOrderToWork()' id='btn_closeOrderToWork'  /> ");
                                                    w.push(" <input type='button'  value='分派工单' onclick='AllotOrderToWork()' id='btn_closeOrderToWork'  /> ");
-                                                   w.push("  <input type='button'  value='取消分派' onclick='ClearMemberOrderToWork(this)' id='btn_closeOrderToWork'  />");
+                                                   w.push("  <input type='button'  value='取消分派' onclick='ClearMemberOrderToWork(this)' id='btn_closeOrderToWork' OrderToWorkStatusId='" + data.OrderToWork.OrderToWorkStatusId + "'  />");
 
                                                }
                                                else if (data.OrderToWork.OrderToWorkStatusId == 30) {
                                                    w.push("<input type='button'  value='全部完成' onclick='ALLDoneOrder()' id='btn_closeOrderToWork'  />   ");
                                                    w.push("   <input type='button'  value='确认提交' onclick='DoneOrderToWork()' id='btn_closeOrderToWork'  />");
+                                                   w.push("  <input type='button'  value='取消分派' onclick='ToClearMemberOrderToWork(this)' id='btn_closeOrderToWork' OrderToWorkStatusId='" + data.OrderToWork.OrderToWorkStatusId + "'   />");
                                                }
                                                else if (data.OrderToWork.OrderToWorkStatusId == 40) {
                                                    w.push("<input type='button'  value='提交质检结果' onclick='SaveCheckNumArray()' id='btn_closeOrderToWork'  />");
 
 
                                                    w.push("  <input type='button'  value='完成质检' onclick='CheckOrderToWork()' id='btn_closeOrderToWork'  />");
+                                                   w.push("  <input type='button'  value='取消分派' onclick='ToClearMemberOrderToWork(this)' id='btn_closeOrderToWork' OrderToWorkStatusId='" + data.OrderToWork.OrderToWorkStatusId + "'   />");
                                                }
                                                else if (data.OrderToWork.OrderToWorkStatusId == 50) {
                                                    w.push("<input type='button'  value='已交付成衣' onclick='PayOrder()' id='btn_closeOrderToWork'  />");
 
                                                }
                                                else if (data.OrderToWork.OrderToWorkStatusId == 60) {
-                                                 //  w.push("<input type='button'  value='结算工单' onclick='EndOrderToWork()' id='btn_closeOrderToWork'  />");
+                                                   //  w.push("<input type='button'  value='结算工单' onclick='EndOrderToWork()' id='btn_closeOrderToWork'  />");
 
                                                }
 
@@ -2125,6 +2164,32 @@ function GetOrderToWorkInfo(OrderToWorkId) {
                                            }
 
                                            $("#div_SaveOrderToWork").html(w.join(""));
+                                           $("#div_SaveOrderToWork .td_1").each(function () {
+
+
+
+                                               /// <reference path="/Script/jquery-1.8.2.js" />
+                                               /// <reference path="/Script/ZYUiPub.js" />
+                                               /// <reference path="/script/common.js" />
+
+                                               r = [];
+                                               r.push({
+                                                   evName: "ToChangeOrderToWorkDetailVsClothesSize",
+                                                   Title: "修改",
+                                                   evIcon: ""
+                                               });
+
+                                               RightMenu(this, r);
+
+                                               $(this).dblclick(function () {
+
+                                                   ToChangeOrderToWorkDetailVsClothesSize(this);
+                                               });
+
+
+
+                                           });
+
 
                                        }
                                        else {
@@ -2138,8 +2203,126 @@ function GetOrderToWorkInfo(OrderToWorkId) {
 }
 
 
-function AllNumAllotOrderToWork()
-{
+function ToChangeOrderToWorkDetailVsClothesSize(obj) {
+    var Color = $(obj).attr("Color");
+    var ClothesSizeId = ConvertToInt($(obj).attr("ClothesSizeId"));
+
+    var MaxNum = 0;
+
+
+
+
+
+    AjaxPost("/ao/", "MaxNumOrderToWorkDetailVsClothesSize",
+                                         {
+                                             Color: Color,
+                                             ClothesSizeId: ClothesSizeId,
+                                             OrderToWorkId: $("#hd_OrderToWorkId").val()
+
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+
+                                                 MaxNum = data.MaxNum;
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+
+
+                                         }, false);
+
+
+
+
+
+
+    var w = [];
+    w.push("<div class='c div_Change10' >");
+    w.push("<span>可分派最大值:<b id='b_MaxNum' >" + MaxNum + "</b></span>")
+    w.push("<input id='hd_Color' type='hidden' value='" + Color + "'   />");
+    w.push("<input id='hd_ChangeClothesSizeId' type='hidden' value='" + ClothesSizeId + "'   />");
+    if (CurrentOrderToWork.OrderToWork.OrderToWorkStatusId >= 10) {
+        w.push("<div class='clr' ></div>");
+        w.push("<span class='sp_10' >分派数量:</span><input id='txt_ChangeNum' type='text' value=''   />");
+
+    }
+    if (CurrentOrderToWork.OrderToWork.OrderToWorkStatusId >= 30) {
+        w.push("<div class='clr' ></div>");
+        w.push("<span class='sp_10' >完成数量:</span><input id='txt_ChangeDoneNum' type='text' value=''   />");
+
+    }
+
+    if (CurrentOrderToWork.OrderToWork.OrderToWorkStatusId >= 40) {
+        w.push("<div class='clr' ></div>");
+        w.push("<span class='sp_10' >质检数量:</span><input id='txt_ChangeCheckNum' type='text' value=''   />");
+
+    }
+
+    w.push("<div class='clr' ></div>");
+
+    if (CurrentOrderToWork.OrderToWork.OrderToWorkStatusId >= 70) {
+        w.push("<h4>订单已结算,无法修改</h4>");
+
+    }
+    else {
+
+        w.push("<input type='button' value='修改' onclick='ChangeOrderToWorkDetailVsClothesSize(this)'  /> ");
+    }
+
+
+
+
+
+    w.push("");
+    w.push("");
+    w.push("</div>");
+    PopWindow({
+        title: "修改数量",
+        html: w.join("")
+
+    }, 300, 200);
+
+
+
+
+
+
+
+
+
+}
+
+
+function ChangeOrderToWorkDetailVsClothesSize(obj) {
+
+    var Color = $("#hd_Color").val();
+    var ClothesSizeId = ConvertToInt($("#hd_ChangeClothesSizeId").val());
+    AjaxPost("/ao/", "ChangeOrderToWorkDetailVsClothesSize",
+                                         {
+
+                                             OrderToWorkId: $("#hd_OrderToWorkId").val(),
+                                             Color: Color,
+                                             ClothesSizeId: ClothesSizeId,
+                                             Num: $("#txt_ChangeNum").val(),
+                                             DoneNum: $("#txt_ChangeDoneNum").val(),
+                                             CheckNum: $("#txt_ChangeCheckNum").val()
+                                         }, function (data) {
+                                             var w = [];
+                                             if (data.re == "ok") {
+                                                 GetOrderToWorkInfo(CurrentOrderToWork.OrderToWork.OrderToWorkId);
+
+                                                 GetOrderInfo();
+                                                 ClearPopWindow(obj);
+                                             }
+                                             else {
+                                                 alert(data.re)
+                                             }
+                                         }, false);
+}
+
+
+function AllNumAllotOrderToWork() {
 
     $(".txt_AllotOrderToWork").each(function () {
 
@@ -2152,8 +2335,7 @@ function AllNumAllotOrderToWork()
 }
 
 //将工单全部完成(只填写数量不改变状态)
-function ALLDoneOrder()
-{
+function ALLDoneOrder() {
 
     $(".txt_DoneNum").each(function () {
 
@@ -2168,20 +2350,58 @@ function ALLDoneOrder()
 
 }
 
-
-function ClearMemberOrderToWork(obj)
-{
+function ToClearMemberOrderToWork(obj) {
 
 
+
+
+    var OrderToWorkStatusId = ConvertToInt($(obj).attr("OrderToWorkStatusId"));
+
+    var w = [];
+    w.push("<div class='c' >");
+
+    w.push("<div class=\"div_abstract\">");
+    w.push("<p>您正在删除生产中的工单,此删除不可逆转,是否确定?!</p>");
+    w.push("</div>");
+    w.push("<input  id='txt_delete' type='text' value=''  placeholder='输入:delete'  />");
+    w.push(" ");
+    w.push("<input type='button' value='确定' onclick='ClearMemberOrderToWork(this)' OrderToWorkStatusId='" + OrderToWorkStatusId + "'  /> ");
+    w.push("");
+    w.push("");
+    w.push("</div>");
+    PopWindow({
+        title: "取消分派",
+        html: w.join("")
+
+    }, 500, 300)
+
+
+
+
+}
+
+
+function ClearMemberOrderToWork(obj) {
+
+    var OrderToWorkStatusId = ConvertToInt($(obj).attr("OrderToWorkStatusId"));
+
+    if (OrderToWorkStatusId >= 30) {
+
+        if ($("#txt_delete").val() != "delete") {
+            return;
+
+        }
+    }
 
 
     AjaxPost("/ao/", "ClearMemberOrderToWork",
                                          {
-                                             OrderToWorkId: $("#hd_OrderToWorkId").val()
-                                     
+                                             OrderToWorkId: $("#hd_OrderToWorkId").val(),
+                                             deleteStr: $("#txt_delete").val()
+
 
                                          }, function (data) {
-                                             
+
                                              ClearPopWindow();
                                              BindPageSetting();
                                          }, false);
@@ -2319,6 +2539,20 @@ function AllotOrderToWork() {
 //完成质检(质检过程是分段提交, 单独完成)
 function CheckOrderToWork() {
     var OrderToWorkId = $("#hd_OrderToWorkId").val();
+
+
+    var CheckNum = 0;
+
+    $(".sp_CheckNum").each(function () {
+        CheckNum = CheckNum + ConvertToInt($(this).html());
+
+    });
+
+    if (CheckNum <= 0) {
+        alert("质检数量必须大于0!");
+        return;
+    }
+
     AjaxPost("/ao/", "CheckOrderToWork",
                                    {
                                        OrderToWorkId: OrderToWorkId

@@ -11,11 +11,67 @@ using Newtonsoft.Json.Linq;
 using io.rong;
 using System.Web.UI;
 using System.Text.RegularExpressions;
+using MongoDB.Bson;
 
 namespace BLL
 {
     public class MemberBLL
     {
+
+        #region 用户日志
+
+
+
+        public void SaveMemberLog(BsonDocument b)
+        {
+
+
+
+            b["CreateTime"] = DateTime.Now;
+            b["MemberId"] = b["MemberId"].ToString();
+         
+            DAL.Mongo.Insert(b, "MemberLog", "log");
+
+
+            BsonDocument mb = new BsonDocument();
+            mb["_id"] = b["MemberId"];
+
+            mb["MemberId"]= b["MemberId"];
+            mb["LastTime"] = b["CreateTime"];
+
+            switch (b["MemberLogTypeId"].ToInt32())
+            {
+
+                case (int)Common.Dict.MemberLogType.通过实名认证:
+                    mb["AcceptAuthenticationTime"] = b["CreateTime"];
+                    DAL.Mongo.Update(mb, "Member", "uzor", true);
+
+                    break;
+
+                case (int)Common.Dict.MemberLogType.通过技能认证:
+                    mb["AcceptProcessTime"] = b["CreateTime"];
+                    DAL.Mongo.Update(mb, "Member", "uzor", true);
+
+                    break;
+
+                case (int)Common.Dict.MemberLogType.用户注册:
+                    mb["RegistrationTime"] = b["CreateTime"];
+                    DAL.Mongo.Update(mb, "Member", "uzor", true);
+
+                    break;
+                default:
+            
+                    break;
+            }
+  
+        //    DAL.Mongo.Update(mb, "Member", "uzor", true);
+
+
+        }
+
+
+
+        #endregion
 
         #region 工种/技能
 
@@ -420,7 +476,7 @@ namespace BLL
             s.Append("  '" + model.Memo + "' ,  ");
             s.Append("  " + model.MemberAmountChangeTypeId + "   ");
             s.Append("  ) ");
-
+            s.Append("  UPDATE dbo.Member SET Amount=@NewAmount,OldAmount=@OldAmount WHERE MemberId=@MemberId ");
 
             if (model.MemberAmountChangeTypeId == 10)
             {
@@ -428,7 +484,7 @@ namespace BLL
 
 
                 //如果是订单结算,那就加入历史记录
-                s.Append("  UPDATE dbo.Member SET Amount=@NewAmount,OldAmount=OldAmount+" + model.ChangeAmount + " WHERE MemberId=@MemberId ");
+
 
             }
 
@@ -498,7 +554,7 @@ namespace BLL
 
         public void RemoveMemberTeam(decimal MemberId)
         {
-          
+
             StringBuilder s = new StringBuilder();
 
 
@@ -511,10 +567,10 @@ namespace BLL
             {
                 #endregion
 
-                decimal TeamId = DAL.DalComm.ExDecimal(" SELECT TeamId FROM	dbo.Member WHERE MemberId="+MemberId+" ");
+                decimal TeamId = DAL.DalComm.ExDecimal(" SELECT TeamId FROM	dbo.Member WHERE MemberId=" + MemberId + " ");
 
 
-               
+
 
                 s.Append("UPDATE dbo.Member SET  TeamId=0,TeamLvId=0 WHERE MemberId=" + MemberId + "");
 
@@ -533,7 +589,7 @@ namespace BLL
 
 
 
-          
+
 
         }
 
@@ -615,6 +671,144 @@ namespace BLL
 
         }
 
+        /// <summary>
+        /// 身份证号是否唯一, JObject["re"]=true|false
+        /// </summary>
+        /// <param name="SfzNo"></param>
+        /// <param name="MemberId">需要排除的用户ID</param>
+        /// <returns></returns>
+        public JObject OnlySfzNo(string SfzNo, decimal MemberId = 0)
+        {
+            JObject j = new JObject();
+
+            j["num"] = 0;
+            j["re"] = true;
+
+            if (SfzNo == "")
+            {
+                return j;
+            }
+
+            StringBuilder s = new StringBuilder();
+
+            if (!Common.Validator.IsIDCard(SfzNo))
+            {
+                throw new Exception("<" + SfzNo + ">不是有效的身份证号码");
+            }
+
+            s.Append(" SELECT MemberId FROM  dbo.Member WHERE SfzNo='" + SfzNo + "' ");
+
+            if (MemberId > 0)
+            {
+                s.Append(" and MemberId<>" + MemberId + " ");
+            }
+
+
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dt = ds.Tables[0];
+            j["num"] = dt.Rows.Count;
+            if (dt.Rows.Count > 0)
+            {
+                j["re"] = false;
+
+
+            }
+            else
+            {
+                j["re"] = true;
+            }
+
+            return j;
+        }
+
+
+        /// <summary>
+        /// 验证手机号唯一性
+        /// </summary>
+        /// <param name="SfzNo">手机号码</param>
+        /// <param name="MemberId"></param>
+        /// <returns></returns>
+        public JObject OnlyPhone(string Phone, decimal MemberId = 0)
+        {
+
+            StringBuilder s = new StringBuilder();
+            JObject j = new JObject();
+            if (!Common.Validator.IsMobile(Phone))
+            {
+                throw new Exception("<" + Phone + ">不是有效的手机号码");
+            }
+
+            s.Append(" SELECT MemberId FROM  dbo.Member WHERE Phone='" + Phone + "' ");
+
+            if (MemberId > 0)
+            {
+                s.Append(" and MemberId<>" + MemberId + " ");
+            }
+
+
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dt = ds.Tables[0];
+            j["num"] = dt.Rows.Count;
+            if (dt.Rows.Count > 0)
+            {
+                j["re"] = true;
+
+
+            }
+            else
+            {
+                j["re"] = false;
+            }
+
+            return j;
+        }
+
+        /// <summary>
+        /// 银联卡的唯一性
+        /// </summary>
+        /// <param name="BankCardCode"></param>
+        /// <param name="MemberId"></param>
+        /// <returns></returns>
+        public JObject OnlyBankCard(string BankCardCode, decimal MemberId = 0)
+        {
+
+            StringBuilder s = new StringBuilder();
+            JObject j = new JObject();
+            if (BankCardCode.Length < 8)
+            {
+                throw new Exception("请输入正确的银行卡号");
+            }
+
+            s.Append(" SELECT MemberId FROM dbo.MemberBankCard WHERE BankCardCode='" + BankCardCode + "'");
+
+            if (MemberId > 0)
+            {
+                s.Append(" and MemberId<>" + MemberId + " ");
+            }
+
+
+
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dt = ds.Tables[0];
+            j["num"] = dt.Rows.Count;
+            if (dt.Rows.Count > 0)
+            {
+                j["re"] = true;
+
+
+            }
+            else
+            {
+                j["re"] = false;
+            }
+
+            return j;
+        }
 
         /// <summary>
         /// 保存一个咨询日志
@@ -866,6 +1060,80 @@ namespace BLL
 
         }
 
+        public void AuthenticationStatusChange(decimal memberId, int authenticationStatusId)
+        {
+
+
+
+            #region 事务开启
+
+            TransactionOptions transactionOption = new TransactionOptions();
+            transactionOption.IsolationLevel = Common.Tran.isolationLevel(System.Transactions.IsolationLevel.ReadUncommitted);
+            using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
+            {
+
+                #endregion
+                UserBLL ubll = new UserBLL();
+                BsonDocument b = new BsonDocument();
+                DAL.DalComm.ExReInt(" UPDATE dbo.member SET authenticationStatusId=" + authenticationStatusId + " WHERE memberId=" + memberId + "  ");
+                CountTeamByMemberId(memberId);
+                BLL.MsgBLL mbll = new MsgBLL();
+
+                switch (authenticationStatusId)
+                {
+
+                    case 20:
+
+    
+                        b["MemberId"] = memberId;
+                        b["Title"] = "用户已通过实名认证!";
+                        b["UserId"] = ubll.CurrentUserId();
+                        b["MemberLogTypeId"] = (int)Common.Dict.MemberLogType.通过实名认证;
+                        b["MemberLogTypeName"] = Common.Dict.MemberLogType.通过实名认证.ToString();
+                        mbll.SendMsgToDevice(10, "您已通过实名认证!", "AcceptAuthentication", memberId.ToString(), "messager");
+                        break;
+                    case 10:
+         
+                        b["MemberId"] = memberId;
+                        b["Title"] = "用户实名身份待认证!";
+                        b["UserId"] = ubll.CurrentUserId();
+                        b["MemberLogTypeId"] = (int)Common.Dict.MemberLogType.申请实名认证;
+                        b["MemberLogTypeName"] = Common.Dict.MemberLogType.申请实名认证.ToString();
+                        mbll.SendMsgToDevice(10, "用户实名身份待认证!", "AcceptAuthentication", memberId.ToString(), "messager");
+                        break;
+
+
+                    case 0:
+                        b["MemberId"] = memberId;
+                        b["Title"] = "用户实名认证状态调整为[未认证]!";
+                        b["UserId"] = ubll.CurrentUserId();
+                        b["MemberLogTypeId"] = (int)Common.Dict.MemberLogType.未实名认证;
+                        b["MemberLogTypeName"] = Common.Dict.MemberLogType.未实名认证.ToString();
+                        mbll.SendMsgToDevice(10, "用户实名身份待认证!", "AcceptAuthentication", memberId.ToString(), "messager");
+                        break;
+                    default:
+
+                        throw new Exception("实名认证状态不能为"+authenticationStatusId+"");
+                       
+                }
+                SaveMemberLog(b);
+
+
+                #region 事务关闭
+
+                transactionScope.Complete();
+
+            }
+            #endregion
+
+
+
+
+
+
+
+        }
+
         public void ProcessLvStatusChange(decimal MemberId, int ProcessLvStatusId)
         {
 
@@ -921,7 +1189,7 @@ namespace BLL
 
                 if (SubjectCashStatusId != 10)
                 {
-                    throw new Exception("该状态的订单无法进行此操作[状态码" + SubjectCashStatusId + "]");
+                    throw new Exception("该状态的申请无法进行此操作[状态码" + SubjectCashStatusId + "]");
                 }
 
 
@@ -1020,6 +1288,12 @@ namespace BLL
                 }
 
                 DAL.SubjectCashDAL dal = new DAL.SubjectCashDAL();
+
+                if (model.MemberBankCardId == 0)
+                {
+                    throw new Exception("未选择提现银行卡?");
+                }
+
                 if (model.SubjectCashId == 0)
                 {
                     decimal Amount = DAL.DalComm.ExDecimal("SELECT Amount FROM dbo.Member WHERE MemberId=" + model.MemberId + "");
@@ -1128,12 +1402,23 @@ namespace BLL
 
                 msgBll.SendMsgToDevice(10, "恭喜您,您之前提交的技能认证已通过", "AcceptProcessLv", MemberId.ToString(), "");
 
+               
+
+
                 #region 事务关闭
 
                 transactionScope.Complete();
 
             }
             #endregion
+
+
+            BsonDocument b = new BsonDocument();
+            b["MemberId"] = MemberId;
+            b["Title"] = "用户通过了技能认证";
+            b["MemberLogTypeId"] = (int)Common.Dict.MemberLogType.通过技能认证;
+            b["MemberLogTypeName"] = Common.Dict.MemberLogType.通过技能认证.ToString();
+            SaveMemberLog(b);
         }
 
         public void SaveTx(SubjectInfoModel model)
@@ -1443,6 +1728,10 @@ namespace BLL
 
             DAL.MemberDAL dal = new DAL.MemberDAL();
 
+
+
+
+
             if (model.MemberId <= 0)
             {
                 throw new Exception("后台不能新增用户!");
@@ -1451,6 +1740,26 @@ namespace BLL
             }
             else
             {
+
+
+                #region 判断身份证
+
+                JObject j = OnlySfzNo(model.SfzNo, model.MemberId);
+                if ((bool)j["re"])
+                {
+
+                }
+                else
+                {
+
+                    throw new Exception("该身份证号已经有其他用户使用了");
+                }
+                #endregion
+
+
+
+
+
                 StringBuilder s = new StringBuilder();
                 s.Append(" SELECT COUNT(0) as Num FROM member WHERE Email='" + model.Email + "' AND MemberId<>" + model.MemberId + " ");
                 s.Append(" SELECT COUNT(0) as Num FROM member WHERE Phone='" + model.Phone + "' AND MemberId<>" + model.MemberId + " ");
@@ -1738,6 +2047,8 @@ namespace BLL
         {
 
 
+
+
             DAL.MemberDAL dal = new DAL.MemberDAL();
             StringBuilder s = new StringBuilder();
             if (dal.ExInt(" Phone='" + model.Phone + "' ") > 0)
@@ -1779,7 +2090,24 @@ namespace BLL
             {
 
 
+
+
+
+
+
             }
+
+
+            BsonDocument b = new BsonDocument();
+            b["MemberId"] = model.MemberId;
+            b["Phone"] = model.Phone;
+            b["MemberLogTypeId"] =(int) Common.Dict.MemberLogType.用户注册;
+
+            b["MemberLogTypeName"] = Common.Dict.MemberLogType.用户注册;
+
+
+            SaveMemberLog(b);
+
         }
         public DataSet YzmLogin(decimal MerId, string PhoneNo, string yzm)
         {
@@ -1787,7 +2115,7 @@ namespace BLL
             #region 事务开启
 
             TransactionOptions transactionOption = new TransactionOptions();
-            transactionOption.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
+            transactionOption.IsolationLevel = System.Transactions.IsolationLevel.RepeatableRead;
             using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
             {
                 #endregion

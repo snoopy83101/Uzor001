@@ -1,0 +1,97 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+* {
+    max-width: 640px;
+}
+
+
+.div_main {
+    width: 640px;
+    margin: 0 auto;
+    height: auto;
+    min-height: 300px;
+}
+
+.div_hd {
+    height: 100px;
+    position: relative;
+    background-color: #fff;
+    width:640px !important;
+}
+
+.a_menu {
+    width: 52px;
+    height: 40px;
+    display: block;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-image: url('../image/Wap/nav.png');
+    background-size: 100% 100%;
+}
+
+.img_logo {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    height: 40px;
+}
+
+
+
+.div_line1 {
+    border-bottom: 3px solid #D8D8D8;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    margin: auto;
+    width: 80%;
+}
+
+    .div_line1 a {
+        position: absolute;
+        border-bottom: 3px solid #FF9734;
+        height: 60px;
+        bottom: -3px;
+        left: 20px;
+        line-height: 70px;
+        color: #333;
+        font-weight: bold;
+        font-family: '黑体';
+        font-size: 20px;
+    }
+
+.div_footer {
+    color: #fff;
+    background-color: #000;
+    height: 50px;
+    line-height: 50px;
+}
+
+.div_menu {
+    background-color: #f7f7f7;
+    position: fixed;
+    top: 100px;
+    width: 640px;
+    display: none;
+}
+
+    .div_menu a {
+        display: block;
+        line-height: 50px;
+        height: 50px;
+        text-align: left;
+        padding-left: 10px;
+        font-size: 16px;
+        color: #4a4a4a;
+        text-decoration: none;
+    }
+
+        .div_menu a.select {
+            color: #f5a623;
+            background-color: #d8d8d8;
+        }

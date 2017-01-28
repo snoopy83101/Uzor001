@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutBLL.cs" />
+    <Compile Include="AdBLL.cs" />
     <Compile Include="ArticleBLL.cs" />
     <Compile Include="BBSBLL.cs" />
     <Compile Include="BeeCloud\BCCache.cs" />
@@ -149,6 +150,14 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Bson\MongoDB.Bson.csproj">
+      <Project>{0e9a3a2a-49cd-4f6c-847c-dc79b4b65ce6}</Project>
+      <Name>MongoDB.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver\MongoDB.Driver.csproj">
+      <Project>{ae5166cd-76b0-4911-bd80-ced9521f37a1}</Project>
+      <Name>MongoDB.Driver</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

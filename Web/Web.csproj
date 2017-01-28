@@ -70,31 +70,232 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\fxOrderInfo.css" />
+    <Content Include="App\fxOrderInfo.html" />
+    <Content Include="App\fxOrderInfo.js" />
+    <Content Include="App\hd\happyNewYear2017\happyNewYear2017.css" />
+    <Content Include="App\hd\happyNewYear2017\happyNewYear2017.jpg" />
+    <Content Include="App\hd\happyNewYear2017\happyNewYear2017.html" />
+    <Content Include="App\hd\happyNewYear2017\happyNewYear2017.js" />
+    <Content Include="ContactUs.aspx" />
+    <Content Include="ContactUs.css" />
+    <Content Include="ContactUs.js" />
+    <Content Include="css\common.css" />
+    <Content Include="css\ZYUiPub.css" />
+    <Content Include="image\200.png" />
+    <Content Include="image\Contact\add.png" />
+    <Content Include="image\Contact\banner.jpg" />
+    <Content Include="image\Contact\code.png" />
+    <Content Include="image\Contact\tel.png" />
+    <Content Include="image\Contact\weChat.png" />
+    <Content Include="image\Index\banner.jpg" />
+    <Content Include="image\Index\partner.png" />
+    <Content Include="image\Index\partner1.png" />
+    <Content Include="image\Index\partner2.png" />
+    <Content Include="image\Index\partner3.png" />
+    <Content Include="image\Index\partner4.png" />
+    <Content Include="image\Order\caipian.png" />
+    <Content Include="image\Order\changdi.png" />
+    <Content Include="image\Order\dizhi.png" />
+    <Content Include="image\Order\fengren.png" />
+    <Content Include="image\Order\jiage.png" />
+    <Content Include="image\Order\jiaohuo.png" />
+    <Content Include="image\Order\ld.gif" />
+    <Content Include="image\Order\lianxiren.png" />
+    <Content Include="image\Order\OrderName.png" />
+    <Content Include="image\Order\Phone.png" />
+    <Content Include="image\Order\qi.png" />
+    <Content Include="image\Order\wancheng.png" />
+    <Content Include="image\Order\yifu.png" />
+    <Content Include="image\Order\yijiedan.png" />
+    <Content Include="image\Order\yijiedan2.png" />
+    <Content Include="image\Order\yugu.png" />
+    <Content Include="image\Order\zhijian.png" />
+    <Content Include="image\Logo.png" />
+    <Content Include="image\Recruitment\banner.jpg" />
+    <Content Include="image\Recruitment\banner2.jpg" />
+    <Content Include="image\Recruitment\btnANDROID.png" />
+    <Content Include="image\Recruitment\btnIPHONE.png" />
+    <Content Include="image\Recruitment\code.png" />
+    <Content Include="image\Recruitment\step.png" />
+    <Content Include="image\Service\banner.jpg" />
+    <Content Include="image\Service\Group 10.png" />
+    <Content Include="image\Service\Group 4.png" />
+    <Content Include="image\Service\Group 5.png" />
+    <Content Include="image\Service\Group 7.png" />
+    <Content Include="image\Service\Group 8.png" />
+    <Content Include="image\Service\Group 9.png" />
+    <Content Include="image\Service\iCon1.png" />
+    <Content Include="image\Service\iCon2.png" />
+    <Content Include="image\Service\iCon3.png" />
+    <Content Include="image\Service\iCon4.png" />
+    <Content Include="image\Service\iCon5.png" />
+    <Content Include="image\Service\pic1.png" />
+    <Content Include="image\Service\pic2.png" />
+    <Content Include="image\Service\pic3.png" />
+    <Content Include="image\Service\pic4.png" />
+    <Content Include="image\Service\s1.png" />
+    <Content Include="image\Service\s2.png" />
+    <Content Include="image\Service\s3.png" />
+    <Content Include="image\Service\Shape Copy 2.png" />
+    <Content Include="image\Service\Shape Copy 3.png" />
+    <Content Include="image\Service\Shape Copy.png" />
+    <Content Include="image\Wap\logo.png" />
+    <Content Include="image\Wap\nav.png" />
+    <Content Include="Index.aspx" />
+    <Content Include="Index.css" />
+    <Content Include="Index.js" />
     <Content Include="packages.config" />
+    <Content Include="Recruitment.aspx" />
+    <Content Include="Recruitment.css" />
+    <Content Include="Recruitment.js" />
+    <Content Include="script\api.js" />
+    <Content Include="script\common.js" />
+    <Content Include="script\jquery-1.8.2.js" />
+    <Content Include="script\jquery-3.1.1.js" />
+    <Content Include="script\ZYUiPub.js" />
+    <Content Include="test.aspx" />
+    <Content Include="UzorService.aspx" />
+    <Content Include="UzorService.css" />
+    <Content Include="UzorService.js" />
+    <Content Include="Wap\ContactUs.aspx" />
+    <Content Include="Wap\ContactUs.css" />
+    <Content Include="Wap\ContactUs.js" />
+    <Content Include="Wap\image\Contact\banner.jpg" />
+    <Content Include="Wap\image\index\banner.jpg" />
+    <Content Include="Wap\image\index\banner2.jpg" />
+    <Content Include="Wap\image\Recruitment\banner1.jpg" />
+    <Content Include="Wap\image\Recruitment\banner2.jpg" />
+    <Content Include="Wap\image\Recruitment\banner3.jpg" />
+    <Content Include="Wap\image\UzorService\banner1.jpg" />
+    <Content Include="Wap\image\UzorService\banner2.jpg" />
+    <Content Include="Wap\image\UzorService\banner3.jpg" />
+    <Content Include="Wap\image\UzorService\banner4.jpg" />
+    <Content Include="Wap\image\UzorService\banner5.jpg" />
+    <Content Include="Wap\index.aspx" />
+    <Content Include="Wap\index.css" />
+    <Content Include="Wap\index.js" />
+    <Content Include="Wap\Recruitment.aspx" />
+    <Content Include="Wap\Recruitment.css" />
+    <Content Include="Wap\Recruitment.js" />
+    <Content Include="Wap\UzorService.aspx" />
+    <Content Include="Wap\UzorService.css" />
+    <Content Include="Wap\UzorService.js" />
+    <Content Include="Wap\WapSitePub.css" />
+    <Content Include="Wap\WapSitePub.js" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="image\.DS_Store" />
+    <Content Include="image\Contact\.DS_Store" />
+    <Content Include="image\Index\.DS_Store" />
+    <Content Include="image\Order\.DS_Store" />
+    <Content Include="image\Recruitment\.DS_Store" />
+    <Content Include="image\Service\.DS_Store" />
+    <Content Include="image\Wap\.DS_Store" />
     <None Include="Properties\PublishProfiles\fabu.pubxml" />
+    <Content Include="script\address.json" />
+    <Content Include="Wap\WapSitePub.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="WebSitePub.css" />
+    <Content Include="WebSitePub.js" />
+    <Content Include="WebSitePub.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recruitment.aspx.cs">
+      <DependentUpon>Recruitment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Recruitment.aspx.designer.cs">
+      <DependentUpon>Recruitment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UzorService.aspx.cs">
+      <DependentUpon>UzorService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UzorService.aspx.designer.cs">
+      <DependentUpon>UzorService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wap\ContactUs.aspx.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wap\ContactUs.aspx.designer.cs">
+      <DependentUpon>ContactUs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wap\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wap\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wap\Recruitment.aspx.cs">
+      <DependentUpon>Recruitment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wap\Recruitment.aspx.designer.cs">
+      <DependentUpon>Recruitment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wap\UzorService.aspx.cs">
+      <DependentUpon>UzorService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wap\UzorService.aspx.designer.cs">
+      <DependentUpon>UzorService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wap\WapSitePub.Master.cs">
+      <DependentUpon>WapSitePub.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wap\WapSitePub.Master.designer.cs">
+      <DependentUpon>WapSitePub.Master</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebSitePub.Master.cs">
+      <DependentUpon>WebSitePub.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebSitePub.Master.designer.cs">
+      <DependentUpon>WebSitePub.Master</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +338,18 @@
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{577b9b4b-bb31-46ea-ae73-e7e34aaaf16a}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Bson\MongoDB.Bson.csproj">
+      <Project>{0e9a3a2a-49cd-4f6c-847c-dc79b4b65ce6}</Project>
+      <Name>MongoDB.Bson</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver.Core\MongoDB.Driver.Core.csproj">
+      <Project>{da56482a-5d8f-41e0-85e6-1f22b310f91b}</Project>
+      <Name>MongoDB.Driver.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mongo-csharp-driver-master\src\MongoDB.Driver\MongoDB.Driver.csproj">
+      <Project>{ae5166cd-76b0-4911-bd80-ced9521f37a1}</Project>
+      <Name>MongoDB.Driver</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

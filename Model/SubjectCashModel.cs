@@ -76,6 +76,14 @@ namespace Model
             get;
             set;
         }
+        /// <summary>
+        /// MemberBankCardId
+        /// </summary>		
+        public decimal MemberBankCardId
+        {
+            get;
+            set;
+        }
 
     }
 }

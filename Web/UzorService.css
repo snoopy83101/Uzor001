@@ -1,0 +1,22 @@
+﻿body {
+}
+
+
+.div_liucheng {
+}
+
+    .div_liucheng a {
+        display: inline-block;
+        width: 144px;
+        height: 168px;
+        background-color: #1F98C7;
+        background-image: url('image/Service/Shape Copy 2.png');
+        background-repeat:no-repeat;
+        background-position:center 30px;
+    }
+
+        .div_liucheng a span {
+            display: block;
+            margin-top: 100px;
+            color: #fff;
+        }

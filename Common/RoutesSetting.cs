@@ -83,7 +83,10 @@ namespace Common
             routes.MapHttpHandlerRoute("ajax统计查询", "as/", "~/AjaxServer/AjaxSearch.ashx");
            // routes.MapPageRoute("ajax客户用户", "amb/", "~/AjaxServer/AjaxMember.aspx");
             routes.MapHttpHandlerRoute("ajax客户用户", "amb/", "~/AjaxServer/AjaxMember.ashx");
-            routes.MapHttpHandlerRoute("ajax公交车", "abus/", "~/AjaxServer/AjaxBus.ashx");
+            routes.MapHttpHandlerRoute("ajax广告管理", "ad/", "~/AjaxServer/AjaxAd.ashx");
+            routes.MapHttpHandlerRoute("ajax广告管理2", "ads/", "~/AjaxServer/AjaxAd.ashx");
+
+
             routes.MapHttpHandlerRoute("ajax社群", "ab/", "~/AjaxServer/AjaxBBS.ashx");
 
 
@@ -94,42 +97,38 @@ namespace Common
 
 
 
-            routes.MapPageRoute("ajax招聘", "aj/", "~/AjaxServer/JobAjax.aspx");
-            routes.MapPageRoute("ajax房产", "ah/", "~/AjaxServer/HouseAjax.aspx");
+
             routes.MapHttpHandlerRoute("ajax公共", "ac/", "~/AjaxServer/AjaxComm.ashx");
             routes.MapHttpHandlerRoute("ajax地图", "amap/", "~/AjaxServer/AjaxMap.aspx");
             routes.MapHttpHandlerRoute("ajax关于", "aa/", "~/AjaxServer/AjaxAbout.ashx");
             routes.MapHttpHandlerRoute("ajax用户", "au/", "~/AjaxServer/AjaxUser.ashx");
             routes.MapHttpHandlerRoute("ajax外发订单", "ao/", "~/AjaxServer/AjaxOrder.ashx");
             routes.MapHttpHandlerRoute("ajax新闻", "aar/", "~/AjaxServer/AjaxArticle.ashx");
-         //   routes.MapPageRoute("ajax乡镇", "at/", "~/AjaxServer/TownAjax.aspx");
+            //   routes.MapPageRoute("ajax乡镇", "at/", "~/AjaxServer/TownAjax.aspx");
 
-          //  routes.Add("sdfsd", new Route("data", new PageRoute("~/handler.ashx")));
+            //  routes.Add("sdfsd", new Route("data", new PageRoute("~/handler.ashx")));
             #endregion
+
+
 
             #region 公共部分
 
-            routes.MapPageRoute("验证码", "yzm/", "~/Comm/yzm.aspx");
+            routes.MapHttpHandlerRoute("企业网站首页", "index/", "~/index.aspx");
+            routes.MapHttpHandlerRoute("企业网站工人招募", "Recruitment/", "~/Recruitment.aspx");
+            routes.MapHttpHandlerRoute("企业网站联系我们", "ContactUs/", "~/ContactUs.aspx");
+            routes.MapHttpHandlerRoute("优做服务", "UzorService/", "~/UzorService.aspx");
 
 
+            routes.MapHttpHandlerRoute("Wap企业网站首页", "Wap/index/", "~/Wap/index.aspx");
+            routes.MapHttpHandlerRoute("Wap企业网站工人招募", "Wap/Recruitment/", "~/Wap/Recruitment.aspx");
+            routes.MapHttpHandlerRoute("Wap企业网站联系我们", "Wap/ContactUs/", "~/Wap/ContactUs.aspx");
+            routes.MapHttpHandlerRoute("Wap优做服务", "Wap/UzorService/", "~/Wap/UzorService.aspx");
 
             #endregion
 
-            #region 南麻集
-            routes.MapPageRoute("信息列表", "InformationList/", "~/Information/InformationList.aspx");
-            routes.MapPageRoute("信息主体", "InformationInfo/", "~/Information/InformationInfo.aspx");
-            routes.MapPageRoute("发布信息", "SaveInformation/", "~/Information/SaveInformation.aspx");
 
-            #endregion
 
-            #region 房产
-            routes.MapPageRoute("求租求购主体", "House/Demand/", "~/House/HouseDemandInfo.aspx");
-            routes.MapPageRoute("求租求购", "House/qzqg/", "~/House/FindHouseDemand.aspx");
-            routes.MapPageRoute("显示房源", "House/fangyuan/", "~/House/HouseInfo.aspx");
-            routes.MapPageRoute("查找房源", "House/chaxun/", "~/House/FindHouse.aspx");
-            routes.MapPageRoute("发布房源", "House/fabu/", "~/House/SaveHouse.aspx");
-            routes.MapPageRoute("发布求组求购", "House/SaveHouseDemand/", "~/House/SaveHouseDemand.aspx");
-            #endregion
+
 
             #region 用户
 

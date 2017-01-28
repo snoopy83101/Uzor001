@@ -12,7 +12,8 @@ using Common;
 using System.IO;
 using Model;
 using LitJson;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace BPage
 {
     public class Order : Common.BPageSetting2
@@ -27,6 +28,12 @@ namespace BPage
                 switch (para)
                 {
 
+                    case "MaxNumOrderToWorkDetailVsClothesSize":  //获取一条工单明细VS尺码的可修改最大值
+                        MaxNumOrderToWorkDetailVsClothesSize();
+                        break;
+                    case "ChangeOrderToWorkDetailVsClothesSize":
+                        ChangeOrderToWorkDetailVsClothesSize();
+                        break;
 
                     case "GetWaitForPendingOrderToWorkList":
                         GetWaitForPendingOrderToWorkList();
@@ -89,6 +96,8 @@ namespace BPage
                     case "CountOrder":
                         CountOrder();
                         break;
+
+
                     case "SaveOrderDetailVsClothesSize":
                         SaveOrderDetailVsClothesSize();
                         break;
@@ -178,6 +187,93 @@ namespace BPage
 
         }
 
+        private void MaxNumOrderToWorkDetailVsClothesSize()
+        {
+
+
+
+            string Color = ReStr("Color", "");
+            decimal OrderToWorkId = ReDecimal("OrderToWorkId", 0);
+            int ClothesSizeId = ReInt("ClothesSizeId", 0);
+            #region 事务开启
+
+            TransactionOptions transactionOption = new TransactionOptions();
+            transactionOption.IsolationLevel = Common.Tran.isolationLevel(System.Transactions.IsolationLevel.ReadUncommitted);
+            using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
+            {
+                #endregion
+
+
+                BLL.OrderBLL bll = new BLL.OrderBLL();
+                JObject j = bll.MaxNumOrderToWorkDetailVsClothesSize(Color, ClothesSizeId, OrderToWorkId);
+
+
+
+
+
+
+
+                ReTrue(j);
+
+                #region 事务关闭
+
+                transactionScope.Complete();
+
+            }
+            #endregion
+
+
+
+
+
+        }
+
+        private void ChangeOrderToWorkDetailVsClothesSize()   //修改工单明细
+        {
+            Model.OrderToWorkDetailVsClothesSizeModel model = new OrderToWorkDetailVsClothesSizeModel();
+            string Color = ReStr("Color", "");
+            decimal OrderToWorkId = ReDecimal("OrderToWorkId", 0);
+            model.ClothesSizeId = ReInt("ClothesSizeId", 0);
+            DAL.OrderToWorkDetailVsClothesSizeDAL dal = new DAL.OrderToWorkDetailVsClothesSizeDAL();
+
+
+
+
+            #region 事务开启
+
+            TransactionOptions transactionOption = new TransactionOptions();
+            transactionOption.IsolationLevel = Common.Tran.isolationLevel(System.Transactions.IsolationLevel.ReadUncommitted);
+            using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
+            {
+                #endregion
+
+
+
+
+
+
+
+
+                //开始修改
+
+                model.DoneNum = ReDecimal("DoneNum", 0);
+                model.CheckNum = ReDecimal("CheckNum", 0);
+                model.Num = ReDecimal("Num", 0);
+                BLL.OrderBLL bll = new BLL.OrderBLL();
+                JObject j = bll.ChangeOrderToWorkDetailVsClothesSize(model, Color, OrderToWorkId);
+                ReTrue(j);
+
+                #region 事务关闭
+
+                transactionScope.Complete();
+
+            }
+            #endregion
+
+        }
+
+
+
         private void GetWaitForPendingOrderToWorkList()
         {
 
@@ -196,7 +292,7 @@ namespace BPage
 
 
             s.Append("  OrderToWorkStatusId >=50  ");
-            s.Append("  or PendingTime BETWEEN '" + dtm1+"' and '"+dtm2+"' ");
+            s.Append("  or PendingTime BETWEEN '" + dtm1 + "' and '" + dtm2 + "' ");
             s.Append("  ");
             s.Append("  ");
             s.Append("  ");
@@ -212,6 +308,10 @@ namespace BPage
         private void ClearMemberOrderToWork()
         {
             decimal OrderToWorkId = ReDecimal("OrderToWorkId", 0);
+
+            string deleteStr = ReStr("deleteStr", "");
+
+
 
 
             BLL.OrderBLL bll = new BLL.OrderBLL();
@@ -553,6 +653,8 @@ namespace BPage
             }
 
             bll.SaveDoneNum(DoneNum, OrderToWorkDetailId, ClothesSizeId, DoneLogTypeId);
+
+            ReTrue();
         }
 
         private void CountOrder()
@@ -1029,7 +1131,7 @@ namespace BPage
                 dal.Add(model);
 
                 s.Clear();
-                s.Append(" UPDATE  dbo.OrderVsMember SET VsStatus=15 WHERE OrderId='" + model.OrderId + "' AND MemberId=" + model.MemberId + "  "); 
+                s.Append(" UPDATE  dbo.OrderVsMember SET VsStatus=15 WHERE OrderId='" + model.OrderId + "' AND MemberId=" + model.MemberId + "  ");
 
                 DAL.DalComm.BackData(s.ToString());
 
@@ -1524,6 +1626,8 @@ namespace BPage
             decimal MemberId = ReDecimal("MemberId", 0);
             bool CountByStatus = ReBool("CountByStatus", false);
             string OrderStatusIdArray = ReStr("OrderStatusIdArray", "");
+            string ClientsCode = ReStr("ClientsCode", "");
+
 
             DAL.OrderInfoDAL dal = new DAL.OrderInfoDAL();
 
@@ -1534,8 +1638,9 @@ namespace BPage
             if (OrderStatusIdArray != "" && OrderStatusIdArray != "All")
             {
 
-                s.Append(" and OrderStatusId in ("+ OrderStatusIdArray + ") ");
+                s.Append(" and OrderStatusId in (" + OrderStatusIdArray + ") ");
             }
+
 
             if (GetType == "QiangDan")
             {
@@ -1546,7 +1651,7 @@ namespace BPage
 
 
                 s.Append(" and OrderStatusId>=20 ");
-               // s.Append(" and ReceivedTime >GETDATE() ");   //领取裁片时间必须大于当前时间
+                // s.Append(" and ReceivedTime >GETDATE() ");   //领取裁片时间必须大于当前时间
                 //   s.Append(" and PlanningTime >GETDATE() AND ReceivedTime >GETDATE() ");
             }
             else
@@ -1568,14 +1673,22 @@ namespace BPage
 
 
             }
+
+
+            if (ClientsCode != "")
+            {
+
+                s.Append(" and ClientsCode like '%" + ClientsCode + "%' ");
+            }
+
             DataSet ds2 = new DataSet();
             if (CountByStatus)
             {
 
                 StringBuilder sg = new StringBuilder();
-                sg.Append("  SELECT  COUNT(0) as OrderStatusNum  ,OrderStatusId FROM dbo.OrderView where " + s.ToString() +"  GROUP BY OrderStatusId ");
+                sg.Append("  SELECT  COUNT(0) as OrderStatusNum  ,OrderStatusId FROM dbo.OrderView where " + s.ToString() + "  GROUP BY OrderStatusId ");
 
-                 ds2 = DAL.DalComm.BackData(sg.ToString());
+                ds2 = DAL.DalComm.BackData(sg.ToString());
 
 
             }

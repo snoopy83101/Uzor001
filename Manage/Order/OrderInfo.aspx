@@ -3,8 +3,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="/PubUI/ueditor/ueditor.all.min.js"></script>
     <script src="/PubUI/ueditor/ueditor.config.js"></script>
-    <link href="OrderInfo.css" rel="stylesheet" />
- <script src="OrderInfo.js?v=2016121623"></script>
+<link type="text/css" rel="stylesheet" href="OrderInfo.css?v=20161221531" />
+<script src="OrderInfo.js?v=20161221153"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -13,9 +13,9 @@
 
             <a class="a_zongshu">总数<span id="sp_OrderQuantity"></span>
             </a>
-            <a class="a_shengchan">生产数<span id="sp_WorkQuantity"></span>
+            <a class="a_shengchan">已派单数<span id="sp_WorkQuantity"></span>
             </a>
-            <a class="a_Done">完成数<span id="sp_DoneQuantity"></span>
+            <a class="a_Done">已生产数<span id="sp_DoneQuantity"></span>
             </a>
             <a class="a_zhijian">质检通过数<span id="sp_CheckQuantity"></span>
             </a>
@@ -241,6 +241,7 @@
                             <tr>
                                 <th style="vertical-align: top;">详细信息</th>
                                 <td>
+                           
                                     <script type="text/plain" id="txt_OrderContent">
       
                                     </script>

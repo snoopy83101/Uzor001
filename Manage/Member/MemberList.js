@@ -63,6 +63,28 @@ function SearchMemberList(CurrentPage) {
                                         w.push(j.ProcessLvStatusName);
                                         w.push("</span>");
                                         w.push("</td>");
+                                        w.push("<td >");
+                                        w.push("<span  ");
+
+                                        switch (j.AuthenticationStatusId) {
+                                            case 10:
+
+                                                //提交认证
+
+                                                w.push(" class='shanshuo' ");
+                                                break;
+                                            default:
+
+                                        }
+
+                                        w.push(" >");
+
+                                        w.push(j.AuthenticationStatusName);
+                                        w.push("</span>");
+                                        w.push("</td>");
+
+
+
                                         w.push("<td>");
                                         w.push(DateFormat(j.LastTime, "yyyy/MM/dd"));
                                         w.push("</td>")

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Model;
 using System.Data;
 using System.Transactions;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 namespace BLL
 {
     public class OrderBLL
     {
 
-        public DataSet CountOrderToWork(decimal OrderToWorkId)
+        public DataSet CountOrderToWork(decimal OrderToWorkId, bool NeedCountOrder = false)
         {
 
             StringBuilder s = new StringBuilder();
@@ -45,6 +46,13 @@ namespace BLL
             s.Append(" SELECT * FROM dbo.OrderToWork WHERE OrderToWorkId=" + OrderToWorkId + " ");
 
             DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            if (NeedCountOrder)
+            {
+                DataTable dt = ds.Tables[1];
+                DataRow dr = dt.Rows[0];
+                CountOrder(dr["OrderId"].ToString());
+            }
 
             return ds;
         }
@@ -218,6 +226,145 @@ namespace BLL
             #endregion
 
 
+        }
+
+        public JObject MaxNumOrderToWorkDetailVsClothesSize(string Color, int ClothesSizeId,decimal OrderToWorkId)
+        {
+
+            JObject j = new JObject();
+
+            StringBuilder s = new StringBuilder();
+            s.Append(" SELECT o.OrderId,d.Color FROM dbo.OrderToWorkDetail d  INNER JOIN  dbo.OrderToWork o ON o.OrderToWorkId = d.OrderToWorkId WHERE Color ='" + Color + "' and d.OrderToWorkId='"+ OrderToWorkId + "' ");
+            s.Append("  ");
+            DataSet ds = DAL.DalComm.BackData(s.ToString());
+
+            DataTable dtOrderToWorkDetail = ds.Tables[0];
+
+            if (dtOrderToWorkDetail.Rows.Count == 0)
+            {
+
+                throw new Exception("没有找到工单明细数据");
+            }
+            DataRow drOrderToWorkDetail = dtOrderToWorkDetail.Rows[0];
+            string OrderId = drOrderToWorkDetail["OrderId"].ToString();
+
+
+            s.Clear();
+            //查找订单明细
+            s.Append(" SELECT  ISNULL(SUM(Num),0) AS Num  FROM   dbo.OrderDetailVsClothesSizeView WHERE OrderId='" + OrderId + "' and  Color='" + Color + "' AND ClothesSizeId=" + ClothesSizeId + "  ");
+            s.Append(" SELECT ISNULL(SUM(Num),0) AS Num  FROM   dbo.OrderToWorkDetailVsClothesSizeView  WHERE  OrderId='" + OrderId + "' AND OrderToWorkId <>" + OrderToWorkId + " AND  Color='" + Color + "' AND  ClothesSizeId='" + ClothesSizeId + "'   ");
+
+            DataSet dsNum = DAL.DalComm.BackData(s.ToString());
+            DataRow drOrder = dsNum.Tables[0].Rows[0];
+
+            DataRow drOtherOrderToWorkr = dsNum.Tables[1].Rows[0];    //获取除此工单之外该订单的其他工单的分派数量
+            decimal OrderNum = decimal.Parse(drOrder["Num"].ToString());
+            decimal OtherOrderToWorkrNum = decimal.Parse(drOtherOrderToWorkr["Num"].ToString());
+
+
+
+
+
+
+            //查找订单明细
+
+
+
+
+            j["MaxNum"] = OrderNum - OtherOrderToWorkrNum;    //订单的此颜色VS尺码的数量 - 此订单下其他工单已经分派的尺码和颜色的数量
+            j["re"] = "ok";
+            return j;
+        }
+
+        public JObject ChangeOrderToWorkDetailVsClothesSize(OrderToWorkDetailVsClothesSizeModel model, string Color, decimal OrderToWorkId)
+        {
+
+            if (OrderToWorkId == 0)
+            {
+                throw new Exception("OrderToWorkId不能为0");
+
+            }
+
+
+            JObject j = new JObject();
+
+
+            JObject jMax = MaxNumOrderToWorkDetailVsClothesSize(Color, model.ClothesSizeId,OrderToWorkId);
+
+
+            decimal MaxNum = (decimal)jMax["MaxNum"];
+
+            if (model.Num > MaxNum)
+            {
+
+                throw new Exception("目前最大允许分派数量为" + MaxNum + "");
+            }
+
+
+            if (model.DoneNum > model.Num)
+            {
+                throw new Exception("完成数量不能大于分派数量!");
+
+
+            }
+
+            if (model.CheckNum > model.DoneNum)
+            {
+                throw new Exception("质检数量不能大于完成数量!");
+            }
+
+
+            DAL.OrderToWorkDetailVsClothesSizeDAL dal = new DAL.OrderToWorkDetailVsClothesSizeDAL();
+            if (model.ClothesSizeId == 0)
+            {
+                throw new Exception("ClothesSizeId不能为0");
+
+
+            }
+
+
+
+            DataSet ds = DAL.DalComm.BackData(" SELECT * FROM dbo.OrderToWorkDetail WHERE Color='" + Color + "' AND OrderToWorkId=" + OrderToWorkId + " ");
+
+            DataTable dt = ds.Tables[0];
+
+            if (dt.Rows.Count > 0)
+            {
+
+                DataRow dr = dt.Rows[0];
+                model.OrderToWorkDetailId = decimal.Parse(dr["OrderToWorkDetailId"].ToString()); ;
+            }
+            else
+            {
+                DAL.OrderToWorkDetailDAL ddal = new DAL.OrderToWorkDetailDAL();
+                Model.OrderToWorkDetailModel dModel = new OrderToWorkDetailModel();
+                dModel.Color = Color;
+                dModel.OrderToWorkId = OrderToWorkId;
+
+                ddal.Add(dModel);  //如果没有, 我现添加
+                model.OrderToWorkDetailId = dModel.OrderToWorkDetailId;
+
+
+
+            }
+            if (model.OrderToWorkDetailId == 0)
+            {
+
+                throw new Exception("OrderToWorkDetailId不能为0");
+            }
+
+            model.ChangeTime = DateTime.Now;
+            dal.Update(model);
+
+
+
+            CountOrderToWork(OrderToWorkId, true);
+
+
+
+            j["re"] = "ok";
+
+            return j;
         }
 
 
@@ -823,10 +970,10 @@ namespace BLL
 
 
 
-                if (OrderToWorkStatusId >= 20)
+                if (OrderToWorkStatusId >= 40)
                 {
 
-                    throw new Exception("该工单恐怕已经进入了生产流程，不允许清理。");
+                  //  throw new Exception("该工单恐怕已经进入了质检流程，不允许清理。");
                 }
 
 
@@ -1102,7 +1249,18 @@ namespace BLL
             using (TransactionScope transactionScope = new TransactionScope(TransactionScopeOption.Required, transactionOption))
             {
                 #endregion
-                string OrderId = "";
+         
+                decimal  OrderToWorkId = detailList[0].OrderToWorkId;
+
+                if (OrderToWorkId == 0)
+                {
+                    throw new Exception("OrderToWorkId不能为0!");
+                }
+
+                string OrderId =  DAL.DalComm.ExStr("SELECT OrderId FROM dbo.OrderToWork WHERE  OrderToWorkId="+OrderToWorkId+"");
+
+
+
                 StringBuilder s = new StringBuilder();
                 DAL.OrderToWorkDetailDAL detailDal = new DAL.OrderToWorkDetailDAL();
                 DAL.OrderToWorkDetailVsClothesSizeDAL vsDal = new DAL.OrderToWorkDetailVsClothesSizeDAL();
@@ -1150,8 +1308,8 @@ namespace BLL
                         if (vsModel.Memo == model.Color)
                         {
                             s.Append(" DECLARE @OrderId AS VARCHAR(50) =(SELECT o.OrderId FROM dbo.OrderToWorkDetail d INNER JOIN dbo.OrderToWork o ON  o.OrderToWorkId = d.OrderToWorkId WHERE OrderToWorkDetailId=" + model.OrderToWorkDetailId + ") ");
-                            s.Append(" DECLARE @Quantity AS DECIMAL =(SELECT  ISNULL( SUM(Num),0) FROM dbo.OrderDetailVsClothesSizeView WHERE OrderId=@OrderId AND Color='" + model.Color + "' AND ClothesSizeId=" + vsModel.ClothesSizeId + " ) ");
-                            s.Append(" DECLARE @WorkQuantity AS DECIMAL =( SELECT  ISNULL( SUM(Num),0) FROM dbo.OrderToWorkDetailVsClothesSizeView WHERE OrderId=@OrderId AND Color='" + model.Color + "' AND ClothesSizeId=" + vsModel.ClothesSizeId + " ) ");
+                            s.Append(" DECLARE @Quantity AS DECIMAL =(SELECT  ISNULL( SUM(Num),0) FROM dbo.OrderDetailVsClothesSizeView WHERE OrderId=@OrderId AND Color='" + model.Color + "' AND ClothesSizeId=" + vsModel.ClothesSizeId + "  ) ");
+                            s.Append(" DECLARE @WorkQuantity AS DECIMAL =( SELECT  ISNULL( SUM(Num),0) FROM dbo.OrderToWorkDetailVsClothesSizeView WHERE OrderId=@OrderId AND Color='" + model.Color + "' AND ClothesSizeId=" + vsModel.ClothesSizeId + " and OrderToWorkId="+model.OrderToWorkId+" ) ");
                             s.Append(" DECLARE @ClothesSizeName AS VARCHAR(50) =(SELECT ClothesSizeName FROM  dbo.ClothesSize WHERE ClothesSizeId=" + vsModel.ClothesSizeId + ") ");
                             s.Append(" SELECT @Quantity AS Quantity,@WorkQuantity AS WorkQuantity,@OrderId AS OrderId,@ClothesSizeName as ClothesSizeName ");
                             s.Append("  ");
@@ -1161,7 +1319,7 @@ namespace BLL
                             decimal Quantity = decimal.Parse(dr["Quantity"].ToString());
                             decimal WorkQuantity = decimal.Parse(dr["WorkQuantity"].ToString());
 
-                            OrderId = dr["OrderId"].ToString();
+                
                             if (WorkQuantity > Quantity)
                             {
                                 throw new Exception("[颜色:" + model.Color + "][尺码编号:" + vsModel.ClothesSizeId + "]的总数量为" + Quantity + ",分派数量" + WorkQuantity + "大于了总数量.");
@@ -1169,7 +1327,7 @@ namespace BLL
 
                             vsModel.OrderToWorkDetailId = model.OrderToWorkDetailId;
 
-                            ww.Append("[" + dr["ClothesSizeName"] + "]:" + WorkQuantity + "； ");
+                            ww.Append("[" + dr["ClothesSizeName"] + "]:" + vsModel.Num + "； ");
                             vsDal.Add(vsModel);
                         }
                         else
@@ -1716,7 +1874,19 @@ namespace BLL
                 }
                 if (DateTime.Now > PlanningTime)
                 {
-                    throw new Exception("交货时间已过。");
+
+                    if (model.VsType == 20)
+                    {
+
+                        //主动派单时, 领取裁片日期已过,予以忽略
+                    }
+                    else
+                    {
+                        throw new Exception("交货时间已过。");
+
+                    }
+
+
                 }
 
 
@@ -1864,10 +2034,18 @@ namespace BLL
             s.Append(" UPDATE dbo.member SET MaxOrderPlanningTime='" + MaxOrderPlanningTime + "' WHERE MemberId=" + MemberId + " ");
 
             DAL.DalComm.ExReInt(s.ToString());
+            MemberBLL mbll = new MemberBLL();
 
+            MongoDB.Bson.BsonDocument b = new MongoDB.Bson.BsonDocument();
+            b["MemberId"] = MemberId;
+            b["Title"] = "重置了接单档期为[" + MaxOrderPlanningTime + "]";
+            b["MaxOrderPlanningTime"] = MaxOrderPlanningTime;
+            b["MemberLogTypeId"] = (int)Common.Dict.MemberLogType.接单档期重置;
+            b["MemberLogTypeName"] = Common.Dict.MemberLogType.接单档期重置.ToString();
+            mbll.SaveMemberLog(b);
             return MaxOrderPlanningTime;
 
-
+        
 
 
 
@@ -1988,6 +2166,7 @@ namespace BLL
             s.Append("   UPDATE dbo.OrderInfo SET OrderQuantity=@OrderQuantity,CheckQuantity=@CheckQuantity   ");
             s.Append("  ,OnlyPlaces=(OutPlaces- @OrderPlaces )  ");
             s.Append("  ,WorkQuantity=@WorkQuantity  ");
+            s.Append("  ,DoneQuantity=@DoneQuantity ");
             s.Append("  WHERE OrderId='" + OrderId + "'  ");
             s.Append("  SELECT @DoneQuantity AS  DoneQuantity,@CheckQuantity AS CheckQuantity,@OrderToWorkNum AS OrderToWorkNum,@OrderVsMemberNum AS OrderVsMemberNum  ");
             s.Append("  ,@OrderQuantity AS OrderQuantity  ");

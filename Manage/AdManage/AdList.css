@@ -1,0 +1,57 @@
+﻿body {
+}
+
+
+
+
+.img_ad {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.ul_SaveAd {
+}
+
+    .ul_SaveAd li {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+        .ul_SaveAd li span {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+            margin-right: 10px;
+        }
+
+input[type=text] {
+    height: 25px;
+    width: 300px;
+}
+
+input[type=file] {
+    max-width: 70px;
+    margin-right: 10px;
+}
+
+.div_Loction {
+    text-align: left;
+    padding-left:7px;
+}
+
+    .div_Loction a {
+        display: inline-block;
+        cursor: pointer;
+        font-size:12px;
+
+        border:1px solid #ccc;
+        padding:3px;
+        margin:3px;
+    }
+
+        .div_Loction a:hover, .div_Loction a.select {
+            color: #fff;
+            background-color: #58B3F0;
+        }

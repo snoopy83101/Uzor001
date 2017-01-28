@@ -52,8 +52,13 @@ function BindStatus() {
     w.push("作废(<span id='sp_Status_-10' >0</span>)");
     w.push("</a>");
     w.push("<a OrderStatusId='5'  >");
-    w.push("发布(<span id='sp_Status_5'   >0</span>)");
+    w.push("草稿(<span id='sp_Status_5'   >0</span>)");
     w.push("</a>");
+    w.push("<a OrderStatusId='10'  >");
+    w.push("发布(<span id='sp_Status_10'   >0</span>)");
+    w.push("</a>");
+
+
     w.push("<a OrderStatusId='20'  >");
     w.push("抢单(<span id='sp_Status_20'   >0</span>)");
     w.push("</a>");
@@ -120,8 +125,8 @@ function GetOrderList(CurrentPage) {
                                        OrderId: $("#txt_OrderId").val(),
                                        CountByStatus: true,
                                        OrderStatusIdArray:OrderStatusIdArray.join(","),
-
-                                       col: "OrderId,OrderImgUrl,OrderName,OutPlaces,OnlyPlaces,OrderQuantity,ProcessLvTitle,ProcessLvName,OrderWages,OrderStatusName,CreateTime,PlanningTime,OrderStatusId,DoneTime,ReceivedTime"
+                                       ClientsCode:$("#txt_ClientsCode").val(),
+                                       col: "OrderId,OrderImgUrl,OrderName,OutPlaces,OnlyPlaces,OrderQuantity,ProcessLvTitle,ProcessLvName,OrderWages,OrderStatusName,CreateTime,PlanningTime,OrderStatusId,DoneTime,ReceivedTime,WorkQuantity,CheckQuantity,DoneQuantity,ClientsCode"
                                    }, function (data) {
                                        var w = [];
                                        if (data.re == "ok") {
@@ -136,6 +141,9 @@ function GetOrderList(CurrentPage) {
                                                w.push("<td>");
                                                w.push(j.OrderName);
                                                w.push("</td>");
+                                               w.push("<td>");
+                                               w.push(j.ClientsCode);
+                                               w.push("</td>");
                                                w.push("<td class='c'>");
                                                w.push(accSubtr(j.OutPlaces, j.OnlyPlaces) + "/" + j.OutPlaces);
                                                w.push("</td>");
@@ -144,6 +152,13 @@ function GetOrderList(CurrentPage) {
                                                w.push("<td class='c'>");
                                                w.push(j.OrderQuantity);
                                                w.push("</td>");
+                                               w.push("<td class='c'>");
+                                               w.push(j.DoneQuantity);
+                                               w.push("</td>");
+                                               w.push("<td class='c'>");
+                                               w.push(j.CheckQuantity);
+                                               w.push("</td>");
+
                                                w.push("<td class='c' >");
                                                w.push("[" + j.ProcessLvTitle + "]" + j.ProcessLvName);
                                                w.push("</td>");
@@ -207,7 +222,7 @@ function GetOrderList(CurrentPage) {
                                                });
                                            }
 
-                                           if (OrderStatusId >= 10 && OrderStatusId < 30) {  //生产状态了, 就没法撤回了
+                                           if (OrderStatusId >0) {  //生产状态了, 就没法撤回了
                                                r.push({
                                                    evName: "OrderToQiangDan",
                                                    Title: "抢单状态",
@@ -215,7 +230,7 @@ function GetOrderList(CurrentPage) {
                                                });
                                            }
 
-                                           if (OrderStatusId >= 10) {   //生产状态, 释放所有登记过但是没有分派过的用户
+                                           if (OrderStatusId >= 0) {   //生产状态, 释放所有登记过但是没有分派过的用户
                                                r.push({
                                                    evName: "OrderToProduction",
                                                    Title: "生产状态",
@@ -225,7 +240,7 @@ function GetOrderList(CurrentPage) {
 
 
 
-                                           if (OrderStatusId >= 30) {  //在生产状态之后
+                                           if (OrderStatusId >= 0) {  //在生产状态之后
                                                r.push({
                                                    evName: "OrderToDone",
                                                    Title: "完成订单",

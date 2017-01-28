@@ -9,6 +9,8 @@ using System.Web;
 using System.Text.RegularExpressions;
 using System.Net;
 using System.IO;
+using MongoDB.Bson;
+
 namespace BLL
 {
     public class StaticBLL
@@ -450,39 +452,79 @@ namespace BLL
             #region 保存错误日志
             try
             {
-                Model.ErroLogInfoModel model = new ErroLogInfoModel();
-                DAL.ErroLogInfoDAL dal = new DAL.ErroLogInfoDAL();
 
-                model.CreateTime = DateTime.Now;
-                model.ErroLogContent = ex.ToString();
-                model.Message = ex.Message;
+                BsonDocument b = new BsonDocument();
+
+                b["Msg"] = ex.Message;
+                b["Con"] = ex.ToString();
+                b["CreateTime"] = DateTime.Now;
+                //b["TypeId"] = "BianJie";
+                //b["TypeName"] = "边界层报错";
+
+                #region 尝试获得UserId
                 try
                 {
-                    model.UserId = Common.CookieSings.GetCurrentUserId();
+                    b["UserId"] = Common.CookieSings.GetCurrentUserId();
                 }
-                catch
+                catch (Exception)
                 {
+
+               
                 }
+                #endregion
+
+                #region 尝试获得MemberId
 
                 try
                 {
                     string MemberId = Common.CookieSings.GetCookie("CurrentMemberId");
                     MemberId = Common.JiaMi.uncMe(MemberId);
-                    model.MemberId = decimal.Parse(MemberId);
+                    b["MemberId"] = Convert.ToDecimal(MemberId);
                 }
-                catch
+                catch (Exception)
                 {
 
+                    throw;
                 }
-                try
-                {
-                    dal.Add(model);
-                }
-                catch
-                {
+                #endregion
 
 
-                }
+                DAL.Mongo.Insert(b, "Error", "sysLog");
+
+
+                //Model.ErroLogInfoModel model = new ErroLogInfoModel();
+                //DAL.ErroLogInfoDAL dal = new DAL.ErroLogInfoDAL();
+
+                //model.CreateTime = DateTime.Now;
+                //model.ErroLogContent = ex.ToString();
+                //model.Message = ex.Message;
+                //try
+                //{
+                //    model.UserId = Common.CookieSings.GetCurrentUserId();
+                //}
+                //catch
+                //{
+                //}
+
+                //try
+                //{
+                //    string MemberId = Common.CookieSings.GetCookie("CurrentMemberId");
+                //    MemberId = Common.JiaMi.uncMe(MemberId);
+                //    model.MemberId = decimal.Parse(MemberId);
+                //}
+                //catch
+                //{
+
+                //}
+                //try
+                //{
+                //    dal.Add(model);
+                //}
+                //catch
+                //{
+
+
+                //}
             }
             catch
             {
@@ -774,7 +816,7 @@ namespace BLL
                 DataRow dr_Mer = dt_Mer.Rows[0];
                 #region 螺丝帽短信接口
                 string mobile = model.PhoneNo,
-                       message = model.StMsgContent+ "【优做】",
+                       message = model.StMsgContent + "【优做】",
                        username = "api",
                        password = "key-936408119688c706fe1b8b4391c59ea8",
                        url = "http://sms-api.luosimao.com/v1/send.json";

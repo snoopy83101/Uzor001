@@ -9,9 +9,16 @@
     <meta http-equiv="Expires" content="0" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <script src="../Script/jquery-1.8.2.js"></script>
-
+ 
+    <script src="/Script/jquery-3.1.1.js"></script>
+    <script src="/PubUI/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <link href="/PubUI/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" />
+<%--    <link href="/PubUI/jquery-ui-1.12.1/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <script src="/PubUI/jquery-ui-1.12.1/js/jquery-ui-timepicker-addon.js"></script>
+    <script src="/PubUI/jquery-ui-1.12.1/js/jquery-ui-timepicker-zh-CN.js"></script>--%>
+    <%--<script src="../Script/jquery-1.8.2.js"></script>--%>
     <script src="../Script/ZYUiPub.js"></script>
+    <script src="/Pub/Site.js"></script>
     <link href="../Style/ZYUiPub.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">

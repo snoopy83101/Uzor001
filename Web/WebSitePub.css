@@ -1,0 +1,99 @@
+﻿body {
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+    a:hover, a.select {
+        color: #FF9734;
+    }
+
+.d1 {
+    text-align: center;
+    padding: 0;
+}
+
+.d1200 {
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    position: relative;
+    text-align:center;
+}
+
+.d1200 img {
+    max-width:100%;
+}
+
+.div_top {
+    background-color: #fff;
+}
+
+.div_footer {
+    padding: 20px 0px 20px 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.div_beian {
+    font-size: 12px;
+}
+
+
+.div_hd {
+    height: 90px;
+}
+
+.img_logo {
+    position: absolute;
+    top: 25px;
+    left: 115px;
+}
+
+.div_menu {
+    width: 625px;
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    position: absolute;
+    top: 20px;
+    right: 0;
+}
+
+    .div_menu a {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+    }
+
+
+.div_line1 {
+    border-bottom: 3px solid #D8D8D8;
+    height: 60px;
+    line-height: 60px;
+    position: relative;
+    margin:auto;
+}
+
+    .div_line1 a {
+        position: absolute;
+        border-bottom: 3px solid #FF9734;
+        height: 60px;
+        bottom: -3px;
+        left: 20px;
+        line-height: 70px;
+        color:#333;
+        font-size:20px;
+    }
+
+
+.div_logolist {
+    text-align:center;
+}
+
+    .div_logolist img {
+       margin:25px;
+    }

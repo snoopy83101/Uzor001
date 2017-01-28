@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WapSitePub.master.cs" Inherits="Web.Wap.WapSitePub" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=640,user-scalable=no,target-densitydpi=device-dpi,minimal-ui" />
+    <title>优做 让天下没有难做的衣服</title>
+    <script src="../script/jquery-3.1.1.js"></script>
+    <script src="../script/ZYUiPub.js"></script>
+    <script src="WapSitePub.js"></script>
+    <link href="WapSitePub.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+
+    <div class="div_main">
+        <div style="position:fixed">
+        <div class="div_hd">
+
+     
+                <img src="../image/Wap/logo.png" class="img_logo" />
+                <a class="a_menu" onclick="ShowMenu()"></a>
+      
+        </div>
+            </div>
+        <div style="height: 100px;">
+        </div>
+        <div id="div_menu" class="div_menu">
+            <a class="select" href="/Wap/index">首页
+            </a>
+            <a href="/Wap/ContactUs">联系我们
+            </a>
+            <a href="/Wap/UzorService">优做服务
+            </a>
+            <a href="/Wap/Recruitment">优做工人招募
+            </a>
+        </div>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <div class="div_footer">
+            © 2015-2017 Uzor001.com 
+
+        </div>
+    </div>
+
+</body>
+</html>

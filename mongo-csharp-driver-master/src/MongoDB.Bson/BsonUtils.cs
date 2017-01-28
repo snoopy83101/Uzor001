@@ -65,10 +65,10 @@ namespace MongoDB.Bson
             }
 
             byte[] bytes;
-            if ((s.Length & 1) != 0) 
+            if ((s.Length & 1) != 0)
             {
                 s = "0" + s; // make length of s even
-            } 
+            }
             bytes = new byte[s.Length / 2];
             for (int i = 0; i < bytes.Length; i++)
             {
@@ -103,7 +103,7 @@ namespace MongoDB.Bson
                 millisecondsSinceEpoch > BsonConstants.DateTimeMaxValueMillisecondsSinceEpoch)
             {
                 var message = string.Format(
-                    "The value {0} for the BsonDateTime MillisecondsSinceEpoch is outside the"+
+                    "The value {0} for the BsonDateTime MillisecondsSinceEpoch is outside the" +
                     "range that can be converted to a .NET DateTime.",
                     millisecondsSinceEpoch);
                 throw new ArgumentOutOfRangeException("millisecondsSinceEpoch", message);
@@ -167,6 +167,9 @@ namespace MongoDB.Bson
         /// <returns>Number of seconds since Unix epoch.</returns>
         public static long ToMillisecondsSinceEpoch(DateTime dateTime)
         {
+
+            dateTime = dateTime.AddHours(8);  //8小时, 悲催的8小时
+
             var utcDateTime = ToUniversalTime(dateTime);
             return (utcDateTime - BsonConstants.UnixEpoch).Ticks / 10000;
         }

@@ -12,6 +12,7 @@ using Common;
 using System.IO;
 using LitJson;
 using System.Web;
+using Newtonsoft.Json.Linq;
 namespace BPage
 {
     public class Comm : Common.BPageSetting2
@@ -24,6 +25,11 @@ namespace BPage
                 string para = ReStr("para");
                 switch (para)
                 {
+
+
+                    case "ReadBankCard":
+                        ReadBankCard();
+                        break;
 
                     case "GetAddressByAreaId":
                         GetAddressByAreaId();
@@ -402,6 +408,19 @@ namespace BPage
 
         }
 
+        private void ReadBankCard()
+        {
+            string BankCardCode = ReStr("BankCardCode", "");
+
+            BLL.CommBLL bll = new BLL.CommBLL();
+            JObject j = bll.ReadBankCard(BankCardCode);
+
+
+            ReTrue(j);
+
+
+        }
+
         private void GetAddressByAreaId()
         {
 
@@ -445,8 +464,8 @@ namespace BPage
             wc.DownloadFile(AppUrl, path);
 
 
-            JsonData j = new JsonData();
-            j["AppUrl"] = "http://" + HttpContext.Current.Request.Url.Authority + src;
+            JObject j = new JObject();
+            j["AppUrl"] = "https://" + HttpContext.Current.Request.Url.Authority + src;
             ReTrue(j);
         }
 

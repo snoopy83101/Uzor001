@@ -1,0 +1,39 @@
+﻿body {
+}
+
+
+.div_lianxi {
+    height: 380px;
+}
+
+    .div_lianxi a {
+        width: 272px;
+        height: 252px;
+        border: 1px dashed #CCCCCC;
+        display: inline-block;
+        margin: 25px;
+        position: relative;
+    }
+
+        .div_lianxi a * {
+            position: absolute;
+        }
+
+        .div_lianxi a div.div_q {
+            border: 1px dashed #CCCCCC;
+            border-radius: 50%;
+            width: 140px;
+            height: 140px;
+            top: -70px;
+            left: 68px;
+            text-align:center;
+            background-color:#f7f7f7
+
+        }
+
+        .div_lianxi a img {
+           width:120px;
+           height:120px;
+           top:10px;
+           left:10px;
+        }

@@ -130,7 +130,7 @@ namespace BLL
                 }
                 finally
                 {
-                    DataSet ds = CountMsg(DeviceId) ;
+                    DataSet ds = CountMsg(DeviceId) ;   //统计消息数量
 
                     DataTable dt = ds.Tables[0];
 
@@ -182,7 +182,7 @@ namespace BLL
             s.Append("  FROM     DBMSG.dbo.MsgView ");
             s.Append(" WHERE    TargetDeviceId = '" + DeviceId + "' ");
             s.Append(" AND EndTime > GETDATE() ");
-            s.Append(" AND rd IS NULL ");
+            s.Append(" AND rd =10 ");
             s.Append(" GROUP BY MsgClassId ");
             s.Append("  ");
 

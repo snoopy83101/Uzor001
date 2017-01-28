@@ -1,0 +1,17 @@
+﻿body {
+}
+
+
+.a_down {
+    color: #fff;
+    background-color: #ff9734;
+    border-radius: 5px;
+
+   padding:10px;
+   margin:25px;
+   min-width:150px;
+   display:inline-block;
+}
+    .a_down:hover {
+        color:#fff
+    }

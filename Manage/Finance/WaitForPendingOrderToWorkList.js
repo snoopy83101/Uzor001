@@ -11,7 +11,7 @@ $(function () {
 })
 
 function BindPageSetting() {
-    BindDateInput("txt_PendingTime1", GetDateStr(-30));
+    BindDateInput("txt_PendingTime1", GetDateStr(-60));
     BindDateInput("txt_PendingTime2", GetDateStr(1));
     GetWaitForPendingOrderToWorkList(1);
 }
@@ -39,7 +39,16 @@ function GetWaitForPendingOrderToWorkList(CurrentPage) {
                                                          w.push(j.OrderName);
                                                          w.push("</td>");
                                                          w.push("<td>");
-                                                         w.push(accMul(j.Wages, j.Wages));
+                                                         w.push(j.ClientsCode);
+                                                         w.push("</td>");
+                                                         w.push("<td class='r'>");
+                                                         w.push( ConverttoDecimal2f( j.Wages));
+                                                         w.push("</td>");
+                                                         w.push("<td class='c'>");
+                                                         w.push(j.CheckQuantity);
+                                                         w.push("</td>");
+                                                         w.push("<td class='r'>");
+                                                         w.push(ConverttoDecimal2f(accMul(j.CheckQuantity, j.Wages)));
                                                          w.push("</td>");
 
                                                          w.push("<td>");
@@ -92,7 +101,7 @@ function GetWaitForPendingOrderToWorkList(CurrentPage) {
                                                  });
                                                  if (OrderToWorkStatusId <= 60) {
 
-                                            
+
                                                      r.push({
                                                          evName: "PendingOrderToWork",
                                                          Title: "立即结算",
@@ -102,7 +111,7 @@ function GetWaitForPendingOrderToWorkList(CurrentPage) {
 
                                                  }
 
-                                          
+
 
                                                  RightMenu(this, r);
 
@@ -147,8 +156,7 @@ function PendingOrderToWork(obj) {
 }
 
 
-function ToOrderInfo(obj)
-{
+function ToOrderInfo(obj) {
     var OrderId = $(obj).attr("OrderId");
 
     window.open("/Order/OrderInfo.aspx?OrderId=" + OrderId + "");

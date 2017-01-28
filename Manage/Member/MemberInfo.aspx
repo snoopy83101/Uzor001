@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Member/MemberPub.master" AutoEventWireup="true" CodeBehind="MemberInfo.aspx.cs" Inherits="Manage.Member.MemberInfo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link type="text/css" rel="stylesheet" href="MemberInfo.css?v=2016121359" />
-    <script src="MemberInfo.js?v=2016121359"></script>
+    <link type="text/css" rel="stylesheet" href="MemberInfo.css?v=20116121359" />
+    <script src="MemberInfo.js?v=20161211359"></script>
 
 
 
@@ -26,22 +26,47 @@
             <b tb="4" id="b_tab_Team">所在团队</b>
             <b tb="5">他的工单</b>
             <b tb="6">银行卡</b>
-
+            <b tb="7" onclick="GetMemberLogList(1)">用户日志</b>
 
         </dt>
 
 
 
         <dd style="padding: 10px;">
-     
-            <div tb="6">
-                       <div class="div_abstract">
+            <div tb="7">
+                <div class="div_abstract">
 
-                <p>双击可编辑, 双击加号可新增</p>
+                    <p>该用户的系统日志</p>
+                </div>
+
+
+
+
+                <table class="t3">
+                    <thead>
+
+                        <tr>
+                            <th style="width: 200px">类型</th>
+                            <th>标题</th>
+                            <th style="width: 100px">操作人</th>
+                            <th style="width: 200px">时间</th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="tb_MemberLogList">
+                    </tbody>
+                </table>
+
+                <%=Common.HtmlHelper.ZyPagerHtml("MemberLog") %>
             </div>
+            <div tb="6">
+                <div class="div_abstract">
+
+                    <p>双击可编辑, 双击加号可新增</p>
+                </div>
                 <div id="div_BankCard" class="div_BankCard">
 
-         <%--           <a>
+                    <%--           <a>
                         <h3>6222001603100334329</h3>
 
                         <span>王力</span>
@@ -64,16 +89,26 @@
             <div tb="5">
 
 
+                <div class="div_abstract">
 
+                    <p>右键可以查看工单所在的订单</p>
+                </div>
 
                 <table class="t3">
                     <thead>
 
                         <tr>
-                            <th>订单编号</th>
-                            <th>订单名称</th>
+                            <th>所属订单编号</th>
+                            <th>所属订单名称</th>
 
-                            <th>领取裁片</th>
+
+
+                            <th>分派</th>
+                            <th>完成</th>
+                            <th>质检</th>
+                            <th>工价</th>
+                            <th>总价</th>
+                            <th>领取裁片日期</th>
                             <th>交货日期</th>
                             <th>工单状态</th>
 
@@ -198,8 +233,21 @@
 
                             </td>
                         </tr>
+
                         <tr>
-                            <th>认证状态:</th>
+                            <th>实名认证:</th>
+                            <td>
+
+                                <select id="sel_AuthenticationStatus" onchange="AuthenticationStatusChange(this)">
+
+                                    <option value="0">未认证</option>
+                                    <option value="10">待认证</option>
+                                    <option value="20">通过认证</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>技能认证:</th>
                             <td>
 
                                 <select id="sel_ProcessLvStatus" onchange="ProcessLvStatusChange(this)">
@@ -254,6 +302,34 @@
                             </td>
                         </tr>
 
+
+                        <tr>
+
+                            <th>注册时间:
+                            </th>
+                            <td>
+                                <span id="sp_RegistrationTime" ></span>
+
+                            </td>
+                        </tr>
+                          <tr>
+
+                            <th>通过实名认证:
+                            </th>
+                            <td>
+                                <span id="sp_AcceptAuthenticationTime" ></span>
+
+                            </td>
+                        </tr>
+                          <tr>
+
+                            <th>通过技能认证:
+                            </th>
+                            <td>
+                                <span id="sp_AcceptProcessTime" ></span>
+
+                            </td>
+                        </tr>
 
                     </tbody>
 
