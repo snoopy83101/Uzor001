@@ -13,5 +13,18 @@
 
 
     </div>
-    <img src="image/UzorService/banner2.jpg" /><img src="image/UzorService/banner3.jpg" /><img src="image/UzorService/banner4.jpg" /><img src="image/UzorService/banner5.jpg" />
+    <img src="image/UzorService/banner2.jpg" />
+    
+         <div class="div_line1">
+            <a>优做服务</a>
+        </div>
+    <img src="image/UzorService/banner3.jpg" />
+             <div class="div_line1">
+            <a>全品类服装供应</a>
+        </div>
+    <img src="image/UzorService/banner4.jpg" />
+             <div class="div_line1">
+            <a>供应链服务</a>
+        </div>
+    <img src="image/UzorService/banner5.jpg" />
 </asp:Content>

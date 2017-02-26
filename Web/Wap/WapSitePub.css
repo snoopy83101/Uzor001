@@ -17,10 +17,11 @@
 }
 
 .div_hd {
-    height: 100px;
+    height: 72px;
     position: relative;
     background-color: #fff;
     width:640px !important;
+          z-index:9999;
 }
 
 .a_menu {
@@ -28,16 +29,18 @@
     height: 40px;
     display: block;
     position: absolute;
-    top: 30px;
+    top: 15px;
     right: 30px;
     background-image: url('../image/Wap/nav.png');
     background-size: 100% 100%;
+
+
 }
 
 .img_logo {
     position: absolute;
     left: 30px;
-    top: 30px;
+    top: 15px;
     height: 40px;
 }
 
@@ -62,7 +65,7 @@
         color: #333;
         font-weight: bold;
         font-family: '黑体';
-        font-size: 20px;
+        font-size: 24px;
     }
 
 .div_footer {
@@ -75,8 +78,9 @@
 .div_menu {
     background-color: #f7f7f7;
     position: fixed;
-    top: 100px;
+    top: 72px;
     width: 640px;
+        z-index:9999;
     display: none;
 }
 

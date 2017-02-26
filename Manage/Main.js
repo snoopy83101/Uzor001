@@ -11,13 +11,13 @@ function alertCookie() {
     alert("Main:" + $.cookie("CurrentUserId") + "-" + $.cookie("CurrentMerId") + "localstroe" + localStorage.UserId);
 }
 
-$(function () {
+$(function() {
     BindTopSetting();
 
     $("#img_logo").attr("src", localStorage.Logo);
     $("#img_logo").show();
     $("#footer").html(localStorage.FooterTitle);
-    $("body").keyup(function () {
+    $("body").keyup(function() {
 
         if (event.keyCode == 81 && event.ctrlKey) {
             ShowKf();
@@ -95,9 +95,9 @@ function BindPageSetting() {
         var j = MenuJson[i];
         w.push("<li>");
         w.push("<a id='a_" + j.MenuId + "' >");
-      //  w.push("<i class=\"fa fa-home\"></i>");
+        //  w.push("<i class=\"fa fa-home\"></i>");
         w.push("<span class=\"nav-label\">" + j.MenuName + "</span>");
-       // w.push("<span class=\"fa arrow\"></span>");
+        // w.push("<span class=\"fa arrow\"></span>");
         w.push("</a>");
 
         var jMenus = ConvertToJson(j.Menus);
@@ -148,6 +148,40 @@ function BindPageSetting() {
 function OpenMenu(obj) {
 
     var url = $(obj).attr("url") + "?MerId=" + localStorage.MerId + "";
+
+    if (url.indexOf("{domain}") > 0) {
+        url = url.replace("{domain}", document.domain.replace("sys.", ""));
+
+
+
+        var ishttps = 'https:' == document.location.protocol ? true : false;
+
+
+
+        var http = "";
+
+        if (ishttps) {
+            http = "https://";
+
+
+        } else {
+
+            http = "http://";
+        }
+        url = http + url;
+    }
+
+    else
+    {
+
+        //没有包含域名参数
+    }
+
+  
+
+
+
+
 
     if (url != "") {
 
@@ -202,22 +236,22 @@ function OpenWindow(obj) {
 function AppPoolRecycle() {
 
     AjaxPost("ac", "AppPoolRecycleByMerId",
-                        {
+        {
 
-                            MerId: CMerId
+            MerId: CMerId
 
-                        }, function (data) {
-                            if (data.re == "ok") {
+        }, function(data) {
+            if (data.re == "ok") {
 
-                                alert("缓存已经清理!");
+                alert("缓存已经清理!");
 
-                            }
-                            else {
+            }
+            else {
 
-                                alert(data.re);
-                            }
+                alert(data.re);
+            }
 
-                        });
+        });
 }
 
 // #region 客服
@@ -232,7 +266,7 @@ function ShowKf() {
     }
 
     KfShowing = true;
-    setTimeout(function () {
+    setTimeout(function() {
         KfShowing = false;
     }, 700);
 
@@ -268,7 +302,7 @@ function ShowJk() {
     }
 
     JkShowing = true;
-    setTimeout(function () {
+    setTimeout(function() {
         JkShowing = false;
     }, 700);
 
@@ -295,167 +329,167 @@ function ShowJk() {
 function GetRongToken(fun) {
 
     AjaxPost("/amb/", "GetRongToken",
-                                     {
-                                         RongUserId: localStorage.UserId,
-                                         MemberId: -1,
-                                         DeviceHardwareId: "客服电脑",
-                                         RongName: localStorage.UserId,
-                                         uid: localStorage.UserId,
-                                         MerId: localStorage.MerId
-                                     }, function (data) {
-                                         var w = [];
+        {
+            RongUserId: localStorage.UserId,
+            MemberId: -1,
+            DeviceHardwareId: "客服电脑",
+            RongName: localStorage.UserId,
+            uid: localStorage.UserId,
+            MerId: localStorage.MerId
+        }, function(data) {
+            var w = [];
 
-                                         if (data.re == "ok") {
-                                             GetTopMsgList();
+            if (data.re == "ok") {
+                GetTopMsgList();
 
-                                             ShowMsgNum(data.MsgNum);
+                ShowMsgNum(data.MsgNum);
 
-                                             // #region 融云绑定
-
-
-                                             RongIMClient.init(data.RongAppKey);
-
-                                             // 设置连接监听状态 （ status 标识当前连接状态）
-                                             // 连接状态监听器
-                                             RongIMClient.setConnectionStatusListener({
-                                                 onChanged: function (status) {
-                                                     switch (status) {
-                                                         //链接成功
-                                                         case RongIMLib.ConnectionStatus.CONNECTED:
-                                                             console.log('链接成功');
-                                                             break;
-                                                             //正在链接
-                                                         case RongIMLib.ConnectionStatus.CONNECTING:
-                                                             console.log('正在链接');
-                                                             break;
-                                                             //重新链接
-                                                         case RongIMLib.ConnectionStatus.DISCONNECTED:
-                                                             console.log('断开连接');
-                                                             break;
-                                                             //其他设备登录
-                                                         case RongIMLib.ConnectionStatus.KICKED_OFFLINE_BY_OTHER_CLIENT:
-                                                             console.log('其他设备登录');
-                                                             break;
-                                                             //网络不可用
-                                                         case RongIMLib.ConnectionStatus.NETWORK_UNAVAILABLE:
-                                                             console.log('网络不可用');
-                                                             break;
-                                                     }
-                                                 }
-                                             });
-
-                                             // 消息监听器
-                                             RongIMClient.setOnReceiveMessageListener({
-                                                 // 接收到的消息
-                                                 onReceived: function (message) {
-                                                     // 判断消息类型
-
-                                                     if (message.content.extra.MsgNum) {
-                                                         var MsgNum = message.content.extra.MsgNum;
+                // #region 融云绑定
 
 
-                                                         ShowMsgNum(MsgNum);
+                RongIMClient.init(data.RongAppKey);
+
+                // 设置连接监听状态 （ status 标识当前连接状态）
+                // 连接状态监听器
+                RongIMClient.setConnectionStatusListener({
+                    onChanged: function(status) {
+                        switch (status) {
+                            //链接成功
+                            case RongIMLib.ConnectionStatus.CONNECTED:
+                                console.log('链接成功');
+                                break;
+                            //正在链接
+                            case RongIMLib.ConnectionStatus.CONNECTING:
+                                console.log('正在链接');
+                                break;
+                            //重新链接
+                            case RongIMLib.ConnectionStatus.DISCONNECTED:
+                                console.log('断开连接');
+                                break;
+                            //其他设备登录
+                            case RongIMLib.ConnectionStatus.KICKED_OFFLINE_BY_OTHER_CLIENT:
+                                console.log('其他设备登录');
+                                break;
+                            //网络不可用
+                            case RongIMLib.ConnectionStatus.NETWORK_UNAVAILABLE:
+                                console.log('网络不可用');
+                                break;
+                        }
+                    }
+                });
+
+                // 消息监听器
+                RongIMClient.setOnReceiveMessageListener({
+                    // 接收到的消息
+                    onReceived: function(message) {
+                        // 判断消息类型
+
+                        if (message.content.extra.MsgNum) {
+                            var MsgNum = message.content.extra.MsgNum;
 
 
-                                                       //  ReadStr(message.content.extra.MsgTypeName);
-
-                                                         ReadStr("叮咚");
-
-                                                     }
-                                                     else {
+                            ShowMsgNum(MsgNum);
 
 
-                                                     }
+                            //  ReadStr(message.content.extra.MsgTypeName);
 
-                                                     //switch (message.messageType) {
-                                                     //    case RongIMClient.MessageType.TextMessage:
-                                                     //        // 发送的消息内容将会被打印
-                                                     //        console.log(message.content.content);
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.VoiceMessage:
-                                                     //        // 对声音进行预加载                
-                                                     //        // message.content.content 格式为 AMR 格式的 base64 码
-                                                     //        RongIMLib.RongIMVoice.preLoaded(message.content.content);
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.ImageMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.DiscussionNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.LocationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.RichContentMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.DiscussionNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.InformationNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.ContactNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.ProfileNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.CommandNotificationMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.CommandMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    case RongIMClient.MessageType.UnknownMessage:
-                                                     //        // do something...
-                                                     //        break;
-                                                     //    default:
-                                                     //        // 自定义消息
-                                                     //        // do something...
-                                                     //}
-                                                 }
-                                             });
+                            ReadStr("叮咚");
 
-                                             RongIMClient.connect(data.token, {
-                                                 onSuccess: function (userId) {
-                                                     console.log("Login successfully." + userId);
-                                                 },
-                                                 onTokenIncorrect: function () {
-                                                     console.log('token无效');
-                                                 },
-                                                 onError: function (errorCode) {
-                                                     var info = '';
-                                                     switch (errorCode) {
-                                                         case RongIMLib.ErrorCode.TIMEOUT:
-                                                             info = '超时';
-                                                             break;
-                                                         case RongIMLib.ErrorCode.UNKNOWN_ERROR:
-                                                             info = '未知错误';
-                                                             break;
-                                                         case RongIMLib.ErrorCode.UNACCEPTABLE_PaROTOCOL_VERSION:
-                                                             info = '不可接受的协议版本';
-                                                             break;
-                                                         case RongIMLib.ErrorCode.IDENTIFIER_REJECTED:
-                                                             info = 'appkey不正确';
-                                                             break;
-                                                         case RongIMLib.ErrorCode.SERVER_UNAVAILABLE:
-                                                             info = '服务器不可用';
-                                                             break;
-                                                     }
-                                                     console.log(errorCode);
-                                                 }
-                                             });
+                        }
+                        else {
 
 
-                                             // #endregion
+                        }
 
-                                         }
-                                         else {
+                        //switch (message.messageType) {
+                        //    case RongIMClient.MessageType.TextMessage:
+                        //        // 发送的消息内容将会被打印
+                        //        console.log(message.content.content);
+                        //        break;
+                        //    case RongIMClient.MessageType.VoiceMessage:
+                        //        // 对声音进行预加载                
+                        //        // message.content.content 格式为 AMR 格式的 base64 码
+                        //        RongIMLib.RongIMVoice.preLoaded(message.content.content);
+                        //        break;
+                        //    case RongIMClient.MessageType.ImageMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.DiscussionNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.LocationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.RichContentMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.DiscussionNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.InformationNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.ContactNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.ProfileNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.CommandNotificationMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.CommandMessage:
+                        //        // do something...
+                        //        break;
+                        //    case RongIMClient.MessageType.UnknownMessage:
+                        //        // do something...
+                        //        break;
+                        //    default:
+                        //        // 自定义消息
+                        //        // do something...
+                        //}
+                    }
+                });
 
-                                             alert(data.re);
-                                         }
-                                     })
+                RongIMClient.connect(data.token, {
+                    onSuccess: function(userId) {
+                        console.log("Login successfully." + userId);
+                    },
+                    onTokenIncorrect: function() {
+                        console.log('token无效');
+                    },
+                    onError: function(errorCode) {
+                        var info = '';
+                        switch (errorCode) {
+                            case RongIMLib.ErrorCode.TIMEOUT:
+                                info = '超时';
+                                break;
+                            case RongIMLib.ErrorCode.UNKNOWN_ERROR:
+                                info = '未知错误';
+                                break;
+                            case RongIMLib.ErrorCode.UNACCEPTABLE_PaROTOCOL_VERSION:
+                                info = '不可接受的协议版本';
+                                break;
+                            case RongIMLib.ErrorCode.IDENTIFIER_REJECTED:
+                                info = 'appkey不正确';
+                                break;
+                            case RongIMLib.ErrorCode.SERVER_UNAVAILABLE:
+                                info = '服务器不可用';
+                                break;
+                        }
+                        console.log(errorCode);
+                    }
+                });
+
+
+                // #endregion
+
+            }
+            else {
+
+                alert(data.re);
+            }
+        })
 
 
 
@@ -503,85 +537,85 @@ function MsgClick() {
 function GetTopMsgList() {
 
     AjaxPost("/amsg/", "GetTopMsgList",
-                                             {
-                                                 top: 8,
-                                                 TargetDeviceId: localStorage.UserId
+        {
+            top: 8,
+            TargetDeviceId: localStorage.UserId
 
-                                             }, function (data) {
-                                                 var w = [];
-                                                 if (data.re == "ok") {
+        }, function(data) {
+            var w = [];
+            if (data.re == "ok") {
 
-                                                     ShowMsgNum(data.MsgNum);
+                ShowMsgNum(data.MsgNum);
 
-                                                     if (data.list.length > 0) {
-                                                         for (var i = 0; i < data.list.length; i++) {
-                                                             var j = data.list[i];
-                                                             w.push("<div class=\"sidebar-message\"  rd='" + j.rd + "' >");
-                                                             w.push("<a>");
-                                                             //w.push("<div class=\"pull-left text-center\">");
-                                                             //w.push("<img alt=\"image\" class=\"img-circle message-avatar\" src=\"./Frame/a1.jpg\">");
-                                                             //w.push("");
-                                                             //w.push("<div class=\"m-t-xs\">");
-                                                             ////w.Append("<i class=\"fa fa-star text-warning\">11</i>");
-                                                             ////w.Append("<i class=\"fa fa-star text-warning\">22</i>");
-                                                             //w.push("</div>");
-                                                             //w.push("</div>");
+                if (data.list.length > 0) {
+                    for (var i = 0; i < data.list.length; i++) {
+                        var j = data.list[i];
+                        w.push("<div class=\"sidebar-message\"  rd='" + j.rd + "' >");
+                        w.push("<a>");
+                        //w.push("<div class=\"pull-left text-center\">");
+                        //w.push("<img alt=\"image\" class=\"img-circle message-avatar\" src=\"./Frame/a1.jpg\">");
+                        //w.push("");
+                        //w.push("<div class=\"m-t-xs\">");
+                        ////w.Append("<i class=\"fa fa-star text-warning\">11</i>");
+                        ////w.Append("<i class=\"fa fa-star text-warning\">22</i>");
+                        //w.push("</div>");
+                        //w.push("</div>");
 
-                                                             w.push("<h3>");
+                        w.push("<h3>");
 
-                                                             // #region 未读消息
+                        // #region 未读消息
 
-                                                             if (!ConvertToBool(j.rd)) {
+                        if (!ConvertToBool(j.rd)) {
 
-                                                                 w.push("<span class='sp_new'>New</span> ");
-
-
-                                                             }
-
-                                                             w.push("" + j.MsgTypeName + "</h3>");
-                                                             // #endregion
-                                                             w.push("<div class=\"media-body\">");
-                                                             w.push("<span class='sp_msg' ></span>");
-                                                             w.push("" + j.MsgTitle + "");
-                                                             w.push("");
-                                                             w.push("<br>");
-                                                             w.push("<small class=\"text-muted\">" + DateFormat(j.CreateTime, "MM-dd hh:mm:ss") + "</small>");
-                                                             w.push("</div>");
-                                                             w.push("</a>");
-                                                             w.push("</div>");
-
-                                                         }
-                                                     }
+                            w.push("<span class='sp_new'>New</span> ");
 
 
-                                                 }
-                                                 else {
-                                                     alert(data.re)
-                                                 }
+                        }
 
-                                                 $("#div_MsgList").html(w.join(""));
+                        w.push("" + j.MsgTypeName + "</h3>");
+                        // #endregion
+                        w.push("<div class=\"media-body\">");
+                        w.push("<span class='sp_msg' ></span>");
+                        w.push("" + j.MsgTitle + "");
+                        w.push("");
+                        w.push("<br>");
+                        w.push("<small class=\"text-muted\">" + DateFormat(j.CreateTime, "MM-dd hh:mm:ss") + "</small>");
+                        w.push("</div>");
+                        w.push("</a>");
+                        w.push("</div>");
 
-                                             }, true);
+                    }
+                }
+
+
+            }
+            else {
+                alert(data.re)
+            }
+
+            $("#div_MsgList").html(w.join(""));
+
+        }, true);
 
 }
 
 
 function ReadAllMsg() {
     AjaxPost("/amsg/", "ReadAllMsg",
-                                             {
-                                                 DeviceId: localStorage.UserId
-                                             }, function (data) {
-                                                 var w = [];
-                                                 if (data.re == "ok") {
-                                                     GetTopMsgList();
+        {
+            DeviceId: localStorage.UserId
+        }, function(data) {
+            var w = [];
+            if (data.re == "ok") {
+                GetTopMsgList();
 
-                                                 }
-                                                 else {
-                                                     alert(data.re)
-                                                 }
+            }
+            else {
+                alert(data.re)
+            }
 
 
-                                             }, false);
+        }, false);
 
 }
 
@@ -615,7 +649,7 @@ function BodyTip(o) {
 
     $("#" + id + "").show(300);
 
-    setTimeout(function () {
+    setTimeout(function() {
 
         $("#" + id + "").remove();
 
@@ -634,7 +668,7 @@ function BindTopSetting() {
 
 
 
-    $("#li_shuaxin").click(function () {
+    $("#li_shuaxin").click(function() {
         var src = ifm_info.contentWindow.location.href;
 
 

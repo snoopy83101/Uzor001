@@ -17,6 +17,10 @@ namespace Common
 
 
         public List<Model.ReListModel> ReList = new List<Model.ReListModel>();
+        string 允许跨域的域名 = "http://*.uzor001.com,http://*.uzor000.com";
+
+
+
         public Dictionary<string, object> ReDict = new Dictionary<string, object>();
         public Dictionary<string, string> ReDict2 = new Dictionary<string, string>();
 
@@ -162,6 +166,8 @@ namespace Common
         {
             try
             {
+
+
                 int totalPage = Common.DataSetting.totalPage(ds);  //最多页数
                 int RowCount = Common.DataSetting.RowCount(ds);
                 DataTable dt = ds.Tables[2];
@@ -436,7 +442,9 @@ namespace Common
             //w.Remove(w.Length - 1, 1);
             w.Append("}");
 
-            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "http://jk.lituo001.com");
+
+            HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "nd.uzor001.com,nd.uzor000.com");
+
             HttpContext.Current.Response.ContentType = "application/json";
             HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
             HttpContext.Current.Response.Write(w.ToString());
@@ -444,6 +452,11 @@ namespace Common
             //  HttpContext.Current.Response.End();
 
         }
+
+
+
+
+
 
 
         public void ReTrue(JsonData j)

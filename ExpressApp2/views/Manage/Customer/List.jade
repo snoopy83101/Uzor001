@@ -1,0 +1,25 @@
+﻿extends ../Pub/Pub
+
+
+block content
+  
+      div.div_s
+       //input#btn_add(type='button',value='新增',onclick='ToAdd()')
+      table.t3
+       thead
+        tr
+           th 客户名称
+           th 联系电话
+           th 地区
+           th 打样单
+           th 大货单
+           th 负责人
+           th 创建时间
+       tbody#tb  !{line}
+     
+
+      div#div_page.div_page
+
+block head
+  script(src='/Customer/List.js')
+  link(rel='stylesheet', type='text/css', href='/Customer/List.css')

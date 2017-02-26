@@ -1,0 +1,100 @@
+﻿{
+  "configuration": {
+    "appSettings": [
+      {
+        "add": [
+          {
+            "$": {
+              "key": "owin:AutomaticAppStartup",
+              "value": "false"
+            }
+          },
+          {
+            "$": {
+              "key": "connectStr",
+              "value": "Data Source=.;Database=CORE;User ID=sa;Password=wangli83"
+            }
+          },
+          {
+            "$": {
+              "key": "MongoConnectStr",
+              "value": "mongodb://power:Wangli83Wangli83@localhost:27017"
+            }
+          }
+        ]
+      }
+    ],
+    "connectionStrings": [ "" ],
+    "system.web": [
+      {
+        "customErrors": [ { "$": { "mode": "Off" } } ],
+        "compilation": [
+          {
+            "$": {
+              "debug": "true",
+              "targetFramework": "4.5.1"
+            },
+            "assemblies": [ "\\r\\n        \\r\\n      " ]
+          }
+        ],
+        "authentication": [ { "$": { "mode": "Windows" } } ],
+        "httpRuntime": [
+          {
+            "$": {
+              "maxRequestLength": "2097151",
+              "executionTimeout": "360000000"
+            }
+          }
+        ],
+        "pages": [
+          {
+            "$": {
+              "controlRenderingCompatibilityVersion": "4.0",
+              "clientIDMode": "AutoID"
+            }
+          }
+        ]
+      }
+    ],
+    "system.webServer": [
+      {
+        "defaultDocument": [
+          {
+            "files": [
+              {
+                "clear": [ "" ],
+                "add": [
+                  { "$": { "value": "Index" } },
+                  { "$": { "value": "Index.aspx" } }
+                ]
+              }
+            ]
+          }
+        ],
+        "modules": [ { "$": { "runAllManagedModulesForAllRequests": "true" } } ],
+        "httpErrors": [
+          {
+            "$": {
+              "errorMode": "Custom",
+              "defaultResponseMode": "Redirect"
+            }
+          }
+        ],
+        "security": [ { "requestFiltering": [ { "requestLimits": [ { "$": { "maxAllowedContentLength": "1073741824" } } ] } ] } ],
+        "handlers": [ "" ],
+        "staticContent": [
+          {
+            "mimeMap": [
+              {
+                "$": {
+                  "fileExtension": ".grf",
+                  "mimeType": "grf/zhongtong.grf"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

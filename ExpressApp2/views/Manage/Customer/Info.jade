@@ -1,0 +1,58 @@
+﻿extends ../Pub/Pub
+
+block content
+ 
+  table.t4
+
+     
+   tbody  
+   tr
+     th  客户名称
+     td
+      input#txt_CustomerName(type='text',style="width:200px") 
+      
+    tr
+     th  客户类型
+     td
+      select#sel_CustomerClass
+       option(value='1') 设计师
+       option(value='2') 电商公司
+    tr
+     th  省份城市
+     td
+       div#div_address
+    tr
+     th  详细地址
+     td
+       input#txt_Address(type='text',style="width:200px") 
+    tr
+     th  联系电话
+     td
+      input#txt_Tell(type='text',style="width:200px") 
+    tr
+     th  Email
+     td
+      input#txt_Email(type='text',style="width:200px") 
+    tr
+     th  负责人
+     td
+      input#txt_ManagerName(type='text',style="width:200px") 
+
+     tr 
+      th  官方网站
+      td
+       input#txt_WebSite(type='text',style="width:200px") 
+
+     tr 
+      th  网店
+      td
+       input#txt_Shop(type='text',style="width:200px") 
+
+  div.div_footer
+     input(type='button' value='保存' onclick='SaveCustomer()' )    
+
+block head
+ script(src='/js/address.js')
+ script(src='/customer/info.js')
+
+ link(rel='stylesheet', type='text/css', href='/customer/info.css')

@@ -77,6 +77,8 @@
     <Content Include="App\hd\happyNewYear2017\happyNewYear2017.jpg" />
     <Content Include="App\hd\happyNewYear2017\happyNewYear2017.html" />
     <Content Include="App\hd\happyNewYear2017\happyNewYear2017.js" />
+    <Content Include="App\image\guide-android.png" />
+    <Content Include="App\image\guide-ios.png" />
     <Content Include="ContactUs.aspx" />
     <Content Include="ContactUs.css" />
     <Content Include="ContactUs.js" />

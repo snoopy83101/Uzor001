@@ -308,29 +308,37 @@
                             <th>注册时间:
                             </th>
                             <td>
-                                <span id="sp_RegistrationTime" ></span>
+                                <span id="sp_RegistrationTime"></span>
 
                             </td>
                         </tr>
-                          <tr>
+                        <tr>
 
                             <th>通过实名认证:
                             </th>
                             <td>
-                                <span id="sp_AcceptAuthenticationTime" ></span>
+                                <span id="sp_AcceptAuthenticationTime"></span>
 
                             </td>
                         </tr>
-                          <tr>
+                        <tr>
 
                             <th>通过技能认证:
                             </th>
                             <td>
-                                <span id="sp_AcceptProcessTime" ></span>
+                                <span id="sp_AcceptProcessTime"></span>
 
                             </td>
                         </tr>
+                        <tr>
 
+                            <th>备注:
+                            </th>
+                            <td>
+                                <input id="txt_Memo" type="text" value="" placeholder="对该用户的备注, 可为空"   style="width:300px" />
+
+                            </td>
+                        </tr>
                     </tbody>
 
                 </table>

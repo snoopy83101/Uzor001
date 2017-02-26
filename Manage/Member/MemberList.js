@@ -44,6 +44,10 @@ function SearchMemberList(CurrentPage) {
                                         w.push("<td>");
                                         w.push("[" + j.ProcessLvTitle + "]" + j.ProcessLvName);
                                         w.push("</td>");
+
+                                        w.push("<td>");
+                                        w.push(j.Memo);
+                                        w.push("</td>");
                                         w.push("<td >");
                                         w.push("<span  ");
 
@@ -63,6 +67,9 @@ function SearchMemberList(CurrentPage) {
                                         w.push(j.ProcessLvStatusName);
                                         w.push("</span>");
                                         w.push("</td>");
+
+                 
+
                                         w.push("<td >");
                                         w.push("<span  ");
 

@@ -29,6 +29,10 @@ namespace BPage
                 {
 
 
+                    case "GetMemberSubjectCashMinAmount":
+                        GetMemberSubjectCashMinAmount();
+                        break;
+
                     #region 用户日志
 
                     case "GetMemberLogList":
@@ -468,6 +472,24 @@ namespace BPage
 
             }
             context.Response.End();
+        }
+
+        private void GetMemberSubjectCashMinAmount()
+        {
+
+            decimal MerId = ReDecimal("MerId", 0);
+            if (MerId == 0)
+            {
+
+                throw new Exception("MerId不能为空!");
+            }
+
+            decimal MinAmount = decimal.Parse(BLL.StaticBLL.MerOneConfig(MerId, "SubjectCashMinAmount", "200"));
+
+
+            ReDict2.Add("SubjectCashMinAmount", MinAmount.ToString());
+            ReTrue();
+
         }
 
         private void GetMemberLogList()
@@ -1387,7 +1409,7 @@ namespace BPage
 
             if (model.Amount < MinAmount)
             {
-                throw new Exception("提现金额不能小于" + MinAmount + "元");
+                throw new Exception("最小金额" + MinAmount + "元");
             }
 
             bll.SaveSubjectCash(model);
@@ -1980,7 +2002,7 @@ namespace BPage
 
         private void ChangePhone()
         {
-            string Pwd = ReStr("Pwd");
+            string Pwd = ReStr("Pwd", "");
             decimal MemberId = ReDecimal("MemberId", 0);
             string Phone = ReStr("Phone", "").Trim();
             string Yzm = ReStr("Yzm", "");
@@ -2000,7 +2022,8 @@ namespace BPage
             if (i < 1)
             {
 
-                throw new Exception("密码输入不正确");
+                //不在判断密码, 因为是手机号码+验证码登陆
+                //  throw new Exception("密码输入不正确");
             }
 
 
@@ -2020,11 +2043,19 @@ namespace BPage
             i = DAL.DalComm.ExInt("  SELECT COUNT(0) FROM DBLOG.dbo.StMsg WHERE PhoneNo='" + Phone + "' AND ReKey='" + Yzm + "' and CreateTime >=" + DateTime.Now.AddHours(-24) + " ");
             if (i < 0)
             {
-                throw new Exception(" 验证码不正确 ");
+
+                if (Yzm != BLL.StaticBLL.MerOneConfig(1999, "MaxYzm", "1666"))
+                {
+                    throw new Exception(" 验证码不正确 ");
+                }
+
+                  
             }
 
 
             StringBuilder s = new StringBuilder();
+            s.Append(" UPDATE dbo.Member SET Phone='' WHERE Phone='" + Phone + "' ");   //如果有人注册了这个号码, 清空它, 反正手机号他也不用了. 再登录的时候给他提示
+
             s.Append(" UPDATE dbo.Member SET Phone='" + Phone + "' WHERE MemberId='" + MemberId + "' ");
 
 

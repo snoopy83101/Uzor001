@@ -479,7 +479,7 @@ namespace BLL
                 {
                     string MemberId = Common.CookieSings.GetCookie("CurrentMemberId");
                     MemberId = Common.JiaMi.uncMe(MemberId);
-                    b["MemberId"] = Convert.ToDecimal(MemberId);
+                    b["MemberId"] = MemberId;
                 }
                 catch (Exception)
                 {

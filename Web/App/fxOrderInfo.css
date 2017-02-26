@@ -2,6 +2,10 @@
     background-color: #f5f9ff;
 }
 
+    body * {
+        max-width:100%;
+    }
+
 .ul_1 {
 }
 
@@ -70,6 +74,7 @@
     text-align: left;
     background-position-y: 10px !important;
     background-position-y: top 10px !important;
+    overflow:hidden;
 }
 
     .li_dizhi p {
@@ -330,4 +335,25 @@ h2.h2_OrderExpect {
     right: 15px;
     font-size: 12px;
     text-decoration: none;
+}
+
+
+.img_OpenImg {
+
+    width: 90%;
+    z-index: 999;
+    margin:10px auto;
+}
+
+
+.div_OpenImg {
+  text-align:center;
+    color: #222222;
+    background: #111111;
+    filter: Alpha(Opacity=70, Style=0);
+    opacity: 0.70;
+    position: fixed;
+
+    width:100%;
+    z-index:20;
 }

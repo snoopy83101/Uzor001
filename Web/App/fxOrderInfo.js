@@ -1,7 +1,8 @@
 ﻿/// <reference path="C:\anli\快工场\Web\script/common.js" />
 /// <reference path="C:\anli\快工场\Web\script/jquery-1.8.2.js" />
+/// <reference path="C:\anli\快工场\Web\script/ZYUiPub.js" />
 
-$(function(){
+$(function () {
 
     BindPageSetting();
 
@@ -27,11 +28,11 @@ function GetOrderInfo() {
                                    }, function (data) {
                                        var w = [];
                                        if (data.re == "ok") {
-                                   
+
                                            var IsMyOrder = false;
 
 
-                                        
+
 
 
                                            //if (data.OrderVsMember.length > 0) {
@@ -166,7 +167,7 @@ function GetOrderInfo() {
 
 
 
-                                     
+
                                            $("#main").show();
 
                                        }
@@ -328,4 +329,47 @@ function SaveOrderVsMember() {
 function ToPhone(obj) {
 
     PhoneNow($(obj).attr("Phone"));
+}
+
+
+
+
+function OpenApp() {
+
+
+
+    if (isWeiXin()) {
+        //是微信浏览器
+        var OpenImg = "image/guide-android.png";
+
+        if (MobileUA.ANDROID) {
+
+
+        }
+        else if (MobileUA.IOS) {
+
+            OpenImg = "image/guide-ios.png";
+        }
+        else {
+
+
+        }
+
+        var h = $(window).height();
+
+        $("body").before("<div onclick='$(this).remove()' class='div_OpenImg'  style='height:" + h + "px; ' ><img src='" + OpenImg + "' class='img_OpenImg' /><div>");
+
+    }
+    else {
+        //不是微信浏览器
+        //  alert(1);
+        var the_href = "http://a.app.qq.com/o/simple.jsp?pkgname=com.chuanfou.uzjob";//获得下载链接
+        tiaozhuan("uzorjob://?OrderId=" + GetQueryString("OrderId") + "");
+        setTimeout(function () {
+            window.location.href = the_href;//如果超时就跳转到app下载页
+        }, 1000);
+
+
+    }
+
 }

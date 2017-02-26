@@ -91,7 +91,7 @@ function GetMemberInfo() {
                                            $("#txt_Address").val(data.info.Address);
                                            $("#b_Amount").html(data.info.Amount);
                                            $("#sel_Sex").val(data.info.Sex);
-
+                                           $("#txt_Memo").val(data.info.Memo);
                                            $("#sp_MaxOrderPlanningTime").html(data.info.MaxOrderPlanningTime);
                                            //$("#txt_").val(data.info.);
                                            //$("#txt_").val(data.info.);
@@ -213,7 +213,8 @@ function SaveMember() {
                                        ProcessLvId: $("#sel_ProcessLv").val(),
                                        SfzNo: $("#txt_SfzNo").val(),
                                        PicImgId: $("#img_PicImg").attr("PicImgId"),
-                                       AreaId: $("#sel_area").val()
+                                       AreaId: $("#sel_area").val(),
+                                       Memo: $("#txt_Memo").val()
                                    }, function (data) {
                                        var w = [];
                                        if (data.re == "ok") {

@@ -233,6 +233,7 @@
     <Content Include="MasterPage1.master" />
     <Content Include="Comm\CommPub.master" />
     <Content Include="Script\jquery-3.1.1.js" />
+    <Content Include="Script\tld.js" />
     <Content Include="test\demo.htm" />
     <Content Include="test\HtmlPage4.html" />
     <Content Include="test\MongoDB.aspx" />

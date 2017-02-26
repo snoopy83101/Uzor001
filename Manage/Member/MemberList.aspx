@@ -31,9 +31,11 @@
                 <th style="width: 150px">手机号</th>
 
                 <th style="width: 100px">真实姓名</th>
+      
                 <th style="width: auto">地址</th>
 
                 <th style="width: 200px">技能等级</th>
+                             <th style="width: 200px">备注</th>
                 <th style="width: 100px">技能认证</th>
                 <th style="width: 100px">实名认证</th>
                 <th style="width: 100px; cursor: pointer;" onclick="ChangeOrder(this)" ziduan="LastTime" desc="asc">最后活跃时间</th>

@@ -42,6 +42,7 @@ namespace Manage
                 sc.Append(" localStorage['UserId'] = '" + cm.CurrentUserId + "'; ");
                 sc.Append(" var CurrentUserId='" + cm.CurrentUserId + "'; ");
                 sc.Append(" var CMerName='" + cm.CurrentMerName + "'; ");
+                sc.Append(" var domain= '" + Request.Url.Host + "'; ");
             }
             catch
             {
@@ -54,7 +55,7 @@ namespace Manage
 
 
 
-            s.Append("  MenuId in (select MenuId from CORE.dbo.MenuVsMerRole where MerRoleId in (SELECT mvu.MerRoleId FROM dbo.MerRoleVsUser mvu WHERE UserId='"+cm.CurrentUserId+"') ) ");
+            s.Append("  MenuId in (select MenuId from CORE.dbo.MenuVsMerRole where MerRoleId in (SELECT mvu.MerRoleId FROM dbo.MerRoleVsUser mvu WHERE UserId='" + cm.CurrentUserId + "') ) ");
 
             if (ubll.IsAdministrator())
             {

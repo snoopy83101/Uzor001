@@ -1,8 +1,14 @@
 ﻿
 
-/// <reference path="/Script/jquery-1.8.2.js" />
 /// <reference path="/Script/ZYUiPub.js" />
 /// <reference path="/script/common.js" />
+
+$(function () {
+
+})
+
+
+  
 
 if (MobileUA.SMART_PHONE) {
 

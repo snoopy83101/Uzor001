@@ -1,0 +1,9 @@
+{
+    "config" : {
+        "db_config": {
+            "host_url": "mongodb://power:Wangli83Wangli83@localhost:27017"
+        },
+
+        "static_content": "../static/"
+    }
+}
