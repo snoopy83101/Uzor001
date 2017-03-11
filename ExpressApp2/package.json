@@ -8,13 +8,17 @@
   },
   "dependencies": {
     "assert": "^1.4.1",
-    "express": "3.4.4",
+    "element-ui": "^1.2.3",
+    "express": "^4.15.2",
     "jade": "*",
     "moment": "^2.17.1",
     "mongeese": "0.0.1",
     "mongodb": "^2.2.24",
+    "node-inspector": "^0.12.10",
     "stylus": "*",
-    "validator": "^6.2.1",
+    "validator": "^6.3.0",
+    "vue": "^2.2.1",
+    "webpack": "^2.2.1",
     "xml2js": "^0.4.17"
   }
 }

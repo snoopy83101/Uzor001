@@ -1,0 +1,174 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>vueAdmin</Name>
+    <RootNamespace>vueAdmin</RootNamespace>
+    <NodeExeArguments>
+    </NodeExeArguments>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>6490a866-b0c5-4030-a26c-b40f3ae0d35d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>build\dev-server.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1338</NodejsPort>
+    <StartWebBrowser>True</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".babelrc" />
+    <Content Include=".gitignore" />
+    <Content Include="index.html" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="src\App.vue" />
+    <Content Include="src\assets\bg1.jpg" />
+    <Content Include="src\assets\logo.png" />
+    <Content Include="src\assets\logo4.png" />
+    <Content Include="src\assets\user.png" />
+    <Content Include="src\pages\404.vue" />
+    <Content Include="src\pages\charts\echarts.vue" />
+    <Content Include="src\pages\Customer\CustomerList.vue" />
+    <Content Include="src\pages\Home.vue" />
+    <Content Include="src\pages\Login.vue" />
+    <Content Include="src\pages\Main.vue" />
+    <Content Include="src\pages\nav1\Form.vue" />
+    <Content Include="src\pages\nav1\Table.vue" />
+    <Content Include="src\pages\nav1\user.vue" />
+    <Content Include="src\pages\nav2\Page4.vue" />
+    <Content Include="src\pages\nav2\Page5.vue" />
+    <Content Include="src\pages\nav3\Page6.vue" />
+    <Content Include="src\pages\test\test.vue" />
+    <Content Include="static\.gitkeep" />
+    <Content Include="static\js\address.json" />
+    <Content Include="Web.config" />
+    <None Include="Web.Debug.config" />
+    <None Include="Web.Release.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="build\" />
+    <Folder Include="config\" />
+    <Folder Include="models\" />
+    <Folder Include="models\ajax\" />
+    <Folder Include="models\customer\" />
+    <Folder Include="models\mongocon\" />
+    <Folder Include="models\mongo\" />
+    <Folder Include="routes\" />
+    <Folder Include="src\" />
+    <Folder Include="src\api\" />
+    <Folder Include="src\assets\" />
+    <Folder Include="src\common\" />
+    <Folder Include="src\common\js\" />
+    <Folder Include="src\mockdata\" />
+    <Folder Include="src\mock\" />
+    <Folder Include="src\pages\" />
+    <Folder Include="src\pages\charts\" />
+    <Folder Include="src\pages\nav1\" />
+    <Folder Include="src\pages\nav2\" />
+    <Folder Include="src\pages\nav3\" />
+    <Folder Include="src\pages\Customer\" />
+    <Folder Include="src\pages\test\" />
+    <Folder Include="src\vuex\" />
+    <Folder Include="static\" />
+    <Folder Include="static\js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="build\build.js" />
+    <Compile Include="build\check-versions.js" />
+    <Compile Include="build\dev-client.js" />
+    <Compile Include="build\dev-server.js" />
+    <Compile Include="build\dev-test.js" />
+    <Compile Include="build\utils.js" />
+    <Compile Include="build\webpack.base.conf.js" />
+    <Compile Include="build\webpack.dev.conf.js" />
+    <Compile Include="build\webpack.prod.conf.js" />
+    <Compile Include="config\dev.env.js" />
+    <Compile Include="config\index.js" />
+    <Compile Include="config\prod.env.js" />
+    <Compile Include="models\ajax\ajax.js" />
+    <Compile Include="models\customer\customer.js" />
+    <Compile Include="models\mongo\mongo.js" />
+    <Compile Include="routes\ajax.js" />
+    <Compile Include="routes\index.js" />
+    <Compile Include="routes\view.js" />
+    <Compile Include="src\api\api.js" />
+    <Compile Include="src\api\index.js" />
+    <Compile Include="src\common\js\util.js" />
+    <Compile Include="src\main.js" />
+    <Compile Include="src\mockdata\user.js" />
+    <Compile Include="src\mock\index.js" />
+    <Compile Include="src\mock\mock.js" />
+    <Compile Include="src\pages\Customer\CustomerList.js">
+      <SubType>Code</SubType>
+      <TestFramework>ExportRunner</TestFramework>
+    </Compile>
+    <Compile Include="src\pages\Login.js" />
+    <Compile Include="src\pages\nav1\Table.js" />
+    <Compile Include="src\pages\test\test.js" />
+    <Compile Include="src\routes.js" />
+    <Compile Include="src\vuex\actions.js" />
+    <Compile Include="src\vuex\getters.js" />
+    <Compile Include="src\vuex\store.js" />
+    <Compile Include="static\js\address.js" />
+    <Compile Include="static\js\comm.js" />
+    <Compile Include="static\js\jquery-3.1.1.js" />
+    <Compile Include="static\js\vue.js" />
+    <Compile Include="static\js\ZYUiPub.js" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -17,9 +17,13 @@ exports.index = function (req, res) {
         case "/m/customerinfo": //客户详情
             res.render('./Manage/Customer/info', { title: '客户编辑', t1: "编辑客户", t2: "基本信息" });
             break;
+        case "/m/login": //用户端登录
+            res.render('./Manage/Login', { title: '用户登录', t1: "编辑客户", t2: "基本信息" });
+            break;
 
-
-
+        default:
+            res.write("{re:'notfind'}");
+            break;
 
     }
 

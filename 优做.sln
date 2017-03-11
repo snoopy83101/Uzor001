@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26127.3
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ajax", "Ajax\Ajax.csproj", "{FF735421-C80C-4623-BA36-4EC1BCC5ACF8}"
 EndProject
@@ -78,6 +78,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "优做", "..\..\APICloud\wo
 	EndProjectSection
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "NodeWeb", "ExpressApp2\NodeWeb.njsproj", "{F61D340E-AD08-4AEA-ACB6-792DF68427F3}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "vueAdmin", "vueAdmin\vueAdmin.njsproj", "{6490A866-B0C5-4030-A26C-B40F3AE0D35D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -305,6 +307,18 @@ Global
 		{F61D340E-AD08-4AEA-ACB6-792DF68427F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F61D340E-AD08-4AEA-ACB6-792DF68427F3}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
 		{F61D340E-AD08-4AEA-ACB6-792DF68427F3}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.33|Any CPU.ActiveCfg = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.33|Any CPU.Build.0 = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{6490A866-B0C5-4030-A26C-B40F3AE0D35D}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

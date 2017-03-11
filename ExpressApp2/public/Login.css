@@ -1,0 +1,61 @@
+﻿body {
+
+
+    background-color:#1f2025;
+}
+
+
+
+.login {
+    width: 300px;
+    height: 200px;
+
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    background-color:#f7f7f7;
+    border-radius:5px;
+    /*50%为自身尺寸的一半*/
+}
+
+.box {
+
+    width:90%;
+    margin:auto;
+
+}
+
+.li_head {
+    border-bottom: 1px solid #a2a3a4;
+}
+
+ul {
+}
+
+    ul li {
+        
+    }
+
+        ul li input {
+
+           width:256px;
+           padding:5px;
+           margin:10px auto auto auto   ;
+         
+        }
+
+
+.btn_login {
+    background-color: #fbfbfb;
+    border: 3px groove #ffffff;
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+    width: 100px;
+    margin-top: 20px;
+}

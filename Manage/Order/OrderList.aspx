@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="OrderList.css" rel="stylesheet" />
-    <script src="OrderList.js?v=20161122129"></script>
+    <script src="OrderList.js?v=201611212129"></script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -41,6 +41,7 @@
                     <th style="width: 70px">缩略图</th>
                     <th>订单标题</th>
                     <th style="width: 80px">客户款号</th>
+                    <th style='width:80px'>每天可赚</th>
                     <th style="width: 80px">登记人数</th>
                     <th style="width: 70px">数量</th>
                     <th style="width: 70px">已生产</th>

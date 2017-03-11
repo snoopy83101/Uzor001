@@ -25,6 +25,8 @@ function get(req, res) {
                 getCustomerList(req, res);
                 break;
             default:
+                throw "no find page";
+                break;
         }
     } catch (e) {
 
